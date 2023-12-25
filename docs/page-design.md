@@ -22,3 +22,9 @@
 ## Portfolio (`/portfolio`)
 - Shows CVs in different languages (EN/FR/VN)
 - Show skills/education, reference letters, publications, etc.
+
+## Styling and Design
+- [ ] Custom font
+- [ ] Custom logo
+- [ ] Custom color scheme
+- [ ] Custom icons

@@ -19,7 +19,7 @@ export default {
 
   plugins: [
     skeleton({
-      themes: { preset: ["gold-nouveau"], enhancements: true }
+      themes: { preset: ["skeleton"] }
     })
   ]
 }
