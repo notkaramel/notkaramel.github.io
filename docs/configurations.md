@@ -66,7 +66,6 @@ export default {
 }
 ```
 
-## Skeleton UI Themes
-- https://www.skeleton.dev/docs/themes
+- Skeleton UI Themes: https://www.skeleton.dev/docs/themes
 
 
