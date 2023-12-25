@@ -15,13 +15,3 @@ $ npm install
 - [Project Structure](https://kit.svelte.dev/docs/project-structure)
 - [Packaging](https://kit.svelte.dev/docs/packaging)
 
-## `npm` scripts (see [package.json](package.json))
-
-```bash
-$ npm run dev       # run the app in development mode (Vite)
-$ npm run build     # build the app (Vite)
-$ npm run preview   # preview the built app (Vite)
-$ npm run check     # check the code (svelte-check)
-$ npm run format    # format the code (Prettier)
-$ npm run lint      # lint the code (Prettier)
-```
