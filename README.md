@@ -2,7 +2,10 @@
 
     version: 2.0.0-beta
     author: @notkaramel
-    tech-stack: SvelteKit, TailwindCSS, Vite, GitHub Pages
+- tech-stack:
+  - SvelteKit
+  - DaisyUI (TailwindCSS)
+  - Bun
 
 ## Commands
 
