@@ -1,10 +1,16 @@
-<script lang="ts">
+<script>
+// @ts-nocheck
+
     import BlogPost from "../../../components/BlogPost.svelte";
+    export let data;
+    console.log(data)
 </script>
 
+<title>{data.title} - Blog</title>
+
 <BlogPost
-    title="My First Blog Post"
-    date="2021-10-01"
-    tags={["blog", "svelte", "typescript"]}
-    content="This is my first blog post. I hope you enjoy it!"
+    title={data.title}
+    date={data.date}
+    tags={data.tags}
+    content={data.content}
 />

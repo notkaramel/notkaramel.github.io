@@ -1,13 +1,12 @@
 <script lang=ts>
     export let title:string;
-
     export let date:string;
     export let tags:string[];
     export let content:string;
 </script>
 
 <div class="blog-post">
-    <h1>{title}</h1>
+    <h1 class="">{title}</h1>
     <p>Date: {date}</p>
     <div>
         {#each tags as tag}

@@ -5,20 +5,23 @@
 
 <title> Music </title>
 <ContentBlock>
-    <div slot="content">
-        <MusicScore
-            scoreTitle="Closer – Oh My Girl"
-            scoreUrl="https://musescore.com/user/29658671/scores/7340753"
-        />
-    </div>
+    <MusicScore
+        scoreTitle="Closer – Oh My Girl"
+        scoreUrl="https://musescore.com/user/29658671/scores/7340753"
+    />
+</ContentBlock>
+<ContentBlock>
+    <MusicScore
+        scoreTitle="Fallin' Light – GFRIEND"
+        scoreUrl="https://musescore.com/user/29658671/scores/9363754"
+    />
 </ContentBlock>
 
-<MusicScore
-    scoreTitle="Fallin' Light – GFRIEND"
-    scoreUrl="https://musescore.com/user/29658671/scores/9363754"
-/>
+<ContentBlock>
+    <MusicScore
+        scoreTitle="어린이름 (The Little Name) – ADORA (Piano Cover)"
+        scoreUrl="https://musescore.com/user/29658671/scores/9208821"
+    />
+</ContentBlock>
+    
 
-<MusicScore
-    scoreTitle="어린이름 (The Little Name) – ADORA (Piano Cover)"
-    scoreUrl="https://musescore.com/user/29658671/scores/9208821"
-/>

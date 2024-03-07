@@ -1,18 +1,16 @@
-<div id="main">
-    <div class="hero w-screen h-screen" style="background-image: url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg);">
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
-            <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </div>
-      </div>
-</div>
+<script>
+    import ContentBlock from "components/ContentBlock.svelte";
+</script>
+<ContentBlock>
+    <p> Work in progress :) </p>
+    <ul class="steps steps-vertical">
+        <li class="step step-primary"> Project ideation </li>
+        <li class="step step-primary"> Project structure </li>
+        <li class="step step-primary"> Styling </li>
+        <li class="step"> Adding content </li>
+        <li class="step"> Public release </li>
+    </ul>
+</ContentBlock>
 
 <style lang="postcss">
-    #main {
-        @apply flex justify-center items-center gap-10 flex-wrap flex-col content-center;
-    }
 </style>

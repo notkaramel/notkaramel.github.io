@@ -1,33 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    colors: {
-      'blue': '#1fb6ff',
-      'purple': '#7e5bef',
-      'pink': '#ff49db',
-      'orange': '#ff7849',
-      'green': '#13ce66',
-      'yellow': '#ffc82c',
-      'gray-dark': '#273444',
-      'gray': '#8492a6',
-      'gray-light': '#d3dce6',
-    },
-    fontFamily: {
-      sans: ['Graphik', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
-    },
-    extend: {
-      spacing: {
-        '8xl': '96rem',
-        '9xl': '128rem',
-      },
-      borderRadius: {
-        '4xl': '2rem',
-      }
-    }
-  },
   plugins: [
     require('daisyui'),
   ],
+  daisyui: {
+    themes: [
+      {
+        karamel: {
+          'primary': 'hsla(132, 83%, 64%, 1)',
+          'secondary': 'hsla(189, 83%, 64%, 1)',
+          'accent': 'hsla(214, 48%, 48%, 1)',
+          'neutral': 'hsla(151, 48%, 67%, 0.81)',
+          'info': 'hsla(204, 86%, 53%, 1)',
+          'base-100': 'hsla(214, 36%, 31%, 1)',
+        },
+      },
+    ]
+  }
 }
