@@ -5,7 +5,7 @@
     export let data;
 </script>
 
-<title>{data.title} - Blog</title>
+<title>{data.title} ~ Blog</title>
 
 <BlogPost
     title={data.title}

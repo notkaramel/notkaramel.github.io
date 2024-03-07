@@ -1,6 +1,8 @@
 <script>
 // @ts-nocheck
 
+    import BlogThumbnail from 'components/BlogThumbnail.svelte';
+
     /** @type {import('./$types').PageData} */
     export let data;
 </script>
@@ -10,8 +12,11 @@
 <p>Here are some of my blog posts:</p>
 <ul>
     {#each data.summaries as post}
-        <li>
-            <a href={`blog/${post.slug}`}>{post.title}</a>
-        </li>
+    <BlogThumbnail
+        title={post.title}
+        tags={post.tags}
+        viewCount={post.viewCount}
+        slug={post.slug}
+    />
     {/each}
 </ul>

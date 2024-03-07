@@ -7,12 +7,12 @@
 
 <title>Markdown Editor</title>
 <ContentBlock>
-    <h1 class="font-bold font-4xl font-mono">Markdown editor</h1>
-    <div class="grid grid-cols-2">
+    <h1 class="font-bold text-4xl font-mono">Markdown editor</h1>
+<div class="grid auto-rows-fr grid-flow-row lg:grid-flow-col lg:auto-cols-fr lg:gap-12">
         <ContentBlock>
             <textarea
-                class="textarea textarea-primary min-w-full min-h-full font-mono"
-                bind:value={markdown}
+            class="textarea textarea-secondary w-full font-mono mx-6 text-base min-h-full lg:min-w-1/2 lg:text-xl"
+            bind:value={markdown}
             ></textarea>
         </ContentBlock>
         <ContentBlock>
