@@ -3,7 +3,6 @@
 
     import BlogPost from "components/BlogPost.svelte";
     export let data;
-    console.log(data)
 </script>
 
 <title>{data.title} - Blog</title>

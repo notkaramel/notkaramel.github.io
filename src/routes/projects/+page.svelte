@@ -13,3 +13,5 @@
     githubLink="https://github.com"
     productLink="https://github.com"
 ></ProjectBlock>
+
+<a href="./projects/markdown-editor" class="btn btn-primary">Markdown editor</a>
