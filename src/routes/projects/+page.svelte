@@ -10,6 +10,6 @@
 <ProjectBlock
     title="SvelteKit TailwindCSS Starter"
     description="A starter template for SvelteKit with TailwindCSS"
-    githubLink="hello.com"
-    productLink="hello.com"
-    ></ProjectBlock>
+    githubLink="https://github.com"
+    productLink="https://github.com"
+></ProjectBlock>

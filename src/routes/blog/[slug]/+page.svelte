@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
 
-    import BlogPost from "../../../components/BlogPost.svelte";
+    import BlogPost from "components/BlogPost.svelte";
     export let data;
     console.log(data)
 </script>

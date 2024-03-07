@@ -11,7 +11,14 @@ export async function load({ params }) {
             content: 'This is the first post on my blog.'
         };
     }
+    if (params.slug === 'another-blog-post') {
+        return {
+            slug: params.slug,
+            title: 'Another blog post',
+            date: '2022-01-02',
+            tags: ['hello', 'world'],
+            content: 'This is the second post on my blog.'
+        };
+    }
     error(404, 'Post not found');
 };
-
-export const csr = true;
