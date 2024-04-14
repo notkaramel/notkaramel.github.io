@@ -17,10 +17,8 @@ module.exports = {
           'base-100': 'hsla(214, 36%, 31%, 1)',
         },
       },
-      "dim",
-      "retro",
-      "dark",
-      "garden",
+      "dark", // default dark
+      "emerald", // default "bright"
     ]
   }
 }

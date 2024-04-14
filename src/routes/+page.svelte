@@ -9,6 +9,7 @@
         <li class="step step-primary"> Project ideation </li>
         <li class="step step-primary"> Project structure </li>
         <li class="step step-primary"> Styling </li>
+        <li class="step step-primary"> Adding server-side logic </li>
         <li class="step"> Adding content </li>
         <li class="step"> Public release </li>
     </ul>

@@ -35,10 +35,8 @@
       </summary>
       <ul class="dropdown-content shadow-2xl bg-base-300 rounded-box w-24">
         <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Default" value="karamel"/></li>
-        <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Dim" value="dim"/></li>
         <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Dark" value="dark"/></li>
-        <!-- <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Aqua" value="aqua"/></li> -->
-        <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Garden" value="garden"/></li>
+        <li><input type="radio" name="theme-dropdown" class="theme-controller btn btn-sm btn-block btn-ghost justify-center" aria-label="Bright" value="emerald"/></li>
       </ul>
     </details>
     <details class="dropdown dropdown-end dropdown-bottom">

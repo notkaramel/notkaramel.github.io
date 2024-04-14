@@ -5,15 +5,15 @@
     export let productLink:string;
 </script>
 
-<div class="bg-white rounded-lg shadow-lg p-6">
+<div class="bg-base-100 rounded-lg shadow-lg p-6">
     <h2 class="text-xl font-bold mb-2">{title}</h2>
-    <p class="text-gray-600 mb-4">{description}</p>
+    <p class="mb-4">{description}</p>
     <div class="flex justify-between">
         {#if githubLink}
-            <a href={githubLink} target="_blank" class="text-blue-500 hover:underline">GitHub</a>
+            <a href={githubLink} target="_blank" class="hover:underline font-bold">GitHub</a>
         {/if}
         {#if productLink}
-            <a href={productLink} target="_blank" class="text-blue-500 hover:underline">Product</a>
+            <a href={productLink} target="_blank" class="hover:underline font-bold">Product</a>
         {/if}
     </div>
 </div>

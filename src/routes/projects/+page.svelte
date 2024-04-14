@@ -14,4 +14,11 @@
     productLink="https://github.com"
 ></ProjectBlock>
 
-<a href="./projects/markdown-editor" class="btn btn-primary">Markdown editor</a>
+<a href="./projects/markdown-editor">
+<ProjectBlock
+    title="Markdown editor"
+    description="A nice Markdown editor"
+    githubLink=""
+    productLink=""
+></ProjectBlock>
+</a>

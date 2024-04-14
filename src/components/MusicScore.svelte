@@ -1,5 +1,5 @@
 <script lang="ts">
-    export let scoreTitle: string; 
+    export let scoreTitle: string;
     export let scoreUrl: string;
 </script>
 
@@ -9,16 +9,13 @@
     allowfullscreen
     allow="autoplay; fullscreen"
     style="
-        width: 80vw;
+        width: 72vw;
         height: 80vh;
-        border-radius: 12px;"
+        border-radius: 10px;"
 >
 </iframe>
 <span>
-    <a
-        href={scoreUrl}
-        target="_blank"
-    > 
+    <a href={scoreUrl} target="_blank">
         {scoreTitle}
     </a>
     by <a href="https://musescore.com/karamusique">notkaramel</a>
