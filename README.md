@@ -3,6 +3,7 @@
 - Plugins:
   - @sveltejs/adapter-static
   - [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
+  - [marked](https://marked.js.org)
 
 ## Documentation
 - [SvelteKit](https://kit.svelte.dev/docs/)
