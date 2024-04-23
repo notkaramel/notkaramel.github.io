@@ -1,20 +1,10 @@
 # Antoine's Portfolio
-
-    version: 2.0.0-beta
-    author: @notkaramel
-- tech-stack:
-  - SvelteKit
-  - DaisyUI (TailwindCSS)
-  - Bun
-
-## Commands
-
-```bash
-$ npm create svelte@latest .
-$ npm install
-```
+- Built with SvelteKit 5, TailwindCSS, & Bun.
+- Plugins:
+  - @sveltejs/adapter-static
+  - [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
 
 ## Documentation
-- [Project Structure](https://kit.svelte.dev/docs/project-structure)
-- [Packaging](https://kit.svelte.dev/docs/packaging)
+- [SvelteKit](https://kit.svelte.dev/docs/)
+- [TailwindCSS](https://tailwindcss.com/docs)
 
