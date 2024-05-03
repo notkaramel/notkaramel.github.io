@@ -1,8 +1,6 @@
 <script lang="ts">
   import profilepic from "$lib/images/pianocatpixelart-neonandretro.jpeg";
-  import {
-    fade, blur, fly, slide, scale, draw, crossfade
-  } from "svelte/transition";
+  import { slide } from "svelte/transition";
 
   $: hamburgerState = true;
 
@@ -10,9 +8,14 @@
     hamburgerState = !hamburgerState;
     console.log(hamburgerState);
   }
+
+  /*
+    Note: Use slide transition for responsive dropdown
+  */
 </script>
 
 <div class="navbar">
+  <!-- Left side of the navbar: the avatar/logo -->
   <div class="navbar-left">
     <a href="/">
       <img
@@ -23,8 +26,8 @@
     </a>
   </div>
 
+  <!-- Center part of navbar: main pages -->
   <div class="navbar-center">
-    <!-- Center part of navbar -->
     <ul>
       <a href="/blog">
         <li>Blog</li>
@@ -44,6 +47,7 @@
     </ul>
   </div>
 
+  <!-- Right side of the navbar: the hamburger button -->
   <div class="navbar-right">
     <button on:click={toggleHambuger}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -57,8 +61,10 @@
     </button>
   </div>
 </div>
+
+<!-- Display when the hamburger button is toggled to true -->
 {#if !hamburgerState}
-<!-- The svelte/transition module exports seven functions: fade, blur, fly, slide, scale, draw and crossfade. They are for use with Svelte transitions. -->
+  <!-- The svelte/transition module exports seven functions: fade, blur, fly, slide, scale, draw and crossfade. They are for use with Svelte transitions. -->
   <div class="navbar-dropdown" transition:slide>
     <ul>
       <a href="/blog">
@@ -123,6 +129,7 @@
   }
 
   .navbar-dropdown {
+    @apply md:hidden;
     > ul {
       @apply flex flex-col items-center gap-2 justify-between;
 
