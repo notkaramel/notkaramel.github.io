@@ -1,15 +1,11 @@
 <script lang="ts">
-    import ContentBlock from "./ContentBlock.svelte";
-
     export let title: string;
     export let tags: string[];
-    export let viewCount: number;
     export let slug: string;
 </script>
 
 <a href={`/blog/${slug}`}>
     <h2 class="blog-title">{title}</h2>
-    <p class="">Views: {viewCount}</p>
     <div class="tag-container">
         {#each tags as tag}
             <span class="tag">{tag}</span>

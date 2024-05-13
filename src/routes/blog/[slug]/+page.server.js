@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }) {
-    if (params.slug === 'hello-world') {
+    if (params.slug === 'do-everything-in-vim') {
         return {
             slug: params.slug,
             title: 'Hello, world!',

@@ -1,29 +1,21 @@
 <script lang="ts">
-    export let title: string;
+    export let title: string = "Something";
     export let date: string;
-    export let tags: string[];
     export let content: string;
 </script>
 
-<div class="w-full xl:w-1/2">
+<article id=content>
+    <h1 class="prose-h1">{title}</h1>
     <div class="blog-post">
-        <h1 class="font-bold text-4xl">{title}</h1>
-        <p>Date: {date}</p>
+        <p class="prose-">Date: {date}</p>
         <div>
-            {#each tags as tag}
-                <div class="badge badge-primary badge-outline mx-1">{tag}</div>
-            {/each}
-        </div>
-        <div class="content">
             {content}
         </div>
     </div>
-</div>
+</article>
 
 <style lang="postcss">
-    .blog-post {
-        @apply p-8 m-6;
-        @apply border-2 rounded-lg shadow-lg;
-        @apply border-4;
+    #content {
+        @apply prose xl:prose-lg w-full text-left pt-8;
     }
 </style>
