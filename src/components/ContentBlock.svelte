@@ -1,12 +1,18 @@
-<div class="card min-w-fit bg-base-100 shadow-xl m-8 border-4 border-base-300">
-    <div class="container card-body content">
+<div class="content-container">
+    <div class="content">
         <slot />
     </div>
 </div>
 
 <style lang="postcss">
-    .content {
-        @apply mx-auto my-4 p-4;
-        @apply flex flex-col gap-2 items-center;
+    .content-container {
+        @apply w-full bg-white;
+        @apply border-4 rounded-lg border-sky-100 p-4 m-8;
+
+        .content {
+            @apply mx-auto p-4;
+            @apply flex flex-col gap-2 items-center;
+        }
     }
+
 </style>

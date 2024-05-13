@@ -6,7 +6,6 @@
 
   function toggleHambuger() {
     hamburgerState = !hamburgerState;
-    console.log(hamburgerState);
   }
 
   /*
@@ -87,9 +86,6 @@
 {/if}
 
 <style lang="postcss">
-  * {
-    @apply transition-all ease-in-out;
-  }
   .navbar {
     @apply flex w-full justify-between items-center;
     @apply h-14 md:h-12;
@@ -104,7 +100,7 @@
   }
 
   .navbar-center {
-    @apply invisible md:visible;
+    @apply invisible opacity-0 md:opacity-100 md:visible;
     > ul {
       @apply flex items-center gap-2 justify-between;
 
@@ -118,7 +114,7 @@
 
   .navbar-right {
     @apply flex flex-col;
-    @apply md:collapse;
+    @apply opacity-100 md:collapse md:opacity-0;
     @apply pr-6;
 
     > button > svg {
@@ -134,7 +130,7 @@
       @apply flex flex-col items-center gap-2 justify-between;
 
       > a {
-        @apply border-b-2 border-white w-full py-1 text-center font-bold;
+        @apply border-b-2 border-white w-full py-2 text-center font-bold;
         @apply hover:border-sky-400;
         @apply active:border-sky-900;
       }

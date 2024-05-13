@@ -5,7 +5,7 @@
     export let productLink:string;
 </script>
 
-<div class="bg-base-100 rounded-lg shadow-lg p-6">
+<div class="bg-sky-400 rounded-lg shadow-lg p-6 w-1/2">
     <h2 class="text-xl font-bold mb-2">{title}</h2>
     <p class="mb-4">{description}</p>
     <div class="flex justify-between">

@@ -24,6 +24,6 @@
     .blog-post {
         @apply p-8 m-6;
         @apply border-2 rounded-lg shadow-lg;
-        @apply bg-base-100 border-base-200 border-4;
+        @apply border-4;
     }
 </style>
