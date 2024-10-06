@@ -18,6 +18,6 @@
 
   #page-center {
     @apply border-2 border-sky-100 min-h-screen;
-    @apply flex items-center gap-10 flex-wrap flex-col content-center;
+    @apply flex flex-col;
   }
 </style>
