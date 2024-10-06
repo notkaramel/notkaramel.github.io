@@ -3,9 +3,8 @@
 </script>
 
 <title> Homepage ~ @notkaramel </title>
-<ContentBlock>
-    <p> Work in progress :) </p>
-</ContentBlock>
+
+Hi there!
 
 <style lang="postcss">
 </style>

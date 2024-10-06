@@ -12,13 +12,11 @@
     description="A starter template for SvelteKit with TailwindCSS"
     githubLink="https://github.com"
     productLink="https://github.com"
-></ProjectBlock>
+/>
 
-<a href="./projects/markdown-editor">
 <ProjectBlock
     title="Markdown editor"
     description="A nice Markdown editor"
     githubLink=""
     productLink=""
-></ProjectBlock>
-</a>
+/>

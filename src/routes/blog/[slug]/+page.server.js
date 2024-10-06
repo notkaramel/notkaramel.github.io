@@ -7,18 +7,26 @@ export async function load({ params }) {
             slug: params.slug,
             title: 'Hello, world!',
             date: '2022-01-01',
-            tags: ['hello', 'world'],
+            category: ['productivity', 'technology'],
             content: 'This is the first post on my blog.'
         };
     }
     if (params.slug === 'another-blog-post') {
         return {
             slug: params.slug,
-            title: 'Another blog post',
+            title: 'My focaccia recipe',
             date: '2022-01-02',
-            tags: ['hello', 'world'],
-            content: 'This is the second post on my blog.'
+            tags: ['food', 'cooking'],
+            content: 'So here\'s my recipe for focaccia.'
         };
     }
-    error(404, 'Post not found');
+
+    return {
+        slug: params.slug,
+        title: 'My focaccia recipe',
+        date: '2022-01-02',
+        tags: ['food', 'cooking'],
+        content: 'So here\'s my recipe for focaccia.'
+    };
+    // error(404, 'Post not found');
 };

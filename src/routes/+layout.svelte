@@ -13,11 +13,11 @@
 <style lang="postcss">
   #page-content {
     @apply min-w-full min-h-screen;
-    @apply px-4 md:px-32;
+    @apply px-4 md:px-32 lg:px-96;
   }
 
   #page-center {
-    @apply border-l-2 border-r-2 border-sky-500 min-h-screen;
+    @apply border-2 border-sky-100 min-h-screen;
     @apply flex items-center gap-10 flex-wrap flex-col content-center;
   }
 </style>

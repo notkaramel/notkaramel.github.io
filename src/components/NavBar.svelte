@@ -34,14 +34,14 @@
       <a href="/projects">
         <li>Projects</li>
       </a>
-      <a href="/resume">
-        <li>Resume</li>
+      <a href="/academic">
+        <li>Academic</li>
       </a>
-      <a href="/gallery">
-        <li>Photography</li>
+      <a href="/portfolio">
+        <li>Portfolio</li>
       </a>
-      <a href="/music">
-        <li>Music</li>
+      <a href="/art">
+        <li>Art Gallery</li>
       </a>
     </ul>
   </div>
