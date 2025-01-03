@@ -1,0 +1,28 @@
+{
+    "project-1":
+    {
+        "title": "Demo Project",
+        "shortDesc": "This is a demo project to show how to use the portfolio template.",
+        "fullDesc": "",
+        "techStack": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "githubLink": "https://github.com",
+        "projectLink": "https://example.com"
+    },
+    "project-2":
+    {
+        "title": "Demo Project 2",
+        "shortDesc": "This is a demo project to show how to use the portfolio template.",
+        "fullDesc": "",
+        "techStack": [
+            "HTML",
+            "CSS",
+            "JavaScript"
+        ],
+        "githubLink": "https://github.com",
+        "projectLink": "https://example.com"
+    }
+}
