@@ -1,22 +1,28 @@
 <script>
-    // /** @type {import('./$types').PageData} */
-    // export let data;
     import ProjectBlock from "components/ProjectBlock.svelte";
+
+    import projects from '$lib/content/projects.json';
 </script>
 
 <title> Projects </title>
 <h1> Projects </h1>
 
-<ProjectBlock
-    title="SvelteKit TailwindCSS Starter"
-    description="A starter template for SvelteKit with TailwindCSS"
-    githubLink="https://github.com"
-    productLink="https://github.com"
-/>
+<div class="container flex flex-col flex-wrap gap-4">
+    {#each projects as project}
+        {#if project.featured}
+            <ProjectBlock
+                title={project.title}
+                description={project.shortDesc}
+                techStack={project.techStack}
+                github={project.github}
+                link={project.link}
+            />
+        {/if}
+    {/each}
+</div>
 
-<ProjectBlock
-    title="Markdown editor"
-    description="A nice Markdown editor"
-    githubLink=""
-    productLink=""
-/>
+<style lang=postcss>
+    h1 {
+        @apply text-4xl font-bold;
+    }
+</style>

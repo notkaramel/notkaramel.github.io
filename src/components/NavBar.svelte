@@ -28,17 +28,14 @@
   <!-- Center part of navbar: main pages -->
   <div class="navbar-center">
     <ul>
-      <a href="/blog">
-        <li>Blog</li>
-      </a>
       <a href="/projects">
         <li>Projects</li>
       </a>
       <a href="/academic">
         <li>Academic</li>
       </a>
-      <a href="/portfolio">
-        <li>Portfolio</li>
+      <a href="/blog">
+        <li>Blog</li>
       </a>
       <a href="/art">
         <li>Art Gallery</li>
@@ -48,7 +45,7 @@
 
   <!-- Right side of the navbar: the hamburger button -->
   <div class="navbar-right">
-    <button on:click={toggleHambuger}>
+    <button on:click={toggleHambuger} aria-label="Toggle Navbar">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
         ><path
           stroke-linecap="round"
@@ -66,20 +63,17 @@
   <!-- The svelte/transition module exports seven functions: fade, blur, fly, slide, scale, draw and crossfade. They are for use with Svelte transitions. -->
   <div class="navbar-dropdown" transition:slide>
     <ul>
-      <a href="/blog">
-        <li>Blog</li>
-      </a>
       <a href="/projects">
         <li>Projects</li>
       </a>
-      <a href="/resume">
-        <li>Resume</li>
+      <a href="/academic">
+        <li>Academic</li>
       </a>
-      <a href="/gallery">
-        <li>Photography</li>
+      <a href="/blog">
+        <li>Blog</li>
       </a>
-      <a href="/music">
-        <li>Music</li>
+      <a href="/art">
+        <li>Art Gallery</li>
       </a>
     </ul>
   </div>

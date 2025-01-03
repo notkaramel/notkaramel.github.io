@@ -5,20 +5,10 @@
 </script>
 
 <NavBar />
-<div id="page-content">
-  <div id="page-center">
-    <slot />
-  </div>
+<div class="container mx-auto px-4 items-center" id="page-center">
+  <slot />
 </div>
 
 <style lang="postcss">
-  #page-content {
-    @apply min-w-full min-h-screen;
-    @apply px-4 md:px-32 lg:px-96;
-  }
 
-  #page-center {
-    @apply border-2 border-sky-100 min-h-screen;
-    @apply flex flex-col;
-  }
 </style>
