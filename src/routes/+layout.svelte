@@ -5,7 +5,7 @@
 </script>
 
 <NavBar />
-<div class="container mx-auto px-4 items-center" id="page-center">
+<div class="container mx-auto px-4 border-2">
   <slot />
 </div>
 

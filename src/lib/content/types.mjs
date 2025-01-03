@@ -3,14 +3,14 @@ export class Blog {
      * @param {string} title 
      * @param {string} slug
      * @param {string} shortDesc
-     * @param {string[]} caterogies
+     * @param {string[]} categories
      * @param {string} fullDesc
      */
-    constructor(title, slug, shortDesc, caterogies, fullDesc) {
+    constructor(title, slug, shortDesc, categories, fullDesc) {
         this.title = title;
         this.slug = slug;
         this.shortDesc = shortDesc;
-        this.caterogies = caterogies;
+        this.categories = categories;
         this.fullDesc = fullDesc;
     }
 }
@@ -45,6 +45,6 @@ export class Artwork {
     constructor(title, shortDesc, link) {
         this.title = title;
         this.shortDesc = shortDesc;
-        this.link = imageUrl;
+        this.link = link;
     }
 }

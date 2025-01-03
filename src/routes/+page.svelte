@@ -4,7 +4,9 @@
 
 <title> Homepage ~ @notkaramel </title>
 
-Hi there!
+<ContentBlock>
+    Hi there!
+</ContentBlock>
 
 <style lang="postcss">
 </style>

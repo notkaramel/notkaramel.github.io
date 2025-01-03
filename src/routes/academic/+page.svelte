@@ -1,23 +1,18 @@
 <script>
     import academic from "$lib/content/academic.json";
-    console.log(academic);
 </script>
 
 <title> Academic </title>
 
 <article>
     <h1>Education</h1>
+
     <h2>{academic.education.school}</h2>
     <p>Major: {academic.education.major}</p>
     <p>
-        Minor(s):
-        <span>
-            {#each academic.education.minor as minor}
-                {minor}
-            {/each}
-        </span>
+        Minors: {academic.education.minor.join(", ")}
     </p>
-    <p>Graduation: {academic.education.graduation}</p>
+    <p>Expected graduation: {academic.education.graduation}</p>
     <p>CGPA: {academic.education.cgpa}</p>
     <hr />
 
@@ -76,5 +71,4 @@
 </article>
 
 <style lang="postcss">
-
 </style>

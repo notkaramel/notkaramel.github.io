@@ -6,7 +6,7 @@
             "Musical Science & Technology",
             "Software Engineering"
         ],
-        "graduation": "Winter 2026",
+        "graduation": "May 2026",
         "cgpa": "3.5/4.0"
     },
     "publications": [
@@ -17,12 +17,12 @@
                 "Antoine Phan",
                 "Elsa De Luca"
             ],
-            "conference": "ECHOES",
+            "conference": "",
             "date": "June 2024",
             "doi": "",
             "url": "",
             "journal": "",
-            "book": ""
+            "book": "Digital Technologies Applied to Music Research: Methodologies, Projects and Challenges"
         }
     ],
     "conferences": [

@@ -1,6 +1,4 @@
 <script>
-    // @ts-nocheck
-
     import BlogCard from "components/BlogCard.svelte";
     import ContentBlock from "components/ContentBlock.svelte";
 
@@ -15,8 +13,6 @@
 {#each data.summaries as post}
     <BlogCard
         title={post.title}
-        tags={post.tags}
-        viewCount={post.viewCount}
         slug={post.slug}
     />
 {/each}
