@@ -1,18 +1,18 @@
-# Antoine's Portfolio
-- Built with SvelteKit, TailwindCSS, & Bun.
-- Plugins:
-  - @sveltejs/adapter-static
-  - [@tailwindcss/typography](https://github.com/tailwindlabs/tailwindcss-typography)
-  - [marked](https://marked.js.org)
+# @notkaramel's personal website
 
-## Documentation
-- [SvelteKit](https://kit.svelte.dev/docs/)
-- [TailwindCSS](https://tailwindcss.com/docs)
-
-## Some useful commands
-- Update all dependencies: 
+## Creation
+- Create project
 ```sh
-bun x npm-check-updates -ui
+hugo new site . --force
+# Either create a theme
+hugo new theme creme-caramel
 ```
+- Delete boilerplate in the theme
+- Add Tailwind Play CDN to 
 
+
+
+## References
+- Directory Structure: https://gohugo.io/getting-started/directory-structure/
+- Content: https://gohugo.io/content-management/organization/
 
