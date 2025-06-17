@@ -1,10 +1,6 @@
 <script>
-	import '../app.css';
-	import NavBar from 'components/NavBar.svelte';
+  import "../app.css";
+  
 </script>
 
-<NavBar />
-<div class="container mx-auto px-4 border-2">
-	<slot />
-</div>
-
+<slot/>
