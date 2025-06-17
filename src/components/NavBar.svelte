@@ -13,12 +13,12 @@
   */
 </script>
 
-<div class="navbar">
+<nav class="flex w-full justify-between items-center h-14 md:h-12">
   <!-- Left side of the navbar: the avatar/logo -->
-  <div class="navbar-left">
+  <div class="pl-4 flex justify-center items-center gap-1">
     <a href="/">
       <img
-        class="navbar-pfp"
+        class="h-full w-12 md:w-10 md:h-fit rounded-lg"
         src={profilepic}
         alt="piano cat pixelart neon and retro"
       />
@@ -56,7 +56,7 @@
       </svg>
     </button>
   </div>
-</div>
+</nav>
 
 <!-- Display when the hamburger button is toggled to true -->
 {#if !hamburgerState}
@@ -79,17 +79,12 @@
   </div>
 {/if}
 
-<style lang="postcss">
-  .navbar {
-    @apply flex w-full justify-between items-center;
-    @apply h-14 md:h-12;
-  }
-
+<style>
   .navbar-left {
-    @apply pl-4 flex justify-center items-center gap-1;
+    @apply ;
 
     .navbar-pfp {
-      @apply h-full w-12 md:w-10 md:h-fit rounded-lg;
+      @apply ;
     }
   }
 
