@@ -7,6 +7,9 @@ const config = {
 
   kit: {
     adapter: adapter(),
+    alias: {
+      "@app.css": "src/app.css"
+    }
   },
 };
 
