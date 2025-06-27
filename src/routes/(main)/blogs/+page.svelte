@@ -1,11 +1,4 @@
-<div class="flex w-full min-h-screen">
-  <div class="bg-primary rounded-box grid place-items-center flex-1 mx-8 text-primary-content">
-    navigation & post info
-  </div>
-  
-  <div class="divider divider-horizontal"></div>
-  
-  <div class="card bg-secondary rounded-box grid place-items-center flex-4 mx-8 text-secondary-content">
-    the post itself
-  </div>
-</div>
+<!-- Blog content are in the right side panel only -->
+<h1>The actual post</h1>
+
+I write blogs sometimes!
