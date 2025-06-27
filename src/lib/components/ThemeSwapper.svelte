@@ -1,26 +1,8 @@
 <script>
-  /*
-   * Navigation design notes:
-   * - Mobile: Dock
-   *   - class="dock-active" for active section
-   * - Big screen: Nav bar
-   *
-   */
-  import { routes } from "$lib";
   const daisyThemes = ["emerald", "dim"];
 </script>
 
-<div class="dock dock-lg">
-  {#each routes as route}
-    <a href={route.url}>
-      <button class="size-8 fill-primary">
-        {@html route.icon}
-        <!-- <span class="dock-label">{route.title}</span> -->
-      </button>
-    </a>
-  {/each}
-
-  <label class="swap swap-rotate">
+<label class="swap swap-rotate">
     <!-- this hidden checkbox controls the state -->
     <input
       type="checkbox"
@@ -50,4 +32,3 @@
       />
     </svg>
   </label>
-</div>
