@@ -11,7 +11,7 @@
 <title> Curriculum Vitae </title>
 
 <div class="min-h-screen flex flex-row">
-  <div class="@container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-2xl">
+  <div class="container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-2xl">
     <div
       class="bg-base-100 px-8 lg:px-12 py-8 rounded-2xl text-base-content glass"
     >

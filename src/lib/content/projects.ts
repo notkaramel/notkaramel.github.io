@@ -1,7 +1,7 @@
 
 type Project = {
   title: string,
-  featured: true | boolean;
+  featured: boolean;
   shortDesc: string,
   techStack: string[],
   github: string | null,

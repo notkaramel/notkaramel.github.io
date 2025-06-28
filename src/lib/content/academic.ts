@@ -44,7 +44,7 @@ export const academicRecord: AcademicRecord = {
 
 export const publications: Publication[] = [
   {
-    type: "Confernece Paper",
+    type: "Conference Paper",
     title:
       "Plainchant Analyser for MEI Neumes: A Tool for Understanding Chant Transmission",
     authors: [
