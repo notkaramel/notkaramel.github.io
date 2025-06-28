@@ -10,8 +10,8 @@
 
 <title> Curriculum Vitae </title>
 
-<div class="min-h-screen bg-base-200 flex flex-row">
-  <div class="@container m-auto w-[90%] md:w-2/3 lg:w-1/2 my-12">
+<div class="min-h-screen flex flex-row">
+  <div class="@container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-2xl">
     <div
       class="bg-base-100 px-8 lg:px-12 py-8 rounded-2xl text-base-content glass"
     >
@@ -80,10 +80,8 @@
 
       <ResumeSection title="Conference Workshops">
         {#each conferenceWorkshops as cw}
-          <div class="flex flow-row justify-between place-items-baseline">
-            <h3>{cw.title}</h3>
-            <p class="italic">{cw.time}</p>
-          </div>
+          <h3>{cw.title}</h3>
+          <p class="italic">{cw.time}</p>
           <p>Presented by {cw.authors.join(", ")} at {cw.location}.</p>
         {/each}
       </ResumeSection>

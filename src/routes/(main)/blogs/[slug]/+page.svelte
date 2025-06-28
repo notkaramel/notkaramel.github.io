@@ -1,9 +1,11 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
+  import { marked } from "marked";
 
   let { data }: PageProps = $props();
+  let content = marked.parse(data.content);
 </script>
 
-<h1> {data.post.title} </h1>
+<p>{data.title}</p>
 <hr />
-{data.post.contentMarkdown}
+{@html content}

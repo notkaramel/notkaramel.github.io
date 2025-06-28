@@ -2,23 +2,23 @@
   let { children } = $props();
 </script>
 
-<title>Blogs</title>
+<title>Project Gallery</title>
 
 <div class="flex w-full min-h-screen my-8 justify-between">
-  <div class="bg-blue-200 rounded-box flex-1 mx-4 text-blue-900">
+  <div class="bg-indigo-200 rounded-box flex-1 mx-4 text-indigo-900">
     <div class="flex flex-col m-4 prose-base **:my-2 prose-ul:list-disc">
-      <p>Blog navigation panel</p>
-      <hr>
+      <p>Project navigation</p>
+      <hr />
       <ul>
-        <li>Trust me that</li>
-        <li>I'm still working on it</li>
+        <li>I'm still figuring out if this is needed</li>
+        <li>like, categories maybe?</li>
       </ul>
     </div>
   </div>
 
   <div class="divider divider-horizontal m-0"></div>
 
-  <div class="@container bg-sky-200 rounded-box flex-5 mx-4 text-sky-900">
+  <div class="@container bg-fuchsia-200 rounded-box flex-5 mx-4 text-fuchsia-900">
     <div class="m-8">
       <div class="prose-base **:my-4 prose-a:underline">
         {@render children()}

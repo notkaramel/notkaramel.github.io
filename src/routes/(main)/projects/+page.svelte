@@ -1,17 +1,12 @@
-<title> My Projects </title>
+<!-- Blog content are in the right side panel only -->
 
-<div class="flex w-full min-h-screen">
-  <div
-    class="card bg-accent text-accent-content m-8"
-  >
-    navigation & post info
-  </div>
-  <div class="divider divider-horizontal"></div>
-  <div
-    class="card bg-secondary text-secondary-content rounded-box m-8"
-  >
-    <div class="prose">
-      <p>the post itself</p>
-    </div>
-  </div>
-</div>
+<h1>I build all kinds of project!</h1>
+<hr>
+<h2>
+    Software:
+</h2>
+<p>With that said, this feature will come in the near future, I guess :)</p>
+<p>
+    In the meantime, you can read: 
+    <a href="https://github.com/notkaramel/guide">https://github.com/notkaramel/guide</a>
+</p>

@@ -13,6 +13,7 @@
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^6.0.1",
+		"@sveltejs/adapter-vercel": "5",
 		"@sveltejs/kit": "^2.22.0",
 		"@sveltejs/vite-plugin-svelte": "^5.1.0",
 		"@tailwindcss/typography": "^0.5.16",
@@ -25,6 +26,7 @@
 		"@fontsource-variable/comfortaa": "^5.2.6",
 		"@tailwindcss/vite": "^4.1.10",
 		"daisyui": "^5.0.43",
+		"marked": "^16.0.0",
 		"tailwindcss": "^4.1.10"
 	}
 }

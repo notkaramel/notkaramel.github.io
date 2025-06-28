@@ -2,7 +2,7 @@
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   /* https://daisyui.com/docs/themes/#list-of-themes */
-  themes: emerald --default, dim --preferdark;
+  themes: emerald --default, business --preferdark;
   root: ":root";
   include: ;
   exclude: ;

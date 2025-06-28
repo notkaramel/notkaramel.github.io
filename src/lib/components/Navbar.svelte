@@ -3,10 +3,14 @@
   import ThemeSwapper from "./ThemeSwapper.svelte";
 </script>
 
-<div class="navbar bg-base-300 shadow-sm">
+<div class="navbar w-[98%] bg-base-100 glass shadow-md mx-auto px-4 mt-2 rounded-xl">
   <div class="navbar-start">
     <div class="dropdown">
-      <div role="button" class="btn btn-ghost fill-accent-content lg:hidden">
+      <div
+        tabindex="0"
+        role="button"
+        class="btn btn-ghost fill-accent-content lg:hidden"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -23,7 +27,7 @@
         </svg>
       </div>
       <ul
-        class="menu menu-sm dropdown-content bg-primary rounded-box z-1 mt-3 w-52 p-2 shadow"
+        class="menu menu-sm dropdown-content bg-emerald-200 dark:bg-emerald-900 rounded-md z-1 mt-3 w-52 p-2 shadow"
       >
         {#each routes as route}
           <li>
@@ -32,22 +36,26 @@
         {/each}
       </ul>
     </div>
+    <a class="lg:mx-8 text-xl font-bold" href="/">antoine's website</a>
   </div>
 
   <div class="navbar-center hidden lg:flex">
-    <ul class="menu menu-horizontal px-1">
+    <div class="flex flex-row gap-4 px-2 w-full justify-evenly place-content-baseline">
       {#each routes as route}
-        <a href={route.url}>
-          <li
-            class="btn btn-accent btn-soft text-accent-content mx-2 shadow-2xl"
-          >
-            {route.title}
-          </li>
+        <a
+          href={route.url}
+          class="btn btn-ghost bg-emerald-100 hover:bg-emerald-300 border-none rounded-lg px-4 py-2 flex items-center gap-3 transition-all duration-200 hover:shadow-md"
+        >
+          <div class="size-6 fill-emerald-900 flex-shrink-0">
+            {@html route.icon}
+          </div>
+          <span class="text-emerald-950 font-medium">{route.title}</span>
         </a>
       {/each}
-    </ul>
+    </div>
   </div>
+
   <div class="navbar-end">
-    <ThemeSwapper/>
+    <ThemeSwapper />
   </div>
 </div>
