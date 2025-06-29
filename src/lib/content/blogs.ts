@@ -5,9 +5,9 @@ type Blog = {
 };
 
 export const blogs: Blog[] = [
-    {
-        title: "Happy life",
-        slug: 'happy-life',
-        contentMarkdown: `# Life is happy\nI love my **beautiful** life`
-    }
+  {
+    title: "Happy life",
+    slug: "happy-life",
+    contentMarkdown: `# Life is happy\nI love my **beautiful** life`,
+  },
 ];
