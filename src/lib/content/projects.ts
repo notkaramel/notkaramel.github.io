@@ -4,8 +4,8 @@ type Project = {
   featured: boolean;
   shortDesc: string,
   techStack: string[],
-  github: string | null,
-  link: string | null,
+  github: string,
+  link: string,
 };
 
 export const projects:Project[] = [

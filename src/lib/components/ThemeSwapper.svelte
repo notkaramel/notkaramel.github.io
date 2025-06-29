@@ -1,5 +1,5 @@
 <script>
-  const daisyThemes = ["emerald", "business"];
+  const daisyThemes = ["bright-caramel", "dark-caramel"];
 </script>
 
 <label class="swap swap-rotate">

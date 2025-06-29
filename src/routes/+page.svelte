@@ -6,21 +6,27 @@
 <title>Hi there!</title>
 
 <div
-  class="hero min-h-screen"
-  style="
-background: linear-gradient(64deg, rgba(64, 193, 195, 1) 0%, rgba(103, 182, 191, 1) 26%, rgba(189, 104, 189, 1) 60%, rgba(253, 187, 45, 1) 100%);"
+  class="hero min-h-screen
+  bg-[linear-gradient(27deg,_rgba(207,255,249,1)_0%,_rgba(142,230,167,1)_24%,_rgba(148,178,255,1)_43%,_rgba(221,139,232,1)_71%,_rgba(255,221,84,1)_100%)]
+  "
 >
-  <div class="hero-overlay"></div>
+  <div
+    class="hero-overlay
+  "
+  ></div>
+  <div class="hero-content text-center flex-col lg:flex-row">
+    <div class="max-w-xs lg:max-w-sm lg:mr-18 avatar">
+      <img
+        class="mask mask-squircle shadow-2xl"
+        src="https://avatars.githubusercontent.com/u/24505220?v=4"
+        alt=""
+      />
+    </div>
 
-  <div class="hero-content text-white text-center">
-    <img
-      src="https://avatars.githubusercontent.com/u/24505220?v=4"
-      class="max-w-sm rounded-lg shadow-2xl mask mask-squircle"
-      alt=""
-    />
-
-    <div class="p-4 max-w-lg prose-md">
-      <h1 class="mb-5 text-5xl font-bold text-white">Hello! It's Antoine :)</h1>
+    <div class="p-4 max-w-md prose-md text-white">
+      <h1 class="mb-5 text-3xl lg:text-4xl font-bold">
+        Hello! It's Antoine :)
+      </h1>
       <p class="mb-5">
         Linux enthusiast, cats lover, <code>Neovim</code> and a split keyboard. Love
         doing sidequests to learn new technologies and build fun stuff.
@@ -29,11 +35,14 @@ background: linear-gradient(64deg, rgba(64, 193, 195, 1) 0%, rgba(103, 182, 191,
       <br />
       <hr />
       <br />
-      <div class="flex gap-5 items-center justify-center">
+      <div
+        class="flex gap-3 flex-col md:flex-row items-center justify-center p-4"
+      >
         {#each routes.filter((e) => e.url != "/") as route}
           <a href={route.url}>
             <button
               class="btn
+              w-[10rem] md:w-[9rem]
               bg-linear-[60deg,var(--color-sky-100)_30%,var(--color-fuchsia-100)_75%]
               border-4 px-6 py-4 border-indigo-100
               hover:shadow-2xl hover:border-orange-300

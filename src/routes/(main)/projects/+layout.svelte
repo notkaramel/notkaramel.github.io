@@ -20,9 +20,7 @@
 
   <div class="@container bg-fuchsia-200 rounded-box flex-5 mx-4 text-fuchsia-900">
     <div class="m-8">
-      <div class="prose-base **:my-4 prose-a:underline">
         {@render children()}
-      </div>
     </div>
   </div>
 </div>

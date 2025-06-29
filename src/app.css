@@ -2,13 +2,87 @@
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
   /* https://daisyui.com/docs/themes/#list-of-themes */
-  themes: emerald --default, business --preferdark;
+  themes: bright-caramel, dark-caramel;
   root: ":root";
   include: ;
   exclude: ;
   prefix: ;
   logs: true;
 }
+
+
+@plugin "daisyui/theme" {
+  name: "dark-caramel";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(14% 0 0);
+  --color-base-200: oklch(20% 0 0);
+  --color-base-300: oklch(26% 0 0);
+  --color-base-content: oklch(97% 0 0);
+  --color-primary: oklch(43% 0.095 166.913);
+  --color-primary-content: oklch(97% 0.021 166.113);
+  --color-secondary: oklch(50% 0.134 242.749);
+  --color-secondary-content: oklch(97% 0.013 236.62);
+  --color-accent: oklch(76% 0.188 70.08);
+  --color-accent-content: oklch(98% 0.022 95.277);
+  --color-neutral: oklch(37% 0.01 67.558);
+  --color-neutral-content: oklch(98% 0.001 106.423);
+  --color-info: oklch(60% 0.126 221.723);
+  --color-info-content: oklch(98% 0.019 200.873);
+  --color-success: oklch(62% 0.194 149.214);
+  --color-success-content: oklch(98% 0.018 155.826);
+  --color-warning: oklch(55% 0.195 38.402);
+  --color-warning-content: oklch(96% 0.059 95.617);
+  --color-error: oklch(51% 0.222 16.935);
+  --color-error-content: oklch(96% 0.015 12.422);
+  --radius-selector: 0.25rem;
+  --radius-field: 1rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.25rem;
+  --border: 1.5px;
+  --depth: 0;
+  --noise: 0;
+}
+
+
+@plugin "daisyui/theme" {
+  name: "bright-caramel";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: oklch(98% 0 0);
+  --color-base-200: oklch(97% 0 0);
+  --color-base-300: oklch(92% 0 0);
+  --color-base-content: oklch(14% 0 0);
+  --color-primary: oklch(87% 0.065 274.039);
+  --color-primary-content: oklch(35% 0.144 278.697);
+  --color-secondary: oklch(92% 0.12 95.746);
+  --color-secondary-content: oklch(41% 0.112 45.904);
+  --color-accent: oklch(90% 0.093 164.15);
+  --color-accent-content: oklch(26% 0.051 172.552);
+  --color-neutral: oklch(12% 0.042 264.695);
+  --color-neutral-content: oklch(98% 0.003 247.858);
+  --color-info: oklch(88% 0.059 254.128);
+  --color-info-content: oklch(37% 0.146 265.522);
+  --color-success: oklch(92% 0.084 155.995);
+  --color-success-content: oklch(39% 0.095 152.535);
+  --color-warning: oklch(90% 0.076 70.697);
+  --color-warning-content: oklch(40% 0.123 38.172);
+  --color-error: oklch(80% 0.114 19.571);
+  --color-error-content: oklch(39% 0.141 25.723);
+  --radius-selector: 0.25rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.21875rem;
+  --size-field: 0.21875rem;
+  --border: 2px;
+  --depth: 0;
+  --noise: 0;
+}
+
+
 
 /* https://fontsource.org/fonts/comfortaa */
 body {
