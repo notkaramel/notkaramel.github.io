@@ -3,9 +3,11 @@
   import { marked } from "marked";
 
   let { data }: PageProps = $props();
-  let content = marked.parse(data.content);
+  let content = $derived(marked.parse(data.content));
 </script>
 
-<p>{data.title}</p>
+<h1>{data.title}</h1>
 <hr />
-{@html content}
+<div class="prose prose-basse text-primary-content">
+  {@html content}
+</div>

@@ -1,20 +1,36 @@
-import figlet from "figlet";
-console.log(figlet.textSync("notkaramel!"));
+import fs from "node:fs/promises";
+import path from "path";
+import matter from "gray-matter";
+import { error, log } from "node:console";
 
-console.log(Bun.file("/src/lib/blogs/*.md"));
-let blogs = Bun.file("/src/lib/blogs/*.md");
-console.log(blogs.text());
+const dirname = import.meta.dirname;
 
+// Directory containing markdown files
+const blogsDir = path.join(dirname, "../blogs");
+log(blogsDir)
+// Output file
+const outputFile = path.join(dirname, "../src/lib/content/", "blogs.json");
 
-// console.log(Bun.file("./testblog.md"));
+try {
+  const entries = await fs.readdir(blogsDir);
+  const mdFiles = entries.filter((file) => file.endsWith(".md"));
 
+  const blogPosts = await Promise.all(
+    mdFiles.map(async (filename) => {
+      const filePath = path.join(blogsDir, filename);
+      const fileContent = await fs.readFile(filePath, "utf8");
+      const { data, content } = matter(fileContent);
 
-const server = Bun.serve({
-  port: 3000,
-  fetch(req: Request) {
-    console.log(req);
+      return {
+        frontmatter: data,
+        content,
+      };
+    })
+  );
 
-    const body = figlet.textSync("Bun!");
-    return new Response(body);
-  },
-});
+  await fs.writeFile(outputFile, JSON.stringify(blogPosts, null, 2), "utf8");
+
+  log(`✅ Parsed ${blogPosts.length} blog posts into ${outputFile}`);
+} catch (err) {
+  error(err);
+}

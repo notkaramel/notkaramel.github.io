@@ -1,14 +1,14 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import { blogs } from "$lib/content/blogs";
+import blogs from "$lib/content/blogs.json";
 
 export const load: PageLoad = async ({ params }) => {
-  const post = blogs.filter((e) => e.slug == params.slug)[0];
+  const post = blogs.filter((e) => e.frontmatter.slug == params.slug)[0];
 
   if (post) {
     return {
-      title: post.title,
-      content: post.contentMarkdown,
+      title: post.frontmatter.title,
+      content: post.content,
     };
   }
 
