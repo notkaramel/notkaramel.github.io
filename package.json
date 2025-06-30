@@ -1,37 +1,39 @@
 {
-	"name": "notkaramel.github.io",
-	"private": true,
-	"version": "3.0.0-restart",
-	"type": "module",
-	"scripts": {
-		"blog": "bun run server",
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
-		"prepare": "svelte-kit sync || echo ''",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
-	},
-	"devDependencies": {
-		"@sveltejs/adapter-auto": "^6.0.1",
-		"@sveltejs/adapter-vercel": "5",
-		"@sveltejs/kit": "^2.22.0",
-		"@sveltejs/vite-plugin-svelte": "^5.1.0",
-		"@tailwindcss/typography": "^0.5.16",
-		"@types/bun": "^1.2.17",
-		"@types/figlet": "^1.7.0",
-		"gray-matter": "^4.0.3",
-		"svelte": "^5.34.8",
-		"svelte-check": "^4.2.2",
-		"typescript": "^5.8.3",
-		"vite": "^6.3.5"
-	},
-	"dependencies": {
-		"@fontsource-variable/comfortaa": "^5.2.6",
-		"@tailwindcss/vite": "^4.1.10",
-		"daisyui": "^5.0.43",
-		"figlet": "^1.8.1",
-		"marked": "^16.0.0",
-		"tailwindcss": "^4.1.10"
-	}
+  "name": "notkaramel.github.io",
+  "private": true,
+  "version": "3.0.0-restart",
+  "type": "module",
+  "scripts": {
+    "newblog": "cd blogs && make new && cd --",
+    "updateTime": "cd blogs && make updateTime && cd --",
+    "dev": "bun run blogs && vite dev",
+    "build": "vite build",
+    "deploy": "bun run blogs && vite build",
+    "preview": "vite preview",
+    "prepare": "svelte-kit sync || echo ''",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+  },
+  "devDependencies": {
+    "@sveltejs/adapter-auto": "^6.0.1",
+    "@sveltejs/adapter-vercel": "5",
+    "@sveltejs/kit": "^2.22.0",
+    "@sveltejs/vite-plugin-svelte": "^5.1.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/bun": "^1.2.17",
+    "@types/figlet": "^1.7.0",
+    "gray-matter": "^4.0.3",
+    "svelte": "^5.34.8",
+    "svelte-check": "^4.2.2",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@fontsource-variable/comfortaa": "^5.2.6",
+    "@tailwindcss/vite": "^4.1.10",
+    "daisyui": "^5.0.43",
+    "figlet": "^1.8.1",
+    "marked": "^16.0.0",
+    "tailwindcss": "^4.1.10"
+  }
 }

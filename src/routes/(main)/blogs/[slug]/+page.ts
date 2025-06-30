@@ -8,6 +8,8 @@ export const load: PageLoad = async ({ params }) => {
   if (post) {
     return {
       title: post.frontmatter.title,
+      timeWritten: post.frontmatter.timeWritten,
+      lastUpdated: post.frontmatter.lastUpdated,
       content: post.content,
     };
   }

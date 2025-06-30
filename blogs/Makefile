@@ -7,7 +7,7 @@
 # * `make check`: Check for frontmatter existing in files
 
 new:
-	{ \
+	@{ \
 		read -p "Enter blog title: " TITLE; \
 		SLUG=$$(echo "$$TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$$//g'); \
 		DATETIME=$$(date +"%Y-%m-%d"); \
@@ -18,6 +18,7 @@ new:
 			"slug: \"$$SLUG\"" \
 			"timeWritten: \"$$DATETIME\"" \
 			"lastUpdated: \"$$DATETIME\"" \
+			"tags: []" \
 			"---" > "$$FILENAME"; \
 	}
 
@@ -34,34 +35,6 @@ updateTime:
 		sed -i "0,/^---$$/ {/^---$$/a lastUpdated: \"$$DATE\"}" "$$FILE"; \
 		echo "Inserted new 'lastUpdated' in $$FILE as $$DATE"; \
 	fi
-
-addFrontmatter:
-	@FILES=(); \
-	for FILE in *.md; do \
-		if [ ! -f "$$FILE" ]; then continue; fi; \
-		FIRST_LINE=$$(head -n 1 "$$FILE"); \
-		if [ "$$FIRST_LINE" != "---" ]; then \
-			FILES+=("$$FILE"); \
-		fi; \
-	done; \
-	if [ $${#FILES[@]} -eq 0 ]; then \
-		echo "✅ All markdown files already have frontmatter."; \
-		exit 0; \
-	fi; \
-	echo "Select a file to add frontmatter:"; \
-	select FILE in "$${FILES[@]}"; do \
-		if [ -n "$$FILE" ]; then break; fi; \
-		echo "Invalid choice. Try again."; \
-	done; \
-	read -p "Enter blog title ($$FILE): " TITLE; \
-	SLUG=$$(echo "$$TITLE" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g' | sed -E 's/^-+|-+$$//g'); \
-	DATETIME=$$(date +"%Y-%m-%d"); \
-	FRONTMATTER=$$(printf -- "---\ntitle: \"%s\"\nslug: \"%s\"\ntimeWritten: \"%s\"\nlastUpdated: \"%s\"\n---\n\n" "$$TITLE" "$$SLUG" "$$DATETIME" "$$DATETIME"); \
-	TMPFILE=$$(mktemp); \
-	echo "$$FRONTMATTER" > "$$TMPFILE"; \
-	cat "$$FILE" >> "$$TMPFILE"; \
-	mv "$$TMPFILE" "$$FILE"; \
-	echo "✅ Frontmatter added to $$FILE"
 
 check:
 	@echo "Checking for markdown files missing frontmatter..."; \

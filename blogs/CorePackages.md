@@ -1,7 +1,7 @@
 ---
 title: "Core Packages on Arch Linux"
 slug: "core-packages-on-arch-linux"
-timeWritten: "2025-06-30"
+timeWritten: "2024-08-08"
 lastUpdated: "2025-06-30"
 ---
 # List of Core Packages

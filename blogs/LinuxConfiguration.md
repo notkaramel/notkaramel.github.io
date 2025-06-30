@@ -3,6 +3,7 @@ title: "Linux Configuration"
 slug: "linux-configuration"
 timeWritten: "2025-06-30 04:53:51"
 lastUpdated: "2025-06-30 04:53:51"
+tags:
 ---
 # Linux configuration
 ---

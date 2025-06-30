@@ -2,7 +2,7 @@
 title: "i3 Configurations"
 slug: "i3-configurations"
 timeWritten: "2025-06-30 04:43:17"
-lastUpdated: "2025-06-30 04:43:17"
+lastUpdated: "2025-06-30"
 ---
 # `i3` Configuration and Everything
 

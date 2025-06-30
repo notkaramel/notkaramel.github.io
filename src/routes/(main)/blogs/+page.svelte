@@ -1,6 +1,5 @@
 <script>
   import Progress from "$lib/components/Progress.svelte";
-  let { data } = $props();
 </script>
 
 <!-- Blog content are in the right side panel only -->

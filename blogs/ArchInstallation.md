@@ -1,15 +1,12 @@
 ---
-title: Arch Installation Documentation
+title: Arch Installation (non-dual-boot)
 slug: arch-install-docs
-timeWritten: "2025-06-30"
+timeWritten: "2024-08-08"
 lastUpdated: "2025-06-30"
 ---
 
-# Arch Installation Documentation (non dual-boot)
-> by @notkaramel
-
 ## Prerequisite
-- [ ] USB Drive (~800MB) with [archiso](https://archlinux.org/download/)
+- [ ] USB Drive (at least 1.2GB) with [archiso](https://archlinux.org/download/)
     - From Windows: Use `rufus` to flash ISO to drive
     - From Linux:
         - Using `rpi-imager` (AUR) via custom image

@@ -7,7 +7,7 @@ const dirname = import.meta.dirname;
 
 // Directory containing markdown files
 const blogsDir = path.join(dirname, "../blogs");
-log(blogsDir)
+
 // Output file
 const outputFile = path.join(dirname, "../src/lib/content/", "blogs.json");
 
@@ -30,7 +30,7 @@ try {
 
   await fs.writeFile(outputFile, JSON.stringify(blogPosts, null, 2), "utf8");
 
-  log(`✅ Parsed ${blogPosts.length} blog posts into ${outputFile}`);
+  log(`Parsed ${blogPosts.length} blog posts into ${outputFile}`);
 } catch (err) {
   error(err);
 }
