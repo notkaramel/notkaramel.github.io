@@ -3,13 +3,15 @@
   import ThemeSwapper from "./ThemeSwapper.svelte";
 </script>
 
-<div class="navbar w-[98%] bg-base-100 glass shadow-md mx-auto px-4 mt-2 rounded-xl">
+<div
+  class="navbar w-[98%] bg-base-100 mx-auto shadow-lg shadow-primary px-4 mt-2 rounded-box"
+>
   <div class="navbar-start">
     <div class="dropdown">
       <div
         tabindex="0"
         role="button"
-        class="btn btn-ghost fill-accent-content lg:hidden"
+        class="btn btn-ghost lg:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +29,7 @@
         </svg>
       </div>
       <ul
-        class="menu menu-sm dropdown-content bg-emerald-200 dark:bg-emerald-900 rounded-md z-1 mt-3 w-52 p-2 shadow"
+        class="menu menu-lg dropdown-content bg-base-100 border-t-2 border-t-primary rounded-b-box z-1 mt-3 w-52 shadow-xl shadow-primary"
       >
         {#each routes as route}
           <li>
@@ -36,20 +38,23 @@
         {/each}
       </ul>
     </div>
-    <a class="lg:mx-8 text-xl font-bold" href="/">antoine's website</a>
+    <a class="lg:mx-8 text-xl font-bold text-primary-content" href="/">antoine's website</a>
   </div>
 
   <div class="navbar-center hidden lg:flex">
-    <div class="flex flex-row gap-4 px-2 w-full justify-evenly place-content-baseline">
+    <div
+      class="flex flex-row gap-4 px-2 w-full justify-evenly place-content-baseline"
+    >
       {#each routes as route}
-        <a
-          href={route.url}
-          class="btn btn-ghost bg-emerald-100 hover:bg-emerald-300 border-none rounded-lg px-4 py-2 flex items-center gap-3 transition-all duration-200 hover:shadow-md"
-        >
-          <div class="size-6 fill-emerald-900 flex-shrink-0">
-            {@html route.icon}
-          </div>
-          <span class="text-emerald-950 font-medium">{route.title}</span>
+        <a href={route.url}>
+          <button class="btn btn-primary">
+            <div class="size-6 fill-primary-content mr-1">
+              {@html route.icon}
+            </div>
+            <span class="font-bold">
+              {route.title}
+            </span>
+          </button>
         </a>
       {/each}
     </div>
