@@ -6,12 +6,12 @@
   let content = $derived(marked.parse(data.content));
 </script>
 
-<div class="breadcrumbs text-sm">
+<!-- <div class="breadcrumbs text-sm">
   <ul>
     <li><a href="/blogs">Blogs</a></li>
     <li>{data.title}</li>
   </ul>
-</div>
+</div> -->
 
 <div class=" text-center">
   <h1 class="text-4xl font-bold text-shadow-primary text-shadow-sm mb-3">
@@ -39,4 +39,13 @@
         prose-a:link-primary-content"
 >
   {@html content}
+
+  <div class="divider divider-accent divider-center"> ~ </div>
+  <div>
+    <a href="/blogs">
+      <button class="btn btn-primary">
+Back to Blogs
+      </button>
+    </a>
+  </div>
 </div>

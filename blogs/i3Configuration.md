@@ -1,37 +1,45 @@
 ---
 title: "i3 Configurations"
 slug: "i3-configurations"
-timeWritten: "2025-06-30 04:43:17"
+timeWritten: "2024-08-08"
 lastUpdated: "2025-06-30"
 ---
+
 # `i3` Configuration and Everything
 
 Pain, but worth it :)
 Movinya was here :))
 
 ---
+
 ## 0. List of config files (relative to `$HOME`)
+
 - General `i3 configuration file: `.config/i3/config`
 - Programs configs: (relative to user's `$HOME`)
+
 ```sh
 alacritty # .alacritty.yml
 bash # .bashrc
 zsh # .zshrc
 fish # .config/fish/config
 tmux # .tmux.conf
-neofetch # .config 
+neofetch # .config
 ssh # .ssh/config
 ```
+
 - Visual themes (folders, rather than config file):
+
 ```sh
-icons # .icons/ 
+icons # .icons/
 themes # .themes/
 oh-my-bash # .oh-my-bash/
 oh-my-zsh # .oh-my-zsh/
 ```
+
 > NOTE: `.icons/` is also home to themes and cursor themes (default by `lxappearence` too!)
 
 ## Natural Scrolling
+
 The default config file for libinput is at `/usr/share/X11/xorg.conf.d/40-libinput.conf`. Copy it to `/etc/X11/xorg.conf.d` then edit it your preferred text editor (with `sudo`)
 
 ```
@@ -45,13 +53,15 @@ EndSection
 ...
 ```
 
-## Network Configuration (wpa\_supplicant & dhcpcd)
-- NOTE: recommend using NetworkManager for out-of-the-box experience, but using wpa\_supplicant and dhcpcd directly give better control over network management
+## Network Configuration (wpa_supplicant & dhcpcd)
+
+- NOTE: recommend using NetworkManager for out-of-the-box experience, but using wpa_supplicant and dhcpcd directly give better control over network management
 - Configuration locations:
   - System-wide: `/etc/wpa_supplicant/wpa_supplicant.conf`
   - User-specific: `$HOME/.config/wpa_supplicant.conf`
   - Example: `/usr/share/wpa_supplicant/wpa_supplicant.conf`
 - `wpa_supplicant.conf` configuration:
+
 ```yml
 nvim ~/.config/wpa_supplicant.conf
 ---
@@ -72,16 +82,21 @@ network={
     password="PASSWORD"
 }
 ```
-- To activate wpa_supplicant: 
+
+- To activate wpa_supplicant:
+
 ```sh
-sudo wpa_supplicant -B -i wlan0 -D nl80211 -c ~/.config/wpa_supplicant.conf 
+sudo wpa_supplicant -B -i wlan0 -D nl80211 -c ~/.config/wpa_supplicant.conf
 ```
+
 > Note: the interface (`-i` flag) could be something else, e.g. wlo1. You can check it using the following command:
+
 ```sh
 ip addr
 ```
 
 - Make sure the interface is up/unblock, using:
+
 ```sh
 ifstat wlo1 # to check
 ip link set wlo1 up # to unblock interfce
@@ -89,6 +104,7 @@ ip link set wlo1 up # to unblock interfce
 
 - Set wpa_supplicant to run at boot (systemd):
   - Create a service file at `/etc/systemd/system/wpa_supplicant@.service`:
+
 ```sh
 # create file
 touch /etc/wpa_supplicant/wpa_supplicant-wlo1.conf
@@ -97,22 +113,27 @@ cat /home/USER/.config/wpa_supplicant.conf > /etc/wpa_supplicant/wpa_supplicant-
 # enable the service
 systemctl enable wpa_supplicant@wlo1
 ```
+
 > Note: I expected to enable `dhcpcd@wlo1` as well but it seems to be working without it.
 
 ## Bluetooth Configuration
+
 - Using `bluetoothctl`, from `bluez-utils` package. Recommend using `blueberry` as the GUI interface.
 
 ## Multiple Displays
+
 - hmm
 
 ## Clipboard manager
-- 
 
+-
 
 ---
+
 ## THE CONFIG FILE: `.config/i3/config`
 
 ### 1. Media Player: `playerctl`
+
 ```
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
@@ -120,6 +141,7 @@ bindsym XF86AudioPrev exec playerctl previous
 ```
 
 ### 2. Brightness Controller: `brightnessctl`
+
 ```
 # Increase/Decrease screen brightness
 bindsym XF86MonBrightUp exec brightnessctl set 10%+
@@ -127,6 +149,7 @@ bindsym XF86MonBrightDown exec brightnessctl set 10%-
 ```
 
 ### 3. Volume Controller: `pactl` of PulseAudio
+
 ```
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 
@@ -136,21 +159,25 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 ```
 
 ### 4. Transparency in X11
+
 ```
 exec --no-startup-id picom --shadow --inactive-opacity=0.9 --shadow-radius=60 --shadow-opacity=0.2  --fade-in-step=0.8 &
 ```
 
 ### 5. Wallpaper
+
 ```
 exec --no-startup-id feh --bg-scale --randomize $HOME/.wallpaper/*
 ```
 
 ### 6. Lock Screen
+
 ```
 bindsym $mod+l exec i3lock -c 9a4000 -p win -e
 ```
 
 ### 7. Gaps & Coloring
+
 ```
 
 # --- Coloring ---
@@ -176,7 +203,9 @@ smart_gaps inverse_outer
 ```
 
 ### 8. i3bar & i3status
+
 - `.i3/config`
+
 ```
 # --- i3bar ---
 bar {
@@ -190,7 +219,7 @@ bar {
 		background #013714b0
 		statusline #ffffff
 		separator #6666660a
-	
+
         	focused_workspace  #4c7899 #285577 #ffffff
 	        active_workspace   #333333 #5f676a #ffffff
         	inactive_workspace #333333 #222222 #888888
@@ -199,16 +228,21 @@ bar {
 	}
 }
 ```
+
 - `.i3status.conf`
+
 ```
 # --- i3status ---
 ```
 
 ### 9. Dynamic Menu: rofi
+
 ```
 bindcode $mod+40 exec "rofi -show drun"
 ```
+
 Inside `.config/rofi/config.rasi`:
+
 ```
 configuration {
 	modi: "drun,ssh,emoji:rofimoji,window";
@@ -219,4 +253,5 @@ configuration {
 ```
 
 ### Auto-tiling
+
 - Install `autotiling` (AUR)
