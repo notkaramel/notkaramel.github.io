@@ -29,6 +29,11 @@ type WorkExperience = {
   time: string;
   description: string[];
 };
+
+type Skill = {
+  title: string;
+  tools: string[];
+};
 // ------------------------------------------------------------------------- //
 
 export const academicRecord: AcademicRecord = {
@@ -137,4 +142,45 @@ export const workExperience: WorkExperience[] = [
       "Designed earcons to support multilingual user interactions and enhance accessibility.",
     ],
   },
+];
+
+export const skills: Skill[] = [
+  {
+    title: "System Administration",
+    tools: ["Linux (Debian-based, Arch)", "SSH", "DNS Configuration"],
+  },
+  {
+    title: "DevOps",
+    tools: [
+      "Docker",
+      "Docker Compose",
+      "AWS EC2",
+      "GitHub Actions CI/CD",
+      "Vercel",
+    ],
+  },
+
+  {
+    title: "Programming",
+    tools: ["Python", "C", "C++", "Java", "Assembly (ARMv7)", "SuperCollider"],
+  },
+  {
+    title: "Web development",
+    tools: [
+      "JavaScript/TypeScript",
+      "SvelteKit",
+      "TailwindCSS",
+      "expressJS",
+      "Flask",
+      "Django",
+    ],
+  },
+  {
+    title: "Simulation & Design",
+    tools: ["MATLAB", "Simulink", "3D Printing", "electronic circuit design"],
+  },
+  {
+    title: "Languages",
+    tools: ["English", "French", "Vietnamese", "Spanish."]
+  }
 ];

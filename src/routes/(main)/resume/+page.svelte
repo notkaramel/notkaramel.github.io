@@ -5,16 +5,17 @@
     publications,
     conferenceWorkshops,
     workExperience,
-  } from "$lib/content/academic";
+    skills,
+  } from "$lib/content/resume";
 </script>
 
 <title> Curriculum Vitae </title>
 
 <div class="min-h-screen flex flex-row">
-  <div class="container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-xl shadow-primary">
-    <div
-      class="bg-neutral px-8 lg:px-12 py-8 rounded-2xl text-neutral-content"
-    >
+  <div
+    class="container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-xl shadow-primary"
+  >
+    <div class="bg-neutral px-8 lg:px-12 py-8 rounded-2xl text-neutral-content">
       <ResumeSection title="Work Experience">
         {#each workExperience as we}
           <h3>{we.jobTitle}</h3>
@@ -84,6 +85,16 @@
           <p class="italic">{cw.time}</p>
           <p>Presented by {cw.authors.join(", ")} at {cw.location}.</p>
         {/each}
+      </ResumeSection>
+
+      <ResumeSection title="Skills">
+        <ul>
+          {#each skills as skill}
+            <li>
+              {skill.title}: {skill.tools.join(", ")}
+            </li>
+          {/each}
+        </ul>
       </ResumeSection>
     </div>
   </div>

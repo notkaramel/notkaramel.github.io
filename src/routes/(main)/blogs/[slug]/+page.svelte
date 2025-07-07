@@ -40,12 +40,9 @@
 >
   {@html content}
 
-  <div class="divider divider-accent divider-center"> ~ </div>
-  <div>
-    <a href="/blogs">
-      <button class="btn btn-primary">
-Back to Blogs
-      </button>
+  <div class="divider divider-primary divider-center">
+      <a href="/blogs">
+      <button class="btn btn-primary"> Back to Blogs </button>
     </a>
   </div>
 </div>
