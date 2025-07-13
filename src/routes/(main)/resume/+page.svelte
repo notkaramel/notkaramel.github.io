@@ -15,7 +15,7 @@
   <div
     class="container m-auto w-[90%] md:w-3/4 lg:w-2/3 xl:1/2 max-w-[64rem] my-12 shadow-xl shadow-primary"
   >
-    <div class="bg-neutral px-8 lg:px-12 py-8 rounded-2xl text-neutral-content">
+    <div class="bg-neutral px-8 lg:px-12 py-8 rounded-2xl text-neutral-content ring-1 ring-primary">
       <ResumeSection title="Work Experience">
         {#each workExperience as we}
           <h3>{we.jobTitle}</h3>

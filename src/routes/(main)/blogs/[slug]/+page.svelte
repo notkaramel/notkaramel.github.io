@@ -6,13 +6,6 @@
   let content = $derived(marked.parse(data.content));
 </script>
 
-<!-- <div class="breadcrumbs text-sm">
-  <ul>
-    <li><a href="/blogs">Blogs</a></li>
-    <li>{data.title}</li>
-  </ul>
-</div> -->
-
 <div class=" text-center">
   <h1 class="text-4xl font-bold text-shadow-primary text-shadow-sm mb-3">
     {data.title}

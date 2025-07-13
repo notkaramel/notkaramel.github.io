@@ -4,14 +4,14 @@
 </script>
 
 <div
-  class="navbar w-[98%] bg-base-100 mx-auto shadow-lg shadow-primary px-4 mt-2 rounded-box"
+  class="navbar w-[98%] bg-base-100 mx-auto shadow-md inset-shadow-primary inset-shadow-xl ring-1 ring-primary shadow-primary px-4 mt-2 rounded-box"
 >
   <div class="navbar-start">
     <div class="dropdown">
       <div
         tabindex="0"
         role="button"
-        class="btn btn-ghost lg:hidden"
+        class="btn btn-primary fill-primary-content lg:hidden"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,12 +38,15 @@
         {/each}
       </ul>
     </div>
-    <a class="lg:mx-8 text-xl font-bold text-primary-content" href="/">antoine's website</a>
+    <a
+      class="hidden lg:inline-block lg:mx-8 text-xl font-bold text-primary-content"
+      href="/">antoine's website</a
+    >
   </div>
 
-  <div class="navbar-center hidden lg:flex">
+  <div class="navbar-center">
     <div
-      class="flex flex-row gap-4 px-2 w-full justify-evenly place-content-baseline"
+      class="hidden lg:flex flex-row gap-4 px-2 w-full justify-evenly place-content-baseline"
     >
       {#each routes as route}
         <a href={route.url}>
@@ -58,6 +61,10 @@
         </a>
       {/each}
     </div>
+    <a
+      class="lg:hidden inline-block text-lg font-bold text-primary-content"
+      href="/">antoine's website</a
+    >
   </div>
 
   <div class="navbar-end">
