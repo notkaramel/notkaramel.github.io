@@ -2,6 +2,27 @@
   import { routes } from "$lib";
   import ThemeSwapper from "$lib/components/ThemeSwapper.svelte";
   import "@app.css";
+  import { animate } from "animejs";
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    animate("img", {
+      // Property keyframes
+      y: [
+        { to: "-2.75rem", ease: "outExpo", duration: 600 },
+        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
+      ],
+      // Property specific parameters
+      rotate: {
+        from: "-1turn",
+        delay: 0,
+      },
+      delay: (_, i) => i * 50, // Function based value
+      ease: "inOutCirc",
+      loopDelay: 1000,
+      loop: false,
+    });
+  });
 </script>
 
 <title>Hi there!</title>
@@ -24,7 +45,7 @@
     <div class="p-4 max-w-md">
       <!-- TEXT and stuff -->
       <div class="prose-md text-primary-content">
-        <h1 class="mb-5 text-3xl lg:text-4xl font-bold">
+        <h1 class="mb-5 text-3xl lg:text-4xl font-bold" id="name">
           Hello! It's Antoine :)
         </h1>
         <p class="mb-5">
@@ -61,8 +82,9 @@
         class="btn btn-ghost shadow-sm shadow-accent-content
                 hover:shadow-md
                 transition-all ease-in-out"
+                id="themeswap"
       >
-        <ThemeSwapper fill="fill-neutral-content"/>
+        <ThemeSwapper fill="fill-neutral-content" />
       </div>
     </div>
   </div>

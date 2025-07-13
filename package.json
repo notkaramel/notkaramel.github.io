@@ -31,6 +31,7 @@
   "dependencies": {
     "@fontsource-variable/comfortaa": "^5.2.6",
     "@tailwindcss/vite": "^4.1.10",
+    "animejs": "^4.0.2",
     "daisyui": "^5.0.43",
     "figlet": "^1.8.1",
     "marked": "^16.0.0",
