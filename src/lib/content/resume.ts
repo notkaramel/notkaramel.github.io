@@ -177,7 +177,11 @@ export const skills: Skill[] = [
   },
   {
     title: "Simulation & Design",
-    tools: ["MATLAB", "Simulink", "3D Printing", "electronic circuit design"],
+    tools: ["MATLAB", "Simulink", "3D Printing"],
+  },
+  {
+    title: "Electronics",
+    tools: ["Arduino UNO", "Raspberry Pi", "Electric Circuit Design"],
   },
   {
     title: "Languages",

@@ -2,7 +2,7 @@
 title: "ECSE 321"
 slug: "ecse-321"
 timeWritten: "2025-06-30 04:58:04"
-lastUpdated: "2025-06-30 04:58:04"
+lastUpdated: "2025-07-12"
 ---
 
 # Frontend Elements

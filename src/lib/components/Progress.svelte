@@ -10,7 +10,7 @@
 </script>
 
 <ul class="steps steps-vertical">
-  {#each checkpoints as checkpoint, i}
+  {#each checkpoints as checkpoint}
     {#if checkpoint.done}
       <li class="step step-primary" data-content="✓">
         {checkpoint.label}

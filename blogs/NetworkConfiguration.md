@@ -2,7 +2,7 @@
 title: "Network Configuration on Linux"
 slug: "network-configuration-on-linux"
 timeWritten: "2025-06-30 04:47:48"
-lastUpdated: "2025-06-30 04:47:48"
+lastUpdated: "2025-07-12"
 ---
 # Network Configuration
 
