@@ -58,17 +58,18 @@
       </div>
       <!-- Buttons -->
       <div
-        class="flex gap-3 flex-col md:flex-row items-center justify-center py-4"
+        class="grid grid-cols-2 grid-rows-2 items-center justify-center py-2"
       >
-        {#each routes.filter((e) => e.url != "/") as route}
+        {#each routes as route}
           <a href={route.url}>
             <button
               class="btn btn-primary
+                m-2
                 w-[10rem] shadow-sm shadow-primary-content
                 hover:shadow-md
                 transition-all ease-in-out"
             >
-              <div class="size-6 fill-primary-content mr-1">
+              <div class="size-6 fill-primary-content">
                 {@html route.icon}
               </div>
               <span class="font-bold">
@@ -78,11 +79,13 @@
           </a>
         {/each}
       </div>
+      <hr />
       <div
-        class="btn btn-ghost shadow-sm shadow-accent-content
-                hover:shadow-md
-                transition-all ease-in-out"
-                id="themeswap"
+        class="btn btn-ghost mt-4
+              shadow-sm shadow-accent-content
+              hover:shadow-md
+              transition-all ease-in-out"
+        id="themeswap"
       >
         <ThemeSwapper fill="fill-neutral-content" />
       </div>
