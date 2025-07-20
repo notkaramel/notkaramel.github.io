@@ -91,7 +91,7 @@
         <ul>
           {#each skills as skill}
             <li>
-              {skill.title}: {skill.tools.join(", ")}
+              <b>{skill.title}</b>: {skill.tools.join(", ")}
             </li>
           {/each}
         </ul>

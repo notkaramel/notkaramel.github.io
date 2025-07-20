@@ -23,17 +23,11 @@
 <div class="divider divider-primary divider-center my-4">by @notkaramel</div>
 
 <div
-  class="prose max-w-full prose-sm lg:prose-base
-        *:text-neutral-content
-        prose-pre:bg-primary prose-pre:text-primary-content
-        prose-hr:my-3 prose-p:my-1 prose-ul:my-2
-        prose-code:text-sm lg:prose-code:text-base
-        prose-h1:my-4 prose-h2:my-2 prose-h3:my-1
-        prose-a:link-primary-content"
+  class="prose max-w-full"
 >
   {@html content}
 
-  <div class="divider divider-primary divider-center">
+  <div class="divider divider-primary divider-center mt-10">
       <a href="/blogs">
       <button class="btn btn-primary"> Back to Blogs </button>
     </a>
