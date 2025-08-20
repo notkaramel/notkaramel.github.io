@@ -41,7 +41,7 @@ export const academicRecord: AcademicRecord = {
   degree: "B.Eng., Electrical Engineering",
   duration: "Sep 2021 - Present",
   details: [
-    "Minors in Software Engineering (B.Eng SE), and Musical Science & Technology (MST).",
+    "Minors in Software Engineering (B.Eng), and Musical Science & Technology (MST).",
     "Relevant courses: Operating System, Control System, Embedded System, Microprocessors, Software Delivery.",
   ],
   cgpa: "3.41/4.0",

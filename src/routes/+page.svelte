@@ -4,6 +4,7 @@
   import "@app.css";
   import { animate } from "animejs";
   import { onMount } from "svelte";
+  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
 
   onMount(() => {
     animate("img", {
@@ -25,7 +26,11 @@
   });
 </script>
 
-<title>Hi there!</title>
+<SearchEngineOp
+  title="Hi there, I'm Antoine!"
+  description="Welcome to my library of personal digital footprint, or simply website/portfolio/blog site!"
+  canonical="https://antoinephan.com"
+/>
 
 <div
   class="hero min-h-screen
@@ -58,18 +63,17 @@
       </div>
       <!-- Buttons -->
       <div
-        class="grid grid-cols-2 grid-rows-2 items-center justify-center py-2"
+        class="grid grid-cols-1 grid-rows-4 justify-center py-2"
       >
         {#each routes as route}
           <a href={route.url}>
             <button
-              class="btn btn-primary
-                m-2
-                w-[10rem] shadow-sm shadow-primary-content
+              class="btn btn-primary m-2
+                w-[14rem] shadow-sm shadow-primary-content
                 hover:shadow-md
                 transition-all ease-in-out"
             >
-              <div class="size-6 fill-primary-content">
+              <div class="size-6 fill-primary-content mr-3">
                 {@html route.icon}
               </div>
               <span class="font-bold">

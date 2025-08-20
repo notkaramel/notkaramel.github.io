@@ -1,12 +1,17 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
   import { marked } from "marked";
+  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
 
   let { data }: PageProps = $props();
   let content = $derived(marked.parse(data.content));
 </script>
 
-<title>{data.title} - a blog by @notkaramel</title>
+<SearchEngineOp
+  title="{data.title} - a blog by @notkaramel"
+  description="Checkout my blogs on various topics, including - but not limited to - Linux, travelling, technical takes, and food recipes!"
+  canonical={data.canonicalURL}
+/>
 
 <div class=" text-center">
   <h1 class="text-4xl font-bold text-shadow-primary text-shadow-sm mb-3">

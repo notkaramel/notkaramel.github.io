@@ -6,10 +6,15 @@
     conferenceWorkshops,
     workExperience,
     skills,
-  } from "$lib/content/resume";
+  } from "$lib/content/cv";
+  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
 </script>
 
-<title> Curriculum Vitae </title>
+<SearchEngineOp
+  title="Curriculum Vitae | Antoine Phan"
+  description=""
+  canonical="https://antoinephan.com/cv"
+/>
 
 <div class="min-h-screen flex flex-row">
   <div

@@ -1,9 +1,14 @@
 <script>
   import MuseScore from "$lib/components/MuseScore.svelte";
+  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
   import { transcripts } from "$lib/content/music";
 </script>
 
-<title> Creative stuffs </title>
+<SearchEngineOp
+  title="Creative stuffs"
+  description="A creative gallery of music, photography, art creation, cuisine, and so much more. All by Antoine @notkaramel"
+  canonical="https://antoinephan.com/creative"
+/>
 
 <div
   class="container place-self-center my-4 p-4 ring rounded-2xl ring-primary shadow-lg"

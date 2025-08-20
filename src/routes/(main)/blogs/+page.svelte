@@ -1,6 +1,7 @@
 <script>
   import Progress from "$lib/components/Progress.svelte";
-  import { blur, slide } from "svelte/transition";
+  import { slide } from "svelte/transition";
+  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
   let { data } = $props();
   let checkpoints = [
     { label: "Ideation", done: true },
@@ -11,7 +12,11 @@
   ];
 </script>
 
-<title>Writings and blogs I write sometimes ~</title>
+<SearchEngineOp
+  title="Writings and blogs I write sometimes ~"
+  description="Checkout my blogs on various topics, including - but not limited to - Linux, travelling, technical takes, and food recipes!"
+  canonical={data.canonicalURL}
+/>
 
 <!-- Blog content are in the right side panel only -->
 
