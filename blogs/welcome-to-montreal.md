@@ -2,7 +2,7 @@
 title: "Welcome to Montréal"
 slug: "welcome-to-montreal"
 timeWritten: "2025-08-18"
-lastUpdated: "2025-08-18"
+lastUpdated: "2025-08-20"
 tags: []
 ---
 

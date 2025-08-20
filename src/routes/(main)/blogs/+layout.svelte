@@ -4,8 +4,6 @@
   let { children }: LayoutProps = $props();
 </script>
 
-<title>Blogs</title>
-
 <div class="flex w-full min-h-screen gap-4 m-auto my-8">
   <div
     class="container lg:max-w-6xl m-auto bg-base-100 rounded-box text-primary-content shadow-2xl shadow-primary"

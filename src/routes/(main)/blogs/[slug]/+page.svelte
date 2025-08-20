@@ -6,6 +6,8 @@
   let content = $derived(marked.parse(data.content));
 </script>
 
+<title>{data.title} - a blog by @notkaramel</title>
+
 <div class=" text-center">
   <h1 class="text-4xl font-bold text-shadow-primary text-shadow-sm mb-3">
     {data.title}
@@ -22,13 +24,11 @@
 
 <div class="divider divider-primary divider-center my-4">by @notkaramel</div>
 
-<div
-  class="prose max-w-full"
->
+<div class="prose max-w-full">
   {@html content}
 
   <div class="divider divider-primary divider-center mt-10">
-      <a href="/blogs">
+    <a href="/blogs">
       <button class="btn btn-primary"> Back to Blogs </button>
     </a>
   </div>

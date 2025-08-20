@@ -11,6 +11,8 @@
   ];
 </script>
 
+<title>Writings and blogs I write sometimes ~</title>
+
 <!-- Blog content are in the right side panel only -->
 
 <div class="prose-base **:my-4 prose-a:underline">
@@ -18,7 +20,7 @@
   <hr />
 </div>
 
-<Progress {checkpoints}/>
+<Progress {checkpoints} />
 
 <div>
   <p class="text-2xl">List of available blogs</p>
