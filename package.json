@@ -4,8 +4,7 @@
   "version": "3.0.0-restart",
   "type": "module",
   "scripts": {
-    "newblog": "cd blogs && make new && cd --",
-    "updateTime": "cd blogs && make updateTime && cd --",
+    "new": "bun run src/lib/newblog.ts",
     "dev": "bun run blogs && vite dev",
     "build": "vite build",
     "deploy": "bun run blogs && vite build",

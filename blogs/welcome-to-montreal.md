@@ -8,7 +8,7 @@ tags: []
 
 # Places to visit
 
-| Place                                 | Notes                                                     | Google Maps |
+| Place                                 | Notes                                                     | Links       |
 | ------------------------------------- | --------------------------------------------------------- | ----------- |
 | Old Port of Montréal                  | A very tourisy place, checkout the clock tower!           |             |
 | L'Oratoire Saint-Joseph du Mont-Royal | Best sunset place in Montreal without climbing a mountain |             |
@@ -32,6 +32,7 @@ tags: []
 | Alto Restaurant     |                      | I love their pizza, smoked meat poutine, and curly fries! |             |
 | Pho Ly Quoc Su      | Vietnamese Cuisine   | One of the most authentic pho places in town              |             |
 | Sandwicherie Viet   | Vietnamese Banh Mi   |                                                           |             |
+
 
 # Funsies
 
