@@ -1,8 +1,10 @@
 ---
 title: "Recovery Guide"
 slug: "recovery-guide"
-timeWritten: "2025-06-30 04:34:28"
-lastUpdated: "2025-06-30 04:34:28"
+description: "Troubleshooting checklist for recovering broken dual-boot systems."
+date: "2025-06-30"
+lastUpdated: "2025-06-30"
+tags: ["linux", "troubleshooting", "guide"]
 ---
 # Recovery
 

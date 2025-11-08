@@ -17,10 +17,8 @@
   <h1 class="text-4xl font-bold text-shadow-primary text-shadow-sm mb-3">
     {data.title}
   </h1>
-  <p>
-    Created: {data.timeWritten}
-  </p>
-  {#if data.lastUpdated != data.timeWritten}
+  <p>Published: {data.date}</p>
+  {#if data.lastUpdated != data.date}
     <p>
       Last Updated: {data.lastUpdated}
     </p>

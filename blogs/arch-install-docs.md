@@ -1,8 +1,10 @@
 ---
-title: Arch Installation (non-dual-boot)
-slug: arch-install-docs
-timeWritten: "2024-08-08"
+title: "Arch Installation (non-dual-boot)"
+slug: "arch-install-docs"
+description: "Step-by-step notes for installing Arch Linux on a single-boot system."
+date: "2024-08-08"
 lastUpdated: "2025-06-30"
+tags: ["linux", "arch-linux", "guide"]
 ---
 
 ## Prerequisite

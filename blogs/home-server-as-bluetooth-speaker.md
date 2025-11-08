@@ -1,10 +1,10 @@
 ---
 title: "Home Server as Bluetooth Speaker"
 slug: "home-server-as-bluetooth-speaker"
-timeWritten: "2025-08-20"
+description: "How I turn a home server into a Bluetooth speaker endpoint using PipeWire."
+date: "2025-08-20"
 lastUpdated: "2025-08-20"
-tags: []
-
+tags: ["linux", "audio", "guide"]
 ---
 
 Two machines: Server and Media Player

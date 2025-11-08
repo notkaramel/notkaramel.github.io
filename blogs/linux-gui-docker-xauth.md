@@ -1,9 +1,10 @@
 ---
 title: "Running GUI app via X11 from Docker Container"
 slug: "run-gui-app-docker-xauth"
-date: 2025-09-24
-description: "Run application with GUI from Docker using X Server"
-tags: []
+description: "Run applications with graphical interfaces from Docker using an X11 server."
+date: "2025-09-24"
+lastUpdated: "2025-09-24"
+tags: ["linux", "docker", "devops"]
 ---
 
 https://gursimarsm.medium.com/run-gui-applications-in-a-docker-container-ca625bad4638

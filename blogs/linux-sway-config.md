@@ -1,8 +1,10 @@
 ---
 title: "Sway Configuration"
 slug: "sway-configuration"
-timeWritten: "2025-06-30 04:53:45"
-lastUpdated: "2025-06-30 04:53:45"
+description: "Cheatsheet for adapting i3-style workflows to Sway on Wayland."
+date: "2025-06-30"
+lastUpdated: "2025-06-30"
+tags: ["linux", "sway", "dotfiles"]
 ---
 # Sway configuration
 

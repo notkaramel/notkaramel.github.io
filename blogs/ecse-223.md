@@ -1,8 +1,10 @@
 ---
 title: "ECSE 223 - Snow Shoe Tours"
 slug: "ecse-223-snow-shoe-tour"
-timeWritten: "2025-06-30 04:53:08"
-lastUpdated: "2025-06-30 04:53:08"
+description: "Team 07 notes and resources for the ECSE 223 SnowShoeTours project."
+date: "2025-06-30"
+lastUpdated: "2025-06-30"
+tags: ["university", "project", "software-engineering"]
 ---
 
 # :snowflake::ski: ECSE223 SnowShoeTours Project: Team 07

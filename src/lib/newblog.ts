@@ -1,23 +1,24 @@
 /**
- * Interactive CLI to create a blog Markdown entry in ./blog/
- * Run with: bun scripts/new-post.ts
+ * Interactive CLI to scaffold a blog Markdown entry in ./blogs/.
+ * Run with: bun run src/lib/newblog.ts
  */
 
-import * as fs from "node:fs/promises";
-import * as fssync from "node:fs";
+import type { NewBlogAnswers } from "@schemas";
+import { existsSync } from "node:fs";
+import { mkdir } from "node:fs/promises";
 import * as path from "node:path";
 import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 
-type Answers = {
-  title: string;
-  slug: string;
-  description: string;
-  tags: string[];
-  date: string; // YYYY-MM-DD
-};
+const BLOG_DIR = path.resolve(import.meta.dir, "../../blogs");
+const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 
-const BLOG_DIR = path.resolve(process.cwd(), "blogs");
+type PromptOptions = {
+  required?: boolean;
+  defaultValue?: string;
+  transform?: (value: string) => string;
+  validate?: (value: string) => true | string;
+};
 
 function slugify(s: string): string {
   return s
@@ -37,87 +38,116 @@ function todayYMD(): string {
   return `${yyyy}-${mm}-${dd}`;
 }
 
-async function ensureDir(p: string) {
-  if (!fssync.existsSync(p)) {
-    await fs.mkdir(p, { recursive: true });
-  }
+async function ensureDir(directory: string) {
+  await mkdir(directory, { recursive: true });
 }
 
 async function ask(
   rl: readline.Interface,
   prompt: string,
-  opts?: {
-    required?: boolean;
-    default?: string;
-    transform?: (x: string) => string;
-    validate?: (x: string) => string | true;
-    yesNo?: boolean;
-  }
+  options?: PromptOptions,
 ): Promise<string> {
-  const def = opts?.default;
-  const suffix = def !== undefined ? ` [${def}]` : "";
-  const q = `${prompt}${suffix}: `;
+  const defaultValue = options?.defaultValue ?? "";
+  const label =
+    defaultValue !== "" ? `${prompt} [${defaultValue}]: ` : `${prompt}: `;
 
   while (true) {
-    const raw = (await rl.question(q)).trim();
-    let val = raw || (def ?? "");
-    if (opts?.yesNo) {
-      // normalize yes/no
-      const v = val.toLowerCase();
-      if (v === "" && def) val = def;
-      if (["y", "yes", "true", "1"].includes(v)) val = "yes";
-      else if (["n", "no", "false", "0"].includes(v)) val = "no";
-      else if (v === "" && def) {
-        val = def.toLowerCase().startsWith("y") ? "yes" : "no";
-      } else if (!["yes", "no"].includes(val)) {
-        console.log("Please answer yes or no.");
-        continue;
-      }
+    const rawInput = (await rl.question(label)).trim();
+    let answer = rawInput || defaultValue;
+
+    if (options?.transform) {
+      answer = options.transform(answer);
     }
-    if (opts?.transform) val = opts.transform(val);
-    if (opts?.required && !val) {
+
+    if (options?.required && !answer) {
       console.log("This field is required.");
       continue;
     }
-    if (opts?.validate) {
-      const res = opts.validate(val);
-      if (res !== true) {
-        console.log(typeof res === "string" ? res : "Invalid input.");
+
+    if (options?.validate) {
+      const validation = options.validate(answer);
+      if (validation !== true) {
+        console.log(typeof validation === "string" ? validation : "Invalid input.");
         continue;
       }
     }
-    return val;
+
+    return answer;
   }
 }
 
 async function findAvailableFilename(
-  dir: string,
-  base: string
+  directory: string,
+  slug: string,
 ): Promise<string> {
-  // base should be slug (without extension)
-  let candidate = `${base}.md`;
-  let i = 1;
-  while (fssync.existsSync(path.join(dir, candidate))) {
-    candidate = `${base}-${i}.md`;
-    i++;
+  let candidate = `${slug}.md`;
+  let suffix = 1;
+
+  while (existsSync(path.join(directory, candidate))) {
+    candidate = `${slug}-${suffix}.md`;
+    suffix += 1;
   }
   return candidate;
 }
 
-function buildFrontmatter(a: Answers): string {
-  // Escape quotes in strings safely
-  const esc = (s: string) => s.replace(/"/g, '\\"');
+function deriveTags(slug: string, rawTags: string): string[] {
+  const primaryTag = slug.split("-")[0] ?? slug;
+  const additionalTags = rawTags
+    .split(",")
+    .map((tag) => tag.trim())
+    .filter(Boolean);
+
+  return Array.from(new Set([primaryTag, ...additionalTags]));
+}
+
+function buildFrontmatter(answers: NewBlogAnswers): string {
+  const escapeQuotes = (value: string) => value.replace(/"/g, '\\"');
+
+  const tagsContent =
+    answers.tags.length > 0
+      ? answers.tags.map((tag) => `"${escapeQuotes(tag)}"`).join(", ")
+      : "";
+
   const fm = [
     "---",
-    `title: "${esc(a.title)}"`,
-    `slug: "${esc(a.slug)}"`,
-    `date: ${a.date}`,
-    `description: "${esc(a.description)}"`,
-    `tags: [${a.tags.map((t) => `"${esc(t)}"`).join(", ")}]`,
+    `title: "${escapeQuotes(answers.title)}"`,
+    `slug: "${escapeQuotes(answers.slug)}"`,
+    `description: "${escapeQuotes(answers.description)}"`,
+    `date: "${answers.date}"`,
+    `lastUpdated: "${answers.lastUpdated}"`,
+    `tags: [${tagsContent}]`,
     "---",
     "",
   ].join("\n");
   return fm;
+}
+
+async function collectAnswers(
+  rl: readline.Interface,
+): Promise<NewBlogAnswers> {
+  const title = await ask(rl, "Post title", { required: true });
+  const slug = await ask(rl, "Slug", {
+    defaultValue: slugify(title),
+    required: true,
+    transform: slugify,
+    validate: (value) => (value ? true : "Slug cannot be empty."),
+  });
+  const description = await ask(rl, "Short description", { defaultValue: "" });
+  const rawTags = await ask(rl, "Tags (comma-separated)", { defaultValue: "" });
+  const date = await ask(rl, "Date (YYYY-MM-DD)", {
+    defaultValue: todayYMD(),
+    validate: (value) =>
+      DATE_REGEX.test(value) ? true : "Use format YYYY-MM-DD.",
+  });
+
+  return {
+    title,
+    slug,
+    description,
+    tags: deriveTags(slug, rawTags),
+    date,
+    lastUpdated: date,
+  };
 }
 
 async function main() {
@@ -126,38 +156,11 @@ async function main() {
   const rl = readline.createInterface({ input, output });
 
   try {
-    const title = await ask(rl, "Post title", { required: true });
-    const defaultSlug = slugify(title);
-    const slug = await ask(rl, "Slug", {
-      default: defaultSlug,
-      required: true,
-      transform: (s) => slugify(s),
-      validate: (s) => (s ? true : "Slug cannot be empty."),
-    });
-    const description = await ask(rl, "Short description", { default: "" });
-    const tagsRaw = await ask(rl, "Tags (comma-separated)", { default: "" });
-    const date = await ask(rl, "Date (YYYY-MM-DD)", {
-      default: todayYMD(),
-      validate: (s) =>
-        /^\d{4}-\d{2}-\d{2}$/.test(s) ? true : "Use format YYYY-MM-DD.",
-    });
-
-    const answers: Answers = {
-      title,
-      slug,
-      description,
-      tags: tagsRaw
-        .split(",")
-        .map((t) => t.trim())
-        .filter(Boolean),
-      date,
-    };
-
+    const answers = await collectAnswers(rl);
     const filename = await findAvailableFilename(BLOG_DIR, answers.slug);
     const filepath = path.join(BLOG_DIR, filename);
-    const content = buildFrontmatter(answers);
 
-    await fs.writeFile(filepath, content, "utf8");
+    await Bun.write(filepath, buildFrontmatter(answers));
 
     console.log(`\n✅ Created: ${path.relative(process.cwd(), filepath)}`);
   } catch (err) {

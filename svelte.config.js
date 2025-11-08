@@ -8,7 +8,8 @@ const config = {
   kit: {
     adapter: adapter(),
     alias: {
-      "@app.css": "src/app.css"
+      "@app.css": "src/app.css",
+      "@schemas": "src/lib/schemas.ts",
     }
   },
 };

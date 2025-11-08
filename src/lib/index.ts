@@ -1,9 +1,5 @@
 /** Resuable content: Routes */
-type Route = {
-  title: string;
-  url: string;
-  icon: string;
-};
+import type { Route } from "@schemas";
 
 export const routes: Route[] = [
   {

@@ -1,8 +1,10 @@
 ---
 title: "Core Packages on Arch Linux"
 slug: "core-packages-on-arch-linux"
-timeWritten: "2024-08-08"
+description: "Personal list of essential packages to install on Arch Linux systems."
+date: "2024-08-08"
 lastUpdated: "2025-06-30"
+tags: ["linux", "arch-linux", "packages"]
 ---
 # List of Core Packages
 

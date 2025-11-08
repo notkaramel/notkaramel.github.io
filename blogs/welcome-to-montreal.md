@@ -1,9 +1,10 @@
 ---
 title: "Welcome to Montréal"
 slug: "welcome-to-montreal"
-timeWritten: "2025-08-18"
+description: "Personal guide to my favourite spots, food, and activities around Montréal."
+date: "2025-08-18"
 lastUpdated: "2025-08-20"
-tags: []
+tags: ["travel", "montreal", "guide"]
 ---
 
 # Places to visit

@@ -1,8 +1,10 @@
 ---
 title: "Network Configuration on Linux"
-slug: "network-configuration-on-linux"
-timeWritten: "2025-06-30 04:47:48"
+slug: "linux-network-configuration"
+description: "Notes on configuring network connectivity under Linux with iwd and wpa_supplicant."
+date: "2025-06-30"
 lastUpdated: "2025-07-12"
+tags: ["linux", "networking", "guide"]
 ---
 # Network Configuration
 

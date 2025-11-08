@@ -1,7 +1,4 @@
-type Transcript = {
-  title: string;
-  url: string;
-};
+import type { Transcript } from "@schemas";
 
 export const transcripts: Transcript[] = [
   {

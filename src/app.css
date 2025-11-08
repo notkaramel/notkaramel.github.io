@@ -134,15 +134,31 @@ body {
   }
 
   code {
-    @apply font-mono text-sm rounded-md text-primary-content;
+    @apply font-mono text-primary-content;
   }
 
-  h2 code {
-    @apply text-[1.3125rem]; /* 21px */
+  h1 > code {
+    @apply text-4xl;
   }
 
-  h3 code {
-    @apply text-[1.125rem]; /* 18px */
+  h2 > code {
+    @apply text-2xl;
+  }
+
+  h3 > code {
+    @apply text-xl;
+  }
+
+  h4 > code {
+    @apply text-lg;
+  }
+
+  h5 > code {
+    @apply text-base;
+  }
+
+  h6 > code {
+    @apply text-sm;
   }
 
   pre {

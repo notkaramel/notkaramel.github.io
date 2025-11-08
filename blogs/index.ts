@@ -1,7 +1,12 @@
-import fs from "node:fs/promises";
+/**
+ * This runs via `bun run blogs` from the root directory
+ * - Purpose: Parse all blogs in this folder and send it to
+ * /src/lib/blogs.json -- not tracked by git
+ */
+
+import { readdir } from "node:fs/promises";
 import path from "path";
 import matter from "gray-matter";
-import { error, log } from "node:console";
 
 const dirname = import.meta.dirname;
 
@@ -12,13 +17,13 @@ const blogsDir = path.join(dirname, "../blogs");
 const outputFile = path.join(dirname, "../src/lib/content/", "blogs.json");
 
 try {
-  const entries = await fs.readdir(blogsDir);
+  const entries = await readdir(blogsDir);
   const mdFiles = entries.filter((file) => file.endsWith(".md"));
 
   const blogPosts = await Promise.all(
     mdFiles.map(async (filename) => {
       const filePath = path.join(blogsDir, filename);
-      const fileContent = await fs.readFile(filePath, "utf8");
+      const fileContent = await Bun.file(filePath).text();
       const { data, content } = matter(fileContent);
 
       return {
@@ -28,9 +33,18 @@ try {
     })
   );
 
-  await fs.writeFile(outputFile, JSON.stringify(blogPosts, null, 2), "utf8");
+  await Bun.write(outputFile, JSON.stringify(blogPosts, null, 2));
 
-  log(`Parsed ${blogPosts.length} blog posts into ${outputFile}`);
+  console.table(blogPosts.map((post) => post.frontmatter).map((frontmatter) => ({
+    title: frontmatter.title,
+    slug: frontmatter.slug,
+    date: frontmatter.date,
+    lastUpdated: frontmatter.lastUpdated,
+  })));
+
+  console.log(`Parsed ${blogPosts.length} blog posts into ${outputFile}`);
+  process.exit(0);
 } catch (err) {
-  error(err);
+  console.error(err);
+  process.exit(1);
 }

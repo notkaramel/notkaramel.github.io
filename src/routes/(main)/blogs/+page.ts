@@ -22,10 +22,10 @@ export const load: PageLoad = async ({ url }) => {
   ): number {
     const secondDate =
       toSortableDate(secondBlog.frontmatter?.lastUpdated) ||
-      toSortableDate(secondBlog.frontmatter?.timeWritten);
+      toSortableDate(secondBlog.frontmatter?.date);
     const firstDate =
       toSortableDate(firstBlog.frontmatter?.lastUpdated) ||
-      toSortableDate(firstBlog.frontmatter?.timeWritten);
+      toSortableDate(firstBlog.frontmatter?.date);
 
     return secondDate - firstDate;
   }

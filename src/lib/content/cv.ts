@@ -1,39 +1,10 @@
-type AcademicRecord = {
-  degree: string;
-  school: string;
-  duration: string;
-  details: string[];
-  cgpa: string;
-};
-
-type Publication = {
-  title: string;
-  authors: string[];
-  type: string;
-  details: string[];
-  doi: string | any;
-  url: string | any;
-};
-
-type ConferenceWorkshop = {
-  title: string;
-  authors: string[];
-  time: string;
-  location: string;
-};
-
-type WorkExperience = {
-  jobTitle: string;
-  workplace: string;
-  location: string;
-  time: string;
-  description: string[];
-};
-
-type Skill = {
-  title: string;
-  tools: string[];
-};
+import type {
+  AcademicRecord,
+  Publication,
+  ConferenceWorkshop,
+  WorkExperience,
+  Skill,
+} from "@schemas";
 // ------------------------------------------------------------------------- //
 
 export const academicRecord: AcademicRecord = {

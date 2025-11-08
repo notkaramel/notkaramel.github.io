@@ -1,20 +1,15 @@
 ---
 title: "i3 Configurations"
 slug: "i3-configurations"
-timeWritten: "2024-08-08"
+description: "References and snippets for customizing the i3 window manager."
+date: "2024-08-08"
 lastUpdated: "2025-06-30"
----
-
-# `i3` Configuration and Everything
-
-Pain, but worth it :)
-Movinya was here :))
-
+tags: ["linux", "i3", "dotfiles"]
 ---
 
 ## 0. List of config files (relative to `$HOME`)
 
-- General `i3 configuration file: `.config/i3/config`
+- General `i3` configuration file: `./config/i3/config`
 - Programs configs: (relative to user's `$HOME`)
 
 ```sh

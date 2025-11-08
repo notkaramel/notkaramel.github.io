@@ -1,8 +1,10 @@
 ---
 title: "ECSE 321"
 slug: "ecse-321"
-timeWritten: "2025-06-30 04:58:04"
+description: "Documentation and developer notes collected during ECSE 321 coursework."
+date: "2025-06-30"
 lastUpdated: "2025-07-12"
+tags: ["university", "project", "software-engineering"]
 ---
 
 # Frontend Elements

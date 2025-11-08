@@ -1,21 +1,10 @@
 ---
-
 title: "Arch Linux Installation with Windows Dual-Boot"
 slug: "arch-windows-dual-boot"
-date: 2025-08-28
 description: "A guide to install Linux and Windows with dual-boot - shared file systems, GRUB boot-up, pros & cons compared to Virtual Machine (VM), etc."
-author: ""
-draft: true
-tags: ["linux", "guide", "technical"]
-
----
-
-
----
-title: Arch Installation (non-dual-boot)
-slug: arch-install-docs
-timeWritten: "2024-08-08"
+date: "2025-08-28"
 lastUpdated: "2025-06-30"
+tags: ["linux", "guide", "technical"]
 ---
 
 ## Prerequisite

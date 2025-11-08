@@ -1,14 +1,4 @@
-type Project = {
-  title: string;
-  featured: boolean;
-  shortDesc: string;
-  techStack: string[];
-  category: string[];
-  github: string;
-  link: string;
-};
-
-export type { Project };
+import type { Project } from "@schemas";
 export const projects: Project[] = [
   {
     title: "OSC & SuperCollider 101",
