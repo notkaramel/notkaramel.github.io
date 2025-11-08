@@ -128,7 +128,7 @@ select * from <table_name>;
 - Issues are used for all type of work items: requirements, tasks, problems/bugs.
 - When create issue, the developer must specify:
   - The title: See [Title](#2-title)
-  - Description: if the issue is linked to another work item, it must be specify using `#` and the number of the work item in question. See (Autolinked References and URLs)[https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls]
+  - Description: if the issue is linked to another work item, it must be specify using `#` and the number of the work item in question. See [Autolinked References and URLs](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls)
   - Assignee(s)
   - Project: **`@Group 5's project`**
   - Label: although not required, it is suggested that developers specify which part of the project the issue is addressing.
