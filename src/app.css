@@ -91,6 +91,10 @@ body {
     @apply my-2 leading-relaxed;
   }
 
+  a {
+    @apply text-secondary-content underline underline-offset-2 hover:text-secondary-content/70 transition-colors;
+  }
+
   .lead {
     @apply text-xl leading-8 my-6;
   }
