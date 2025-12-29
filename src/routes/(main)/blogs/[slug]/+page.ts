@@ -1,8 +1,14 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import blogs from "$lib/content/blogs.json";
 
-export const load: PageLoad = async ({ params, url }) => {
+export const load: PageLoad = async ({ params, url, fetch }) => {
+  const response = await fetch("/api/blogs");
+
+  if (!response.ok) {
+    error(500, "Failed to load blogs");
+  }
+
+  const blogs = await response.json();
   const post = blogs.find((entry) => entry.frontmatter.slug === params.slug);
 
   if (post) {

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "new": "bun run src/lib/newblog.ts",
-    "dev": "bun run blogs && vite dev",
+    "dev": "vite dev",
     "build": "vite build",
     "deploy": "bun run blogs && vite build",
     "preview": "vite preview",

@@ -1,39 +1,21 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import blogs from "$lib/content/blogs.json";
 
-function toSortableDate(value?: string): number {
-  if (!value) {
-    return 0;
+export const load: PageLoad = async ({ url, fetch }) => {
+  const response = await fetch("/api/blogs");
+
+  if (!response.ok) {
+    error(500, "Failed to load blogs");
   }
 
-  const timestamp = Date.parse(value);
-  return Number.isNaN(timestamp) ? 0 : timestamp;
-}
+  const blogs = await response.json();
 
-export const load: PageLoad = async ({ url }) => {
   if (blogs == null) {
     error(404, "Not found");
   }
 
-  function compareByDate(
-    firstBlog: (typeof blogs)[number],
-    secondBlog: (typeof blogs)[number],
-  ): number {
-    const secondDate =
-      toSortableDate(secondBlog.frontmatter?.lastUpdated) ||
-      toSortableDate(secondBlog.frontmatter?.date);
-    const firstDate =
-      toSortableDate(firstBlog.frontmatter?.lastUpdated) ||
-      toSortableDate(firstBlog.frontmatter?.date);
-
-    return secondDate - firstDate;
-  }
-
-  const sortedBlogs = [...blogs].sort(compareByDate);
-
   return {
     canonicalURL: url.href,
-    blogs: sortedBlogs,
+    blogs: blogs,
   };
 };
