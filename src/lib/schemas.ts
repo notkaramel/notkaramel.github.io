@@ -7,6 +7,15 @@ export type BlogFrontmatter = {
   tags: string[];
 };
 
+export type RecipeFrontmatter = {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  lastUpdated: string;
+  tags: string[];
+};
+
 export type Route = {
   title: string;
   url: string;

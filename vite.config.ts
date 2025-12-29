@@ -14,5 +14,12 @@ export default defineConfig({
         server.watcher.add(blogsDir);
       },
     },
+    {
+      name: "watch-cooking",
+      configureServer(server) {
+        const cookingDir = path.resolve(process.cwd(), "cooking");
+        server.watcher.add(cookingDir);
+      },
+    },
   ],
 });
