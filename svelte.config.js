@@ -6,9 +6,7 @@ const config = {
   preprocess: vitePreprocess(),
 
   kit: {
-    adapter: adapter({
-      runtime: "nodejs",
-    }),
+    adapter: adapter(),
     alias: {
       "@app.css": "src/app.css",
       "@schemas": "src/lib/schemas.ts",
