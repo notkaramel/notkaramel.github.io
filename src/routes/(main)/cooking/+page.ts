@@ -2,7 +2,7 @@ import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, fetch }) => {
-  const response = await fetch("/api/recipes");
+  const response = await fetch("/api/cooking");
 
   if (!response.ok) {
     error(500, "Failed to load recipes");

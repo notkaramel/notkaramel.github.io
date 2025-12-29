@@ -5,9 +5,9 @@
 </script>
 
 <SearchEngineOp
-  title="Creative stuffs"
+  title="Music"
   description="A creative gallery of music, photography, art creation, cuisine, and so much more. All by Antoine @notkaramel"
-  canonical="https://antoinephan.com/creative"
+  canonical="https://antoinephan.com/music"
 />
 
 <div
