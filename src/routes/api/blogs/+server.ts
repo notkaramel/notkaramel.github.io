@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from "./$types";
 
 function toSortableDate(value?: string): number {
   if (!value) {
@@ -32,7 +32,7 @@ export const GET: RequestHandler = async () => {
           frontmatter: data,
           content,
         };
-      })
+      }),
     );
 
     // Sort blogs by date (lastUpdated or date, most recent first)

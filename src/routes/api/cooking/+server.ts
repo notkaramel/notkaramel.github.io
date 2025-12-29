@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
-import type { RequestHandler } from './$types';
+import type { RequestHandler } from "./$types";
 
 function toSortableDate(value?: string): number {
   if (!value) {
@@ -12,13 +12,16 @@ function toSortableDate(value?: string): number {
   return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
-async function findRecipeFiles(dir: string, baseDir: string = dir): Promise<string[]> {
+async function findRecipeFiles(
+  dir: string,
+  baseDir: string = dir,
+): Promise<string[]> {
   const files: string[] = [];
   const entries = await readdir(dir, { withFileTypes: true });
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
-    
+
     if (entry.isDirectory()) {
       // Recursively search in subdirectories
       const subFiles = await findRecipeFiles(fullPath, baseDir);
@@ -48,9 +51,13 @@ export const GET: RequestHandler = async () => {
         // Extract slug and directory path: cooking/YYYY-MM/recipe-name/index.md
         const relativePath = path.relative(cookingDir, filePath);
         const pathParts = relativePath.split(path.sep);
-        const slug = pathParts.length >= 2 ? pathParts[pathParts.length - 2] : path.basename(filePath, '.md');
+        const slug =
+          pathParts.length >= 2
+            ? pathParts[pathParts.length - 2]
+            : path.basename(filePath, ".md");
         // Get directory path (YYYY-MM/recipe-name) for image serving
-        const recipeDir = pathParts.length >= 2 ? pathParts.slice(0, -1).join('/') : '';
+        const recipeDir =
+          pathParts.length >= 2 ? pathParts.slice(0, -1).join("/") : "";
 
         return {
           frontmatter: {
@@ -60,7 +67,7 @@ export const GET: RequestHandler = async () => {
           content,
           recipeDir, // Directory path for serving images
         };
-      })
+      }),
     );
 
     // Sort recipes by date (lastUpdated or date, most recent first)

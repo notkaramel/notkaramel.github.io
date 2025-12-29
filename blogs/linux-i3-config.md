@@ -121,9 +121,7 @@ systemctl enable wpa_supplicant@wlo1
 
 ## Clipboard manager
 
--
-
----
+- ***
 
 ## THE CONFIG FILE: `.config/i3/config`
 

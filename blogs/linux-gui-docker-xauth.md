@@ -13,18 +13,19 @@ https://janert.me/blog/2022/running-a-gui-application-in-a-docker-container2/
 ---
 
 For Wayland, WIP:
+
 ```yml
 services:
   waylandapp:
-    image: wayland-app-demo   # build this below
+    image: wayland-app-demo # build this below
     container_name: waylandapp
     environment:
       - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
-      - XDG_RUNTIME_DIR=/tmp/xdg-runtime  # inside container
+      - XDG_RUNTIME_DIR=/tmp/xdg-runtime # inside container
     volumes:
       - ${XDG_RUNTIME_DIR}/${WAYLAND_DISPLAY}:/tmp/xdg-runtime/${WAYLAND_DISPLAY}
     devices:
-      - /dev/dri:/dev/dri   # GPU access (optional but recommended)
+      - /dev/dri:/dev/dri # GPU access (optional but recommended)
 ```
 
 ```dockerfile
@@ -48,7 +49,6 @@ If your container runs as root, it might be denied.
 Fix: run the container as your user:
 
 user: "${UID}:${GID}"
-
 
 XWayland fallback
 

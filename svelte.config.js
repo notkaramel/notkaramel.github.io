@@ -10,7 +10,7 @@ const config = {
     alias: {
       "@app.css": "src/app.css",
       "@schemas": "src/lib/schemas.ts",
-    }
+    },
   },
 };
 

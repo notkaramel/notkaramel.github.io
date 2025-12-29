@@ -9,11 +9,13 @@ tags: ["linux", "audio", "guide"]
 
 Two machines: Server and Media Player
 
-On Server: 
+On Server:
+
 - Requires pipewire, wireplumber, bluez
 - Related Resources:
-    - [Bluetooth Class of Device Generator](https://bluetooth-pentest.narod.ru/software/bluetooth_class_of_device-service_generator.html)
+  - [Bluetooth Class of Device Generator](https://bluetooth-pentest.narod.ru/software/bluetooth_class_of_device-service_generator.html)
 - Edit `/etc/bluetooth/main.conf`:
+
 ```conf
 [General]
 # Turn server into a speaker
@@ -28,11 +30,13 @@ KernelExperimental = true
 
 - Make sure wireplumber is up, and `wpctl status` can see that there's a sink.
 - In case `wpctl status` shows no sink, plug in the audio output device and restart pipewire
+
 ```sh
 systemctl restart --user pipewire.service
 ```
 
 - Run `bluetoothctl` and set the following varibles:
+
 ```sh
 bluetoothctl
 [server] power on

@@ -6,7 +6,7 @@ import type { RequestHandler } from "./$types";
 export const GET: RequestHandler = async ({ params }) => {
   try {
     const filePath = params.path;
-    
+
     // Security: prevent directory traversal
     if (filePath.includes("..") || path.isAbsolute(filePath)) {
       error(400, "Invalid path");
@@ -19,7 +19,10 @@ export const GET: RequestHandler = async ({ params }) => {
     // Ensure the file is within the cooking directory (normalize paths for comparison)
     const normalizedCookingDir = path.normalize(cookingDir);
     const normalizedFullPath = path.normalize(fullPath);
-    if (!normalizedFullPath.startsWith(normalizedCookingDir + path.sep) && normalizedFullPath !== normalizedCookingDir) {
+    if (
+      !normalizedFullPath.startsWith(normalizedCookingDir + path.sep) &&
+      normalizedFullPath !== normalizedCookingDir
+    ) {
       error(403, "Access denied");
     }
 
@@ -27,7 +30,7 @@ export const GET: RequestHandler = async ({ params }) => {
     try {
       const fileContent = await readFile(fullPath);
       const ext = path.extname(filePath).toLowerCase();
-      
+
       // Determine content type based on file extension
       const contentTypeMap: Record<string, string> = {
         ".png": "image/png",

@@ -156,6 +156,6 @@ export const skills: Skill[] = [
   },
   {
     title: "Languages",
-    tools: ["English", "French", "Vietnamese", "Spanish."]
-  }
+    tools: ["English", "French", "Vietnamese", "Spanish."],
+  },
 ];

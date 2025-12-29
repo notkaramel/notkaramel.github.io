@@ -9,12 +9,12 @@ tags: ["travel", "montreal", "guide"]
 
 # Places to visit
 
-| Place                                 | Notes                                                     | Links       |
-| ------------------------------------- | --------------------------------------------------------- | ----------- |
-| Old Port of Montréal                  | A very tourisy place, checkout the clock tower!           |             |
-| L'Oratoire Saint-Joseph du Mont-Royal | Best sunset place in Montreal without climbing a mountain |             |
-| Mont Royal                            |                                                           |             |
-| Lac aux castors (Beavers Lake)        |                                                           |             |
+| Place                                 | Notes                                                     | Links |
+| ------------------------------------- | --------------------------------------------------------- | ----- |
+| Old Port of Montréal                  | A very tourisy place, checkout the clock tower!           |       |
+| L'Oratoire Saint-Joseph du Mont-Royal | Best sunset place in Montreal without climbing a mountain |       |
+| Mont Royal                            |                                                           |       |
+| Lac aux castors (Beavers Lake)        |                                                           |       |
 
 # Food
 
@@ -33,7 +33,6 @@ tags: ["travel", "montreal", "guide"]
 | Alto Restaurant     |                      | I love their pizza, smoked meat poutine, and curly fries! |             |
 | Pho Ly Quoc Su      | Vietnamese Cuisine   | One of the most authentic pho places in town              |             |
 | Sandwicherie Viet   | Vietnamese Banh Mi   |                                                           |             |
-
 
 # Funsies
 

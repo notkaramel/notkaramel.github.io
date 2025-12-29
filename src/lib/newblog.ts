@@ -67,7 +67,9 @@ async function ask(
     if (options?.validate) {
       const validation = options.validate(answer);
       if (validation !== true) {
-        console.log(typeof validation === "string" ? validation : "Invalid input.");
+        console.log(
+          typeof validation === "string" ? validation : "Invalid input.",
+        );
         continue;
       }
     }
@@ -122,9 +124,7 @@ function buildFrontmatter(answers: NewBlogAnswers): string {
   return fm;
 }
 
-async function collectAnswers(
-  rl: readline.Interface,
-): Promise<NewBlogAnswers> {
+async function collectAnswers(rl: readline.Interface): Promise<NewBlogAnswers> {
   const title = await ask(rl, "Post title", { required: true });
   const slug = await ask(rl, "Slug", {
     defaultValue: slugify(title),
