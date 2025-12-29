@@ -19,3 +19,5 @@ export const load: PageLoad = async ({ url, fetch }) => {
     blogs: blogs,
   };
 };
+
+export const prerender = true;
