@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "academic-record",
+  "title": "AcademicRecord",
+  "type": "object",
+  "properties": {
+    "degree": { "type": "string" },
+    "school": { "type": "string" },
+    "duration": { "type": "string" },
+    "details": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "cgpa": { "type": "string" }
+  },
+  "required": ["degree", "school", "duration", "details", "cgpa"]
+}

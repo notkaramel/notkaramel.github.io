@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "work-experience",
+  "title": "WorkExperience",
+  "type": "object",
+  "properties": {
+    "jobTitle": { "type": "string" },
+    "workplace": { "type": "string" },
+    "location": { "type": "string" },
+    "time": { "type": "string" },
+    "description": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["jobTitle", "workplace", "location", "time", "description"]
+}

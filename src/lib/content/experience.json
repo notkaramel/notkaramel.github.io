@@ -1,0 +1,63 @@
+[
+  {
+    "jobTitle": "Course Assistant - ECSE 250: Fundamentals of Software Development",
+    "workplace": "McGill University",
+    "time": "Jan 2026 - Present",
+    "location": "Montreal, Quebec",
+    "description": [
+      "Automated the grading system for weekly and programming projects, using Python and Maven/Java.",
+      "Hosted weekly office hours to help students with their assignments and projects."
+    ]
+  },
+  {
+    "jobTitle": "DevOps Developer ",
+    "workplace": "Arvo A.I. (startup)",
+    "time": "Sep 2025 - Nov 2025",
+    "location": "Montreal, Quebec",
+    "description": [
+      "Modernized containerization of core services: optimized dependencies, upgraded package managers, and refactored cross-module code, achieving 80 times faster Docker builds and improved maintainability.",
+      "Debugged and fixed complex logic across microservices; improved UI/UX and eliminated non-deterministic behavior."
+    ]
+  },
+  {
+    "jobTitle": "DevOps Developer",
+    "workplace": "DDMAL (McGill University)",
+    "time": "Dec 2025 - Present",
+    "location": "Montreal, Canada",
+    "description": [
+      "Streamlined backend architecture and deployment, leading to increased developer productivity and reduced complexity.",
+      "Updating and optimizing dependencies in Dockerfiles for legacy backend services, improving reliability and maintainability.",
+      "Overseeing deployment pipeline and monitoring system uptime for multiple lab projects."
+    ]
+  },
+  {
+    "jobTitle": "Course Assistant - ECSE 321: Introduction to Software Engineering",
+    "workplace": "McGill University",
+    "time": "Jan 2024 - Apr 2024",
+    "location": "Montreal, Quebec",
+    "description": [
+      "Tomlinson Engagement Award for Mentoring (TEAM) award recipient for the Winter 2024 academic term.",
+      "Provided support to students by answering questions on the discussion board and assiting with their deliverables."
+    ]
+  },
+  {
+    "jobTitle": "Software Developer",
+    "workplace": "CESEM (NOVA University of Lisbon)",
+    "time": "Dec 2023 - Nov 2024",
+    "location": "Portugal (Remote)",
+    "description": [
+      "Implemented and deployed the Plainchant Analyser for MEI Neumes web interface to search and analyze a historical chant corpus from the Portuguese Early Music (PEM) database.",
+      "Worked in an interdisciplinary team composed of historical musicologists, music technology and computer science experts."
+    ]
+  },
+  {
+    "jobTitle": "Software Developer",
+    "workplace": "SRL (McGill University)",
+    "time": "May 2023 - Aug 2023",
+    "location": "Montreal, Canada",
+    "description": [
+      "Implemented and Dockerized a multilingual translation microservice to the project IMAGE's backend using open-source Large Language Models (LLMs) from HuggingFace and written in Python.",
+      "Designed earcons to support multilingual user interactions and enhance accessibility."
+    ]
+  }
+]

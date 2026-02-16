@@ -6,10 +6,10 @@
 
 {#if project.featured}
   <div
-    class="card flex w-full max-w-lg flex-col gap-2 p-6 bg-base-200 text-base-content shadow-lg shadow-secondary"
+    class="card flex w-full max-w-lg flex-col gap-2 p-6 bg-base-200 text-base-content shadow-lg shadow-primary border border-primary-content"
   >
     <div class="flex flex-row gap-2">
-      <h3 class="font-bold text-xl">
+      <h3 class="font-bold text-xl text-primary-content">
         {project.title}
       </h3>
       {#if project.github || project.link}

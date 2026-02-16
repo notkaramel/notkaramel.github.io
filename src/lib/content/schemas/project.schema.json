@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "project",
+  "title": "Project",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "featured": { "type": "boolean" },
+    "shortDesc": { "type": "string" },
+    "techStack": { "type": "array", "items": { "type": "string" } },
+    "category": { "type": "array", "items": { "type": "string" } },
+    "github": { "type": "string" },
+    "link": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "previous"] }
+  },
+  "required": [
+    "title",
+    "featured",
+    "shortDesc",
+    "techStack",
+    "category",
+    "github",
+    "link",
+    "status"
+  ]
+}

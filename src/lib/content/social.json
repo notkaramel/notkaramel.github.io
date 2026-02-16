@@ -1,0 +1,17 @@
+[
+  {
+    "name": "GitHub",
+    "url": "https://github.com/notkaramel",
+    "ariaLabel": "GitHub profile"
+  },
+  {
+    "name": "LinkedIn",
+    "url": "https://linkedin.com/in/antoinephan",
+    "ariaLabel": "LinkedIn profile"
+  },
+  {
+    "name": "Email",
+    "url": "mailto:hoangtuan11102@gmail.com",
+    "ariaLabel": "Send email"
+  }
+]

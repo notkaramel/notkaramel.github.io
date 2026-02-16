@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "conference-workshop",
+  "title": "ConferenceWorkshop",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "time": { "type": "string" },
+    "location": { "type": "string" }
+  },
+  "required": ["title", "authors", "time", "location"]
+}

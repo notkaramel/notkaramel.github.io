@@ -81,4 +81,5 @@ export type Project = {
   category: string[];
   github: string;
   link: string;
+  status: "active" | "previous";
 };

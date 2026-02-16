@@ -89,17 +89,17 @@
 </script>
 
 <li
-    class="group relative rounded-2xl bg-gradient-to-br from-base-100 via-base-100 to-primary/10 
-            shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/40 
+    class="group relative rounded-2xl bg-linear-to-br from-base-100 via-secondary to-primary 
+            shadow-xl shadow-primary hover:shadow-2xl hover:shadow-accent 
             transition-all duration-300 ease-out
-            ring-2 ring-primary/50 hover:ring-primary-content ring-offset-2 ring-offset-base-100
+            ring-2 ring-primary-content hover:ring-accent-content ring-offset-2 ring-offset-base-100
             hover:scale-[1.01] hover:-translate-y-0.5
             transform-gpu"
     transition:slide
 >
     <!-- Animated background gradient -->
-    <div class="absolute inset-0 rounded-2xl bg-gradient-to-bl from-transparent via-primary/10 to-accent/12
-                opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+    <div class="absolute inset-0 rounded-2xl bg-linear-to-bl from-transparent via-secondary to-accent
+                opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none"></div>
 
     <a href={`/cooking/${frontmatter.slug}`} class="relative flex flex-col gap-4 p-6 z-10">
         <div class="flex items-center justify-between gap-3">
@@ -107,14 +107,14 @@
                 <div class="text-4xl transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12">
                     {emoji}
                 </div>
-                <h2 class="font-bold text-2xl bg-gradient-to-r from-primary-content to-secondary-content bg-clip-text text-transparent
-                           group-hover:from-primary-content group-hover:to-secondary-content
-                           transition-all duration-300">
+                <h2 class="font-bold text-2xl text-primary-content
+                           group-hover:text-secondary-content
+                           transition-colors duration-300">
                     {frontmatter.title}
                 </h2>
             </div>
             
-            <div class="flex items-center gap-2 text-sm text-base-content/60">
+            <div class="flex items-center gap-2 text-sm text-secondary-content/90">
                 <div class="space-y-1 text-right">
                     {#if dateLines.length > 0}
                         {#each dateLines as line}
@@ -128,7 +128,7 @@
         </div>
         
         {#if frontmatter.description}
-            <p class="text-base-content/80 text-sm leading-relaxed line-clamp-2">
+            <p class="text-secondary-content/90 text-sm leading-relaxed line-clamp-2">
                 {frontmatter.description}
             </p>
         {/if}

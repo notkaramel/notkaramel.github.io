@@ -128,16 +128,19 @@ LANG=en_CA.UTF-8
 
 - Network Configuration
   - In `/etc/hostname`:
+
   ```
   myHostName
   ```
 
   - In `/etc/hosts`:
+
   ```
   127.0.0.1		localhost
   ::1			    localhost
   127.0.1.1		myHostName
   ```
+
 - `mkinitcpio`
 
 ```

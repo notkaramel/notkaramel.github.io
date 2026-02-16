@@ -82,8 +82,38 @@
 }
 
 /* https://fontsource.org/fonts/comfortaa */
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
 body {
   font-family: "Comfortaa Variable", system-ui;
+}
+
+/* Custom scrollbar: thin, primary colour, visible on all screens */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-base-200);
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--color-base-200);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 3px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-content);
 }
 
 .prose {
@@ -132,7 +162,7 @@ body {
   }
 
   kbd {
-    @apply text-sm rounded-md bg-accent text-accent-content px-[0.375rem] py-[0.1875rem];
+    @apply text-sm rounded-md bg-accent text-accent-content px-1.5 py-0.75;
   }
 
   code {
@@ -170,7 +200,7 @@ body {
 
   ol,
   ul {
-    @apply my-2 ps-[1.625rem] list-disc list-outside;
+    @apply my-2 ps-6.5 list-disc list-outside;
   }
 
   li {
@@ -202,7 +232,7 @@ body {
   }
 
   dd {
-    @apply mt-2 ps-[1.625rem];
+    @apply mt-2 ps-6.5;
   }
 
   hr {
@@ -242,7 +272,7 @@ body {
   }
 
   td + td {
-    @apply border-l border-primary-content/50;
+    @apply border-l border-primary;
   }
 
   tfoot {

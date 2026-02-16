@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "publication",
+  "title": "Publication",
+  "type": "object",
+  "properties": {
+    "title": { "type": "string" },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "type": { "type": "string" },
+    "details": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "doi": { "type": ["string", "null"] },
+    "url": { "type": ["string", "null"] }
+  },
+  "required": ["title", "authors", "type", "details"]
+}

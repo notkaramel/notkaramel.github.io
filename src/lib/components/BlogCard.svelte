@@ -54,25 +54,23 @@
 </script>
 
 <li
-    class="border border-base-200 rounded-xl bg-base-100 shadow-lg
-            shadow-primary/36 hover:shadow-primary hover:shadow-2xl transition-all
-            ring-2 ring-primary hover:ring-primary-content focus-visible:ring-primary-content"
+    class="border border-primary-content rounded-xl bg-base-100 shadow-lg
+            shadow-primary hover:shadow-2xl hover:shadow-secondary transition-all
+            ring-2 ring-primary-content hover:ring-accent-content focus-visible:ring-accent-content"
     transition:slide
 >
     <a href={`/blogs/${frontmatter.slug}`} class="flex flex-col gap-3 p-5">
         <div class="flex flex-wrap items-center gap-2">
-            <h2 class="font-semibold text-xl">{frontmatter.title}</h2>
+            <h2 class="font-semibold text-xl text-primary-content">{frontmatter.title}</h2>
         </div>
-        <div class="flex flex-wrap items-center gap-2 text-base-content/60">
+        <div class="flex flex-wrap items-center gap-2">
             {#each tags as tag}
-                <span
-                    class="badge badge-primary badge-outline text-secondary-content tracking-wide text-xs"
-                >
+                <span class="badge badge-primary badge-outline text-xs">
                     {tag}
                 </span>
             {/each}
         </div>
-        <div class="space-y-1 text-sm text-base-content/70">
+        <div class="space-y-1 text-sm text-secondary-content/90">
             {#if dateLines.length > 0}
                 {#each dateLines as line}
                     <p>{line}</p>
