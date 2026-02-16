@@ -125,7 +125,7 @@
           </div>
 
           <nav
-            class="flex flex-wrap gap-6 w-full justify-center"
+            class="flex flex-wrap gap-6 w-full justify-center lg:justify-start"
             aria-label="Section navigation"
           >
             {#each sections as item}
