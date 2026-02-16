@@ -5,6 +5,7 @@ description: "Team 07 notes and resources for the ECSE 223 SnowShoeTours project
 date: "2025-06-30"
 lastUpdated: "2025-06-30"
 tags: ["university", "project", "software-engineering"]
+categories: ["Technical Docs"]
 ---
 
 # :snowflake::ski: ECSE223 SnowShoeTours Project: Team 07

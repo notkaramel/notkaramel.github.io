@@ -1,3 +1,14 @@
+/** Valid blog categories for filtering and display */
+export const BLOG_CATEGORIES = [
+  "Discussion",
+  "Random Thoughts",
+  "Technical Docs",
+  "Travel Guide",
+  "Misc.",
+] as const;
+
+export type BlogCategory = (typeof BLOG_CATEGORIES)[number];
+
 export type BlogFrontmatter = {
   title: string;
   slug: string;
@@ -5,6 +16,8 @@ export type BlogFrontmatter = {
   date: string;
   lastUpdated: string;
   tags: string[];
+  /** One or more of BLOG_CATEGORIES. Defaults to [] if missing. */
+  categories?: BlogCategory[];
 };
 
 export type RecipeFrontmatter = {
@@ -27,6 +40,7 @@ export type NewBlogAnswers = {
   slug: string;
   description: string;
   tags: string[];
+  categories: BlogCategory[];
   date: string;
   lastUpdated: string;
 };

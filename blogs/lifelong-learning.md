@@ -1,10 +1,11 @@
 ---
-title: "Lifelong learning"
+title: "Lifelong learning - An essay for FACC 400"
 slug: "lifelong-learning"
 description: "An essay about life long learning"
 date: "2025-11-26"
 lastUpdated: "2025-11-26"
 tags: ["lifelong", "thoughts", "inspiration", "life"]
+categories: ["Random Thoughts"]
 ---
 
 # The meaning of life long learning

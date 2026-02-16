@@ -5,6 +5,7 @@ description: "Run applications with graphical interfaces from Docker using an X1
 date: "2025-09-24"
 lastUpdated: "2025-09-24"
 tags: ["linux", "docker", "devops"]
+categories: ["Technical Docs"]
 ---
 
 https://gursimarsm.medium.com/run-gui-applications-in-a-docker-container-ca625bad4638

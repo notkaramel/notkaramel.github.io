@@ -5,6 +5,7 @@ description: "Troubleshooting checklist for recovering broken dual-boot systems.
 date: "2025-06-30"
 lastUpdated: "2025-06-30"
 tags: ["linux", "troubleshooting", "guide"]
+categories: ["Technical Docs"]
 ---
 
 # Recovery

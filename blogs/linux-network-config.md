@@ -5,6 +5,7 @@ description: "Notes on configuring network connectivity under Linux with iwd and
 date: "2025-06-30"
 lastUpdated: "2025-07-12"
 tags: ["linux", "networking", "guide"]
+categories: ["Technical Docs"]
 ---
 
 # Network Configuration

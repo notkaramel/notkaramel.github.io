@@ -5,6 +5,7 @@ description: "References and snippets for customizing the i3 window manager."
 date: "2024-08-08"
 lastUpdated: "2025-06-30"
 tags: ["linux", "i3", "dotfiles"]
+categories: ["Technical Docs"]
 ---
 
 ## 0. List of config files (relative to `$HOME`)

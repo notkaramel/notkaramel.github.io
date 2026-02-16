@@ -5,6 +5,7 @@ description: "Personal list of essential packages to install on Arch Linux syste
 date: "2024-08-08"
 lastUpdated: "2025-06-30"
 tags: ["linux", "arch-linux", "packages"]
+categories: ["Technical Docs"]
 ---
 
 # List of Core Packages

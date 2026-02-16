@@ -5,6 +5,7 @@ description: "Documentation and developer notes collected during ECSE 321 course
 date: "2025-06-30"
 lastUpdated: "2025-07-12"
 tags: ["university", "project", "software-engineering"]
+categories: ["Technical Docs"]
 ---
 
 # Frontend Elements

@@ -5,6 +5,7 @@ description: "A guide to install Linux and Windows with dual-boot - shared file 
 date: "2025-08-28"
 lastUpdated: "2025-06-30"
 tags: ["linux", "guide", "technical"]
+categories: ["Technical Docs"]
 ---
 
 ## Prerequisite

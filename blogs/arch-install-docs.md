@@ -5,6 +5,7 @@ description: "Step-by-step notes for installing Arch Linux on a single-boot syst
 date: "2024-08-08"
 lastUpdated: "2025-06-30"
 tags: ["linux", "arch-linux", "guide"]
+categories: ["Technical Docs"]
 ---
 
 ## Prerequisite

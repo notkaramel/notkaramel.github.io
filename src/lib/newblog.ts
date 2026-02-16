@@ -3,7 +3,8 @@
  * Run with: bun run src/lib/newblog.ts
  */
 
-import type { NewBlogAnswers } from "@schemas";
+import type { NewBlogAnswers, BlogCategory } from "@schemas";
+import { BLOG_CATEGORIES } from "@schemas";
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import * as path from "node:path";
@@ -110,6 +111,11 @@ function buildFrontmatter(answers: NewBlogAnswers): string {
       ? answers.tags.map((tag) => `"${escapeQuotes(tag)}"`).join(", ")
       : "";
 
+  const categoriesContent =
+    answers.categories.length > 0
+      ? answers.categories.map((c) => `"${escapeQuotes(c)}"`).join(", ")
+      : "";
+
   const fm = [
     "---",
     `title: "${escapeQuotes(answers.title)}"`,
@@ -118,6 +124,7 @@ function buildFrontmatter(answers: NewBlogAnswers): string {
     `date: "${answers.date}"`,
     `lastUpdated: "${answers.lastUpdated}"`,
     `tags: [${tagsContent}]`,
+    `categories: [${categoriesContent}]`,
     "---",
     "",
   ].join("\n");
@@ -134,17 +141,33 @@ async function collectAnswers(rl: readline.Interface): Promise<NewBlogAnswers> {
   });
   const description = await ask(rl, "Short description", { defaultValue: "" });
   const rawTags = await ask(rl, "Tags (comma-separated)", { defaultValue: "" });
+  const rawCategories = await ask(
+    rl,
+    `Categories (comma-separated, choose from: ${BLOG_CATEGORIES.join(", ")})`,
+    {
+      defaultValue: "",
+    },
+  );
   const date = await ask(rl, "Date (YYYY-MM-DD)", {
     defaultValue: todayYMD(),
     validate: (value) =>
       DATE_REGEX.test(value) ? true : "Use format YYYY-MM-DD.",
   });
 
+  const categories: BlogCategory[] = rawCategories
+    .split(",")
+    .map((c) => c.trim())
+    .filter(
+      (c): c is BlogCategory =>
+        c !== "" && BLOG_CATEGORIES.includes(c as BlogCategory),
+    ) as BlogCategory[];
+
   return {
     title,
     slug,
     description,
     tags: deriveTags(slug, rawTags),
+    categories,
     date,
     lastUpdated: date,
   };

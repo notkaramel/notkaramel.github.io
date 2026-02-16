@@ -5,6 +5,7 @@ description: "How I turn a home server into a Bluetooth speaker endpoint using P
 date: "2025-08-20"
 lastUpdated: "2025-08-20"
 tags: ["linux", "audio", "guide"]
+categories: ["Technical Docs"]
 ---
 
 Two machines: Server and Media Player

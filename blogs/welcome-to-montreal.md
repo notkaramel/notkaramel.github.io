@@ -5,6 +5,7 @@ description: "Personal guide to my favourite spots, food, and activities around 
 date: "2025-08-18"
 lastUpdated: "2025-08-20"
 tags: ["travel", "montreal", "guide"]
+categories: ["Travel Guide"]
 ---
 
 # Places to visit

@@ -116,19 +116,38 @@ body {
   background: var(--color-primary-content);
 }
 
+/* Blog design tokens – cohesive card/section style */
+.blog-card {
+  @apply rounded-2xl border border-primary/20 bg-base-100 shadow-lg shadow-primary/10;
+  @apply transition-all duration-200;
+}
+
+.blog-card-hover {
+  @apply hover:shadow-xl hover:shadow-primary/15 hover:border-primary/30;
+}
+
+/* Blog article prose: use primary palette */
+.blog-article .prose blockquote {
+  @apply bg-primary/30 italic text-primary-content border-l-4 border-l-primary;
+}
+
+.blog-article .prose kbd {
+  @apply bg-primary text-primary-content;
+}
+
 .prose {
-  @apply text-base;
+  @apply text-base text-primary-content;
 
   p {
-    @apply my-2 leading-relaxed;
+    @apply my-2 leading-relaxed text-primary-content;
   }
 
   a {
-    @apply text-secondary-content underline underline-offset-2 hover:text-secondary-content/70 transition-colors;
+    @apply text-primary-content underline underline-offset-2 hover:text-primary-content/80 transition-colors;
   }
 
   .lead {
-    @apply text-xl leading-8 my-6;
+    @apply text-xl leading-8 my-6 text-primary-content;
   }
 
   blockquote {
@@ -136,19 +155,19 @@ body {
   }
 
   h1 {
-    @apply font-extrabold text-4xl leading-10 my-4;
+    @apply font-extrabold text-4xl leading-10 my-4 text-primary-content;
   }
 
   h2 {
-    @apply font-black text-2xl leading-8 mt-4 mb-3;
+    @apply font-black text-2xl leading-8 mt-4 mb-3 text-primary-content;
   }
 
   h3 {
-    @apply font-bold text-xl mt-4 mb-1 leading-relaxed;
+    @apply font-bold text-xl mt-4 mb-1 leading-relaxed text-primary-content;
   }
 
   h4 {
-    @apply mt-6 mb-2 leading-6;
+    @apply mt-6 mb-2 leading-6 text-primary-content;
   }
 
   img,
@@ -195,16 +214,36 @@ body {
 
   pre {
     @apply font-mono text-sm leading-6 my-3 rounded-md pt-3 pb-3 px-4;
-    @apply bg-primary;
+    @apply bg-primary overflow-x-auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary-content) var(--color-base-200);
+  }
+
+  pre::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  pre::-webkit-scrollbar-track {
+    background: var(--color-base-200);
+    border-radius: 2px;
+  }
+
+  pre::-webkit-scrollbar-thumb {
+    background: var(--color-primary-content);
+    border-radius: 2px;
+  }
+
+  pre::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
   }
 
   ol,
   ul {
-    @apply my-2 ps-6.5 list-disc list-outside;
+    @apply my-2 ps-6.5 list-disc list-outside text-primary-content;
   }
 
   li {
-    @apply my-1 leading-relaxed;
+    @apply my-1 leading-relaxed text-primary-content;
   }
 
   ol > li,
@@ -213,7 +252,7 @@ body {
   }
 
   > ul > li p {
-    @apply my-2 leading-relaxed;
+    @apply my-2 leading-relaxed text-primary-content;
   }
 
   ul ul,
@@ -224,15 +263,15 @@ body {
   }
 
   dl {
-    @apply my-5;
+    @apply my-5 text-primary-content;
   }
 
   dt {
-    @apply mt-5;
+    @apply mt-5 text-primary-content;
   }
 
   dd {
-    @apply mt-2 ps-6.5;
+    @apply mt-2 ps-6.5 text-primary-content;
   }
 
   hr {
@@ -260,7 +299,7 @@ body {
 
   tbody td,
   tfoot td {
-    @apply p-2.5;
+    @apply p-2.5 text-primary-content;
   }
 
   td > a {
@@ -288,7 +327,7 @@ body {
   }
 
   figcaption {
-    @apply text-sm leading-5 mt-3;
+    @apply text-sm leading-5 mt-3 text-primary-content;
   }
 }
 

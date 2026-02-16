@@ -5,6 +5,7 @@ description: "Answers to common questions about daily driving Linux alongside Wi
 date: "2025-08-18"
 lastUpdated: "2025-08-18"
 tags: ["linux", "opinion", "dual-boot"]
+categories: ["Discussion"]
 ---
 
 With Linux how bad can I break things? Like is it always possible to restart or can I brick my laptop by accident

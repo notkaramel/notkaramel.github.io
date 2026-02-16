@@ -33,6 +33,16 @@
         );
     }
 
+    function getCategories(): string[] {
+        if (!frontmatter || !Array.isArray(frontmatter.categories)) {
+            return [];
+        }
+
+        return frontmatter.categories.filter(
+            (cat): boolean => typeof cat === "string" && cat.trim().length > 0,
+        ) as string[];
+    }
+
     function getDateMetadata(): string[] {
         const dates: string[] = [];
         const published = formatDate(frontmatter?.date);
@@ -50,27 +60,32 @@
     }
 
     const tags = getTags();
+    const categories = getCategories();
     const dateLines = getDateMetadata();
 </script>
 
 <li
-    class="border border-primary-content rounded-xl bg-base-100 shadow-lg
-            shadow-primary hover:shadow-2xl hover:shadow-secondary transition-all
-            ring-2 ring-primary-content hover:ring-accent-content focus-visible:ring-accent-content"
+    class="blog-card blog-card-hover
+            ring-2 ring-primary-content focus-visible:ring-2 hover:scale-[1.012] hover:shadow-xl hover:shadow-primary transform-gpu"
     transition:slide
 >
-    <a href={`/blogs/${frontmatter.slug}`} class="flex flex-col gap-3 p-5">
+    <a href={`/blogs/${frontmatter.slug}`} class="flex flex-col gap-3 p-6">
         <div class="flex flex-wrap items-center gap-2">
-            <h2 class="font-semibold text-xl text-primary-content">{frontmatter.title}</h2>
+            <h2 class="font-semibold text-xl text-primary-content tracking-tight">{frontmatter.title}</h2>
         </div>
         <div class="flex flex-wrap items-center gap-2">
+            {#each categories as cat}
+                <span class="badge badge-primary text-primary-content text-xs">
+                    {cat}
+                </span>
+            {/each}
             {#each tags as tag}
-                <span class="badge badge-primary badge-outline text-xs">
+                <span class="badge badge-primary badge-outline text-primary-content text-xs">
                     {tag}
                 </span>
             {/each}
         </div>
-        <div class="space-y-1 text-sm text-secondary-content/90">
+        <div class="space-y-1 text-sm text-primary-content/90">
             {#if dateLines.length > 0}
                 {#each dateLines as line}
                     <p>{line}</p>

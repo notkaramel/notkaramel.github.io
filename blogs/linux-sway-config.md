@@ -5,6 +5,7 @@ description: "Cheatsheet for adapting i3-style workflows to Sway on Wayland."
 date: "2025-06-30"
 lastUpdated: "2025-06-30"
 tags: ["linux", "sway", "dotfiles"]
+categories: ["Technical Docs"]
 ---
 
 # Sway configuration

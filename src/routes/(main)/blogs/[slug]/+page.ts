@@ -1,5 +1,8 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
+import type { BlogFrontmatter } from "@schemas";
+
+type BlogEntry = { frontmatter: BlogFrontmatter; content: string };
 
 export const load: PageLoad = async ({ params, url, fetch }) => {
   const response = await fetch("/api/blogs");
@@ -8,7 +11,7 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
     error(500, "Failed to load blogs");
   }
 
-  const blogs = await response.json();
+  const blogs: BlogEntry[] = await response.json();
   const post = blogs.find((entry) => entry.frontmatter.slug === params.slug);
 
   if (post) {
@@ -19,6 +22,9 @@ export const load: PageLoad = async ({ params, url, fetch }) => {
       date: post.frontmatter.date,
       lastUpdated: post.frontmatter.lastUpdated,
       tags: Array.isArray(post.frontmatter.tags) ? post.frontmatter.tags : [],
+      categories: Array.isArray(post.frontmatter.categories)
+        ? post.frontmatter.categories
+        : [],
       content: post.content,
     };
   }
