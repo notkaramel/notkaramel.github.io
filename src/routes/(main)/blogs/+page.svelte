@@ -80,8 +80,8 @@
 </script>
 
 <SearchEngineOp
-  title="I write stuffs sometimes :P"
-  description="Checkout my blogs on various topics, including - but not limited to - Linux, travelling, technical takes, and food recipes!"
+  title="Blog – thoughts, travel & more"
+  description="Blog posts on travel, discussion, random thoughts, and more."
   canonical={data.canonicalURL}
 />
 

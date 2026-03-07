@@ -1,5 +1,5 @@
 /**
- * Interactive CLI to scaffold a blog Markdown entry in ./blogs/.
+ * Interactive CLI to scaffold a blog Markdown entry in ./blogs/<topic>/.
  * Run with: bun run src/lib/newblog.ts
  */
 
@@ -12,6 +12,7 @@ import * as readline from "node:readline/promises";
 import { stdin as input, stdout as output } from "node:process";
 
 const BLOG_DIR = path.resolve(import.meta.dir, "../../blogs");
+const DEFAULT_TOPIC = "misc";
 const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 
 type PromptOptions = {
@@ -148,6 +149,15 @@ async function collectAnswers(rl: readline.Interface): Promise<NewBlogAnswers> {
       defaultValue: "",
     },
   );
+  const topic = await ask(
+    rl,
+    "Topic folder (e.g. travel, thoughts, discussion, misc)",
+    {
+      defaultValue: DEFAULT_TOPIC,
+      transform: (v) =>
+        v.toLowerCase().replace(/[^a-z0-9-]/g, "") || DEFAULT_TOPIC,
+    },
+  );
   const date = await ask(rl, "Date (YYYY-MM-DD)", {
     defaultValue: todayYMD(),
     validate: (value) =>
@@ -168,20 +178,21 @@ async function collectAnswers(rl: readline.Interface): Promise<NewBlogAnswers> {
     description,
     tags: deriveTags(slug, rawTags),
     categories,
+    topic: topic || DEFAULT_TOPIC,
     date,
     lastUpdated: date,
   };
 }
 
 async function main() {
-  await ensureDir(BLOG_DIR);
-
   const rl = readline.createInterface({ input, output });
 
   try {
     const answers = await collectAnswers(rl);
-    const filename = await findAvailableFilename(BLOG_DIR, answers.slug);
-    const filepath = path.join(BLOG_DIR, filename);
+    const topicDir = path.join(BLOG_DIR, answers.topic);
+    await ensureDir(topicDir);
+    const filename = await findAvailableFilename(topicDir, answers.slug);
+    const filepath = path.join(topicDir, filename);
 
     await Bun.write(filepath, buildFrontmatter(answers));
 

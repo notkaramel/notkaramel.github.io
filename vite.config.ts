@@ -15,6 +15,13 @@ export default defineConfig({
       },
     },
     {
+      name: "watch-wiki",
+      configureServer(server) {
+        const wikiDir = path.resolve(process.cwd(), "wiki");
+        server.watcher.add(wikiDir);
+      },
+    },
+    {
       name: "watch-cooking",
       configureServer(server) {
         const cookingDir = path.resolve(process.cwd(), "cooking");

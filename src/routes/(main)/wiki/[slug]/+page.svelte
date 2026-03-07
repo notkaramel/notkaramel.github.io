@@ -14,8 +14,8 @@
 </script>
 
 <SearchEngineOp
-  title="{data.title} – a recipe by @notkaramel"
-  description={data.description}
+  title="{data.title} – Wiki"
+  description={data.description || "Technical documentation and guide."}
   canonical={data.canonicalURL}
 />
 
@@ -55,7 +55,6 @@
             <span>Updated {data.lastUpdated}</span>
           {/if}
         </p>
-        <p class="text-sm text-primary-content/80">by @notkaramel</p>
       </header>
 
       <article class="blog-card blog-article p-6 lg:p-8">
@@ -63,8 +62,11 @@
           {@html content}
         </div>
         <div class="mt-10 pt-6 border-t border-primary-content">
-          <a href="/cooking" class="btn btn-primary btn-outline text-primary-content">
-            ← Back to Cooking
+          <a
+            href="/wiki"
+            class="btn btn-primary btn-outline text-primary-content"
+          >
+            ← Back to Wiki
           </a>
         </div>
       </article>

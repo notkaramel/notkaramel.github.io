@@ -43,6 +43,8 @@
         ) as string[];
     }
 
+    const topic = $derived(frontmatter?.topic);
+
     function getDateMetadata(): string[] {
         const dates: string[] = [];
         const published = formatDate(frontmatter?.date);
@@ -74,6 +76,9 @@
             <h2 class="font-semibold text-xl text-primary-content tracking-tight">{frontmatter.title}</h2>
         </div>
         <div class="flex flex-wrap items-center gap-2">
+            {#if topic}
+                <span class="badge badge-secondary text-secondary-content text-xs">{topic}</span>
+            {/if}
             {#each categories as cat}
                 <span class="badge badge-primary text-primary-content text-xs">
                     {cat}

@@ -26,7 +26,7 @@
   class="blog-card sticky top-16 z-10 -mx-6 px-6 lg:-mx-12 lg:px-12 py-6"
 >
   <p class="text-2xl font-semibold text-center text-primary-content mb-4 tracking-tight">
-    I write blogs about all kinds of stuffs
+    Blog – thoughts, travel, and more
   </p>
   <hr class="border-primary-content my-4" />
 

@@ -12,30 +12,52 @@ function toSortableDate(value?: string): number {
   return Number.isNaN(timestamp) ? 0 : timestamp;
 }
 
+/** Recursively find all .md files under dir, returns paths relative to dir (e.g. travel/welcome-to-montreal.md) */
+async function findMarkdownFiles(
+  dir: string,
+  baseDir: string = dir,
+): Promise<string[]> {
+  const entries = await readdir(dir, { withFileTypes: true });
+  const result: string[] = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    const relativePath = path.relative(baseDir, fullPath);
+
+    if (entry.isDirectory()) {
+      const nested = await findMarkdownFiles(fullPath, baseDir);
+      result.push(...nested);
+    } else if (entry.isFile() && entry.name.endsWith(".md")) {
+      result.push(relativePath);
+    }
+  }
+
+  return result;
+}
+
 export const GET: RequestHandler = async () => {
   try {
-    // Get the blogs directory path (relative to project root)
     const blogsDir = path.resolve(process.cwd(), "blogs");
+    const relativePaths = await findMarkdownFiles(blogsDir);
 
-    // Read all markdown files from blogs directory
-    const entries = await readdir(blogsDir);
-    const mdFiles = entries.filter((file) => file.endsWith(".md"));
-
-    // Parse each markdown file
     const blogPosts = await Promise.all(
-      mdFiles.map(async (filename) => {
-        const filePath = path.join(blogsDir, filename);
+      relativePaths.map(async (relativePath) => {
+        const filePath = path.join(blogsDir, relativePath);
         const fileContent = await readFile(filePath, "utf-8");
         const { data, content } = matter(fileContent);
+        const topic = path.dirname(relativePath);
+        const topicLabel =
+          topic === "."
+            ? "misc"
+            : topic.charAt(0).toUpperCase() + topic.slice(1);
 
         return {
-          frontmatter: data,
+          frontmatter: { ...data, topic: topicLabel },
           content,
         };
       }),
     );
 
-    // Sort blogs by date (lastUpdated or date, most recent first)
     function compareByDate(
       firstBlog: (typeof blogPosts)[number],
       secondBlog: (typeof blogPosts)[number],

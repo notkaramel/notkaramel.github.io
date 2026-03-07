@@ -2,21 +2,21 @@ import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 
 export const load: PageLoad = async ({ url, fetch }) => {
-  const response = await fetch("/api/blogs");
+  const response = await fetch("/api/wiki");
 
   if (!response.ok) {
-    error(500, "Failed to load blogs");
+    error(500, "Failed to load wiki");
   }
 
-  const blogs = await response.json();
+  const wiki = await response.json();
 
-  if (blogs == null || !Array.isArray(blogs)) {
-    error(404, "Not found");
+  if (wiki == null) {
+    error(500, "Failed to load wiki");
   }
 
   return {
     canonicalURL: url.href,
-    blogs: blogs,
+    wiki,
   };
 };
 

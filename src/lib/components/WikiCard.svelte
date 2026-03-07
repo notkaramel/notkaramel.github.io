@@ -1,8 +1,8 @@
 <script lang="ts">
-  import type { RecipeFrontmatter } from "@schemas";
+  import type { WikiFrontmatter } from "@schemas";
   import { slide } from "svelte/transition";
 
-  let { frontmatter }: { frontmatter: RecipeFrontmatter } = $props();
+  let { frontmatter }: { frontmatter: WikiFrontmatter } = $props();
 
   function formatDate(value?: string | null): string | null {
     if (!value) return null;
@@ -15,14 +15,7 @@
     });
   }
 
-  const tags = $derived(
-    Array.isArray(frontmatter?.tags)
-      ? frontmatter.tags.filter(
-          (tag): tag is string =>
-            typeof tag === "string" && tag.trim().length > 0,
-        )
-      : [],
-  );
+  const tags = $derived(Array.isArray(frontmatter.tags) ? frontmatter.tags : []);
   const published = $derived(formatDate(frontmatter?.date));
   const updated = $derived(formatDate(frontmatter?.lastUpdated));
 </script>
@@ -32,15 +25,10 @@
     ring-2 ring-primary-content focus-visible:ring-2 hover:scale-[1.012] hover:shadow-xl hover:shadow-primary transform-gpu"
   transition:slide
 >
-  <a href={`/cooking/${frontmatter.slug}`} class="flex flex-col gap-3 p-6">
+  <a href={`/wiki/${frontmatter.slug}`} class="flex flex-col gap-3 p-6">
     <h2 class="font-semibold text-xl text-primary-content tracking-tight">
       {frontmatter.title}
     </h2>
-    {#if frontmatter.description}
-      <p class="text-primary-content/90 text-sm line-clamp-2">
-        {frontmatter.description}
-      </p>
-    {/if}
     <div class="flex flex-wrap items-center gap-2">
       {#each tags as tag}
         <span class="badge badge-primary badge-outline text-primary-content text-xs">

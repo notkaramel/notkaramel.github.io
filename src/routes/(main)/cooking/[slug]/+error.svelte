@@ -5,4 +5,4 @@
 
 <h1>Recipe not found</h1>
 <p>The recipe "{slug}" could not be found.</p>
-<a href="/cooking">Back to Recipes</a>
+<a href="/cooking" class="btn btn-primary btn-outline text-primary-content">Back to Cooking</a>

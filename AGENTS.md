@@ -22,7 +22,8 @@ Guidance for AI agents working on this codebase.
 ## Project Structure
 
 ```
-├── blogs/                    # Blog markdown files (flat: *.md)
+├── wiki/                     # Wiki markdown (technical docs, tutorials, guides); flat *.md
+├── blogs/                    # Blog markdown by topic: blogs/<topic>/<slug>.md
 ├── cooking/                  # Recipe markdown (nested: YYYY-MM/recipe-name/index.md)
 ├── src/
 │   ├── app.css               # Tailwind + DaisyUI themes + prose + font-faces
@@ -31,6 +32,7 @@ Guidance for AI agents working on this codebase.
 │   ├── lib/
 │   │   ├── index.ts          # Exports: routes
 │   │   ├── schemas.ts        # TypeScript types (aliased as @schemas)
+│   │   ├── markdown.ts       # TOC extraction + parse with heading IDs
 │   │   ├── newblog.ts        # CLI: bun run src/lib/newblog.ts
 │   │   ├── content/          # Static content modules
 │   │   │   ├── cv.ts         # CV data (academic, publications, work, skills)
@@ -41,10 +43,12 @@ Guidance for AI agents working on this codebase.
 │       ├── +page.svelte      # Home (portfolio/resume)
 │       ├── api/
 │       │   ├── blogs/+server.ts
+│       │   ├── wiki/+server.ts
 │       │   └── cooking/+server.ts, cooking/[...path]/+server.ts
 │       └── (main)/           # Layout group: Navbar + pt-16
 │           ├── +layout.svelte
-│           ├── blogs/        # Blog listing + [slug]
+│           ├── wiki/         # Wiki listing + [slug] (with TOC)
+│           ├── blogs/         # Blog listing + [slug]
 │           ├── cooking/      # Recipe listing + [slug]
 │           ├── music/        # MuseScore embeds
 │           └── projects/     # Project gallery
@@ -66,19 +70,21 @@ Guidance for AI agents working on this codebase.
 
 ### Content & Data
 
-- **Blogs**: Flat `.md` in `blogs/`. Frontmatter: `title`, `slug`, `description`, `date`, `lastUpdated`, `tags`.
+- **Wiki**: Flat `.md` in `wiki/`. Technical documentation, tutorials, guides. Same frontmatter shape as blogs. Wiki pages get a table of contents (TOC) from `##` and `###` headings.
+- **Blogs**: Nested by topic: `blogs/<topic>/<slug>.md` (e.g. `blogs/travel/`, `blogs/thoughts/`, `blogs/discussion/`). Frontmatter: `title`, `slug`, `description`, `date`, `lastUpdated`, `tags`, `categories`. API adds `topic` from folder name. Sorted by date.
 - **Recipes**: Nested `cooking/YYYY-MM/recipe-name/index.md`. Same frontmatter as blogs. Images referenced relatively; loaders rewrite paths to `/api/cooking/{recipeDir}/{imagePath}`.
 - **Static content**: `src/lib/content/*.ts` exports typed data (cv, projects, music).
 
 ### API Routes
 
-- `GET /api/blogs` — Reads `blogs/*.md`, returns `{ frontmatter, content }[]` sorted by date.
+- `GET /api/wiki` — Reads `wiki/*.md`, returns `{ frontmatter, content }[]`.
+- `GET /api/blogs` — Recursively finds `*.md` under `blogs/`, returns `{ frontmatter, content }[]` sorted by date; frontmatter includes `topic` from path.
 - `GET /api/cooking` — Recursively finds `index.md` in `cooking/`, returns `{ frontmatter, content, recipeDir }[]`.
 - `GET /api/cooking/[...path]` — Serves static files (images) from `cooking/` with path traversal protection.
 
 ### Schemas (`@schemas`)
 
-- `BlogFrontmatter`, `RecipeFrontmatter` — Same shape for blogs/recipes.
+- `BlogFrontmatter`, `WikiFrontmatter`, `RecipeFrontmatter` — Same shape for blogs/wiki/recipes. `BlogFrontmatter` has optional `topic` (from API path).
 - `Route` — `{ title, url, icon }` for nav.
 - `Project`, `AcademicRecord`, `Publication`, `ConferenceWorkshop`, `WorkExperience`, `Skill`, `Transcript`, `NewBlogAnswers`.
 
@@ -92,23 +98,24 @@ Guidance for AI agents working on this codebase.
 
 ### Components
 
-| Component            | Purpose                                                                                                                                     |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Navbar               | Fixed top nav, routes, mobile dropdown, ThemeSwapper                                                                                        |
-| ThemeSwapper         | Light/dark toggle (sun/moon icons)                                                                                                          |
-| SearchEngineOp       | SEO: title, description, canonical                                                                                                          |
-| ResumeSection        | Section wrapper with title + children                                                                                                       |
-| Dropdown             | Collapsible (collapse-arrow) for resume items                                                                                               |
-| general/\*Section    | SkillsSection, ProjectsSection, ExperienceSection, EducationSection, PublicationsSection, WorkshopsSection — content sections for home page |
-| BlogCard, RecipeCard | Card for listing blogs/recipes                                                                                                              |
-| ProjectCard          | Project card (featured only)                                                                                                                |
-| MuseScore            | MuseScore embed iframe                                                                                                                      |
-| Progress             | Vertical steps (checkpoints)                                                                                                                |
+| Component                      | Purpose                                                                                                                                     |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Navbar                         | Fixed top nav, routes, mobile dropdown, ThemeSwapper                                                                                        |
+| ThemeSwapper                   | Light/dark toggle (sun/moon icons)                                                                                                          |
+| SearchEngineOp                 | SEO: title, description, canonical                                                                                                          |
+| ResumeSection                  | Section wrapper with title + children                                                                                                       |
+| Dropdown                       | Collapsible (collapse-arrow) for resume items                                                                                               |
+| general/\*Section              | SkillsSection, ProjectsSection, ExperienceSection, EducationSection, PublicationsSection, WorkshopsSection — content sections for home page |
+| BlogCard, RecipeCard, WikiCard | Card for listing blogs/recipes/wiki                                                                                                         |
+| TableOfContents                | TOC for wiki article pages (h2/h3)                                                                                                          |
+| ProjectCard                    | Project card (featured only)                                                                                                                |
+| MuseScore                      | MuseScore embed iframe                                                                                                                      |
+| Progress                       | Vertical steps (checkpoints)                                                                                                                |
 
 ### Layouts
 
 - `(main)/+layout.svelte`: Navbar + `pt-16`, wraps all main routes.
-- `blogs/+layout.svelte`, `cooking/+layout.svelte`: Centered container for content.
+- `wiki/+layout.svelte`, `blogs/+layout.svelte`, `cooking/+layout.svelte`: Centered container for content.
 - Home (`+page.svelte`) does not use `(main)` layout; it imports Navbar directly and has its own gradient background.
 
 ## Scripts
@@ -123,13 +130,13 @@ bun run check        # svelte-check
 
 ## Vite Plugins
 
-- `watch-blogs`, `watch-cooking`: Vite dev server watches `blogs/` and `cooking/` for hot reload.
+- `watch-blogs`, `watch-wiki`, `watch-cooking`: Vite dev server watches `blogs/`, `wiki/`, and `cooking/` for hot reload.
 
 ## Creating a New Blog
 
 - Run `bun run new` (or `bun run src/lib/newblog.ts`).
-- Prompts: title, slug, description, tags, date.
-- Output: `blogs/{slug}.md` with frontmatter.
+- Put the new file in a topic folder: `blogs/<topic>/{slug}.md` (e.g. `blogs/thoughts/my-post.md`). Prompts: title, slug, description, tags, date.
+- Frontmatter: `title`, `slug`, `description`, `date`, `lastUpdated`, `tags`, `categories`.
 
 ## Creating a New Recipe
 
@@ -143,7 +150,7 @@ bun run check        # svelte-check
 ## Guidelines for AI Agents
 
 1. **Preserve existing patterns**: Use Svelte 5 runes, `@schemas` types, DaisyUI components.
-2. **Content paths**: Blogs in `blogs/`, recipes in `cooking/YYYY-MM/name/`.
+2. **Content paths**: Wiki in `wiki/`, blogs in `blogs/<topic>/`, recipes in `cooking/YYYY-MM/name/`.
 3. **SEO**: Add `SearchEngineOp` to new pages with title, description, canonical.
 4. **Styling**: Prefer DaisyUI classes (btn, badge, card, etc.) and semantic color tokens. Use **content colours** (`primary-content`, `secondary-content`, `accent-content`) for text, borders, and rings—they provide proper contrast with base colours and theme consistency across light/dark modes.
 5. **Imports**: Use `$lib`, `@app.css`, `@schemas` aliases.

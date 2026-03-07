@@ -18,6 +18,19 @@ export type BlogFrontmatter = {
   tags: string[];
   /** One or more of BLOG_CATEGORIES. Defaults to [] if missing. */
   categories?: BlogCategory[];
+  /** Topic folder name (e.g. travel, thoughts). Set by API from path. */
+  topic?: string;
+};
+
+/** Wiki articles: technical docs, tutorials, guides. Same frontmatter shape as blogs. */
+export type WikiFrontmatter = {
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  lastUpdated: string;
+  tags: string[];
+  categories?: string[];
 };
 
 export type RecipeFrontmatter = {
@@ -41,6 +54,7 @@ export type NewBlogAnswers = {
   description: string;
   tags: string[];
   categories: BlogCategory[];
+  topic: string; // folder under blogs/ e.g. travel, thoughts, discussion, misc
   date: string;
   lastUpdated: string;
 };
