@@ -15,12 +15,36 @@
   import "@app.css";
 
   const sections = [
-    { id: "projects",    label: "Projects",      icon: "◈" },
-    { id: "experience",  label: "Experience",     icon: "◉" },
-    { id: "education",   label: "Education",      icon: "◎" },
-    { id: "skills",      label: "Skills",         icon: "◇" },
-    { id: "publications",label: "Publications",   icon: "◆" },
-    { id: "workshops",   label: "Workshops",      icon: "◊" },
+    {
+      id: "projects",
+      label: "Projects",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="12" y1="2" x2="12" y2="22" stroke-dasharray="2 3"/></svg>`,
+    },
+    {
+      id: "experience",
+      label: "Experience",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/></svg>`,
+    },
+    {
+      id: "education",
+      label: "Education",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
+    },
+    {
+      id: "skills",
+      label: "Skills",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 1.8 14.1M4.93 19.07A10 10 0 0 1 4.93 4.93"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+    },
+    {
+      id: "publications",
+      label: "Publications",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="12" y2="15"/></svg>`,
+    },
+    {
+      id: "workshops",
+      label: "Workshops",
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="size-4 shrink-0"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h2l1 3 2-5 1 2h3"/></svg>`,
+    },
   ];
 
   let selected = $state(sections[0].id);
@@ -28,14 +52,17 @@
 
   onMount(() => {
     mounted = true;
+    // Avatar: scale + fade in from nothing, then idle float
     animate(".avatar-img", {
-      y: [
-        { to: "-2.75rem", ease: "outExpo", duration: 600 },
-        { to: 0, ease: "outBounce", duration: 800, delay: 100 },
-      ],
-      rotate: { from: "-1turn", delay: 0 },
-      ease: "inOutCirc",
-      loop: false,
+      scale: [{ from: 0.6, to: 1, ease: "outExpo", duration: 700 }],
+      opacity: [{ from: 0, to: 1, ease: "outQuad", duration: 500 }],
+    });
+    // Orbital ring: continuous slow spin
+    animate(".avatar-ring", {
+      rotate: [{ from: "0turn", to: "1turn" }],
+      ease: "linear",
+      duration: 8000,
+      loop: true,
     });
   });
 </script>
@@ -99,15 +126,28 @@
       <div class="flex flex-col lg:flex-row items-center lg:items-end gap-8">
 
         <!-- Avatar -->
-        <div class="relative shrink-0">
-          <!-- Ring glow using secondary for contrast against primary bg -->
+        <div class="relative shrink-0 flex items-center justify-center">
+          <!-- Slow-spinning orbital ring (dashed, secondary color) -->
           <div
-            class="absolute inset-0 rounded-full blur-xl opacity-60 scale-110 -z-10"
+            class="avatar-ring absolute rounded-full pointer-events-none"
+            style="
+              width: calc(100% + 28px);
+              height: calc(100% + 28px);
+              border: 2.5px dashed var(--color-secondary);
+              opacity: 0.85;
+              top: -14px;
+              left: -14px;
+            "
+            aria-hidden="true"
+          ></div>
+          <!-- Glow halo -->
+          <div
+            class="absolute inset-0 rounded-full blur-2xl opacity-50 scale-125 -z-10"
             style="background: var(--color-primary-content);"
           ></div>
           <div
             class="w-36 h-36 lg:w-44 lg:h-44 avatar rounded-full shadow-2xl"
-            style="outline: 4px solid var(--color-primary-content); outline-offset: 4px;"
+            style="outline: 3px solid var(--color-secondary); outline-offset: 3px;"
           >
             <img
               class="avatar-img rounded-full w-full h-full object-cover"
@@ -119,9 +159,6 @@
 
         <!-- Bio -->
         <div class="flex-1 text-center lg:text-left">
-          <p class="text-xs font-bold tracking-[0.25em] uppercase text-primary-content/70 mb-2">
-            Portfolio &amp; Digital Garden
-          </p>
           <h1 class="text-4xl lg:text-5xl font-bold text-primary-content mb-3 text-balance drop-shadow-sm">
             Antoine Phan
           </h1>
@@ -193,12 +230,20 @@
                 transition-all duration-200 cursor-pointer
                 {selected === item.id
                   ? 'bg-primary-content text-primary shadow-md shadow-primary-content/20 scale-[1.02] font-bold'
-                  : 'text-base-content/70 hover:bg-primary/15 hover:text-primary-content border border-transparent hover:border-primary/30'}"
+                  : 'text-base-content/70 hover:bg-accent/20 hover:text-accent-content border border-transparent hover:border-accent/40'}"
             >
-              <span class="text-base leading-none opacity-70 group-hover:opacity-100 transition-opacity" aria-hidden="true">{item.icon}</span>
+              <span
+                class="flex items-center justify-center w-6 h-6 rounded-md shrink-0 transition-colors
+                  {selected === item.id
+                    ? 'text-primary'
+                    : 'text-base-content/50 group-hover:text-accent-content'}"
+                aria-hidden="true"
+              >
+                {@html item.svg}
+              </span>
               <span>{item.label}</span>
               {#if selected === item.id}
-                <span class="ml-auto opacity-50 hidden lg:inline" aria-hidden="true">›</span>
+                <span class="ml-auto opacity-40 hidden lg:inline" aria-hidden="true">›</span>
               {/if}
             </button>
           {/each}
@@ -207,17 +252,23 @@
 
       <!-- Main content panel -->
       <article class="min-w-0">
-        <!-- Section header: primary color accent bar + icon + title -->
-        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
+        <!-- Section header: secondary border, accent icon badge, primary title -->
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-secondary">
           <span
-            class="flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-primary-content text-lg font-bold shadow-sm"
+            class="flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-primary-content shadow-sm"
             aria-hidden="true"
           >
-            {sections.find((s) => s.id === selected)?.icon ?? ""}
+            {@html sections.find((s) => s.id === selected)?.svg ?? ""}
           </span>
           <h2 class="text-2xl font-bold text-primary-content">
             {sections.find((s) => s.id === selected)?.label ?? selected}
           </h2>
+          <!-- small accent dot row for decoration -->
+          <div class="flex items-center gap-1 ml-2 opacity-60" aria-hidden="true">
+            <span class="w-2 h-2 rounded-full bg-secondary inline-block"></span>
+            <span class="w-1.5 h-1.5 rounded-full bg-accent inline-block"></span>
+            <span class="w-1 h-1 rounded-full bg-primary-content/40 inline-block"></span>
+          </div>
         </div>
 
         <!-- Section content with transition -->
