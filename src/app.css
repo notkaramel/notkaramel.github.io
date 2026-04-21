@@ -16,26 +16,32 @@
   default: true;
   prefersdark: false;
   color-scheme: "light";
-  --color-base-100: oklch(98% 0 0);
-  --color-base-200: oklch(97% 0 0);
-  --color-base-300: oklch(92% 0 0);
-  --color-base-content: oklch(14% 0 0);
-  --color-primary: oklch(87% 0.065 274.039);
-  --color-primary-content: oklch(35% 0.144 278.697);
-  --color-secondary: oklch(92% 0.12 95.746);
-  --color-secondary-content: oklch(41% 0.112 45.904);
-  --color-accent: oklch(90% 0.093 164.15);
-  --color-accent-content: oklch(26% 0.051 172.552);
-  --color-neutral: oklch(98% 0.003 247.858);
-  --color-neutral-content: oklch(12% 0.042 264.695);
-  --color-info: oklch(88% 0.059 254.128);
-  --color-info-content: oklch(37% 0.146 265.522);
-  --color-success: oklch(84.5% 0.143 164.978);
-  --color-success-content: oklch(39% 0.095 152.535);
-  --color-warning: oklch(90% 0.076 70.697);
-  --color-warning-content: oklch(40% 0.123 38.172);
-  --color-error: oklch(80% 0.114 19.571);
-  --color-error-content: oklch(39% 0.141 25.723);
+  /* Soft warm white backgrounds */
+  --color-base-100: oklch(98.5% 0.005 80);
+  --color-base-200: oklch(96% 0.008 80);
+  --color-base-300: oklch(92% 0.012 80);
+  --color-base-content: oklch(28% 0.025 265);
+  /* Pastel periwinkle-lavender primary */
+  --color-primary: oklch(84% 0.07 274);
+  --color-primary-content: oklch(30% 0.12 270);
+  /* Pastel butter-yellow secondary */
+  --color-secondary: oklch(91% 0.09 90);
+  --color-secondary-content: oklch(38% 0.10 52);
+  /* Pastel mint-sage accent */
+  --color-accent: oklch(88% 0.08 163);
+  --color-accent-content: oklch(28% 0.06 168);
+  /* Neutral */
+  --color-neutral: oklch(95% 0.005 250);
+  --color-neutral-content: oklch(22% 0.035 265);
+  /* Status colours – all softened */
+  --color-info: oklch(87% 0.055 250);
+  --color-info-content: oklch(32% 0.13 260);
+  --color-success: oklch(87% 0.10 155);
+  --color-success-content: oklch(34% 0.09 155);
+  --color-warning: oklch(91% 0.07 72);
+  --color-warning-content: oklch(38% 0.11 45);
+  --color-error: oklch(84% 0.09 20);
+  --color-error-content: oklch(36% 0.13 26);
   --radius-selector: 0.25rem;
   --radius-field: 0.5rem;
   --radius-box: 0.5rem;
@@ -51,26 +57,32 @@
   default: false;
   prefersdark: false;
   color-scheme: "dark";
-  --color-base-100: oklch(26% 0 0);
-  --color-base-200: oklch(20% 0 0);
-  --color-base-300: oklch(14% 0 0) s;
-  --color-base-content: oklch(97% 0 0);
-  --color-primary: oklch(50% 0.134 242.749);
-  --color-primary-content: oklch(97% 0.013 236.62);
-  --color-secondary: oklch(43% 0.095 166.913);
-  --color-secondary-content: oklch(97% 0.021 166.113);
-  --color-accent: oklch(55.5% 0.163 48.998);
-  --color-accent-content: oklch(96.2% 0.059 95.617);
-  --color-neutral: oklch(37.1% 0 0);
-  --color-neutral-content: oklch(97% 0.001 106.424);
-  --color-info: oklch(60% 0.126 221.723);
-  --color-info-content: oklch(98% 0.019 200.873);
-  --color-success: oklch(62% 0.194 149.214);
-  --color-success-content: oklch(98% 0.018 155.826);
-  --color-warning: oklch(55% 0.195 38.402);
-  --color-warning-content: oklch(96% 0.059 95.617);
-  --color-error: oklch(51% 0.222 16.935);
-  --color-error-content: oklch(96% 0.015 12.422);
+  /* Soft dark backgrounds with a warm undertone */
+  --color-base-100: oklch(27% 0.01 250);
+  --color-base-200: oklch(22% 0.01 250);
+  --color-base-300: oklch(17% 0.01 250);
+  --color-base-content: oklch(92% 0.008 240);
+  /* Dusty periwinkle-blue primary — softer/more muted than before */
+  --color-primary: oklch(62% 0.10 242);
+  --color-primary-content: oklch(95% 0.014 236);
+  /* Soft sage-teal secondary */
+  --color-secondary: oklch(56% 0.075 165);
+  --color-secondary-content: oklch(95% 0.020 166);
+  /* Muted warm amber accent */
+  --color-accent: oklch(65% 0.115 52);
+  --color-accent-content: oklch(18% 0.04 60);
+  /* Neutral */
+  --color-neutral: oklch(38% 0.008 250);
+  --color-neutral-content: oklch(92% 0.005 240);
+  /* Status colours – gentler chroma */
+  --color-info: oklch(65% 0.095 222);
+  --color-info-content: oklch(97% 0.018 200);
+  --color-success: oklch(66% 0.13 150);
+  --color-success-content: oklch(97% 0.016 155);
+  --color-warning: oklch(67% 0.13 48);
+  --color-warning-content: oklch(18% 0.04 55);
+  --color-error: oklch(62% 0.15 18);
+  --color-error-content: oklch(97% 0.014 12);
   --radius-selector: 0.25rem;
   --radius-field: 1rem;
   --radius-box: 0.5rem;
