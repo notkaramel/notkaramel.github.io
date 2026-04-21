@@ -49,28 +49,66 @@
 <Navbar />
 
 <main class="min-h-screen pt-16 bg-base-100">
-  <!-- Hero strip -->
-  <div class="relative overflow-hidden border-b border-primary/20">
-    <!-- subtle mesh background -->
+
+  <!-- SVG noise filter definition (hidden) -->
+  <svg class="absolute w-0 h-0 overflow-hidden" aria-hidden="true">
+    <filter id="hero-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="saturate" values="0" />
+      <feBlend in="SourceGraphic" mode="overlay" result="blend" />
+      <feComposite in="blend" in2="SourceGraphic" operator="in" />
+    </filter>
+  </svg>
+
+  <!-- ─── Hero ─────────────────────────────────────────────────────────────── -->
+  <div class="relative overflow-hidden bg-primary border-b-4 border-primary-content/20">
+
+    <!-- Diagonal line texture overlay -->
     <div
-      class="absolute inset-0 -z-10
-        bg-linear-to-br from-primary/30 via-secondary/20 to-accent/20
-        [mask-image:radial-gradient(ellipse_at_top_left,black_40%,transparent_80%)]"
-    ></div>
-    <!-- dot-grid overlay -->
-    <div
-      class="absolute inset-0 -z-10 opacity-30"
-      style="background-image: radial-gradient(circle, oklch(50% 0.1 260) 1px, transparent 1px); background-size: 24px 24px;"
+      class="absolute inset-0 opacity-[0.07] pointer-events-none"
+      style="background-image: repeating-linear-gradient(
+        -45deg,
+        var(--color-primary-content) 0px,
+        var(--color-primary-content) 1px,
+        transparent 1px,
+        transparent 18px
+      );"
+      aria-hidden="true"
     ></div>
 
-    <div class="w-full px-6 py-12 md:w-4/5 md:mx-auto lg:py-16">
+    <!-- Noise grain overlay -->
+    <div
+      class="absolute inset-0 opacity-[0.12] pointer-events-none"
+      style="filter: url(#hero-noise); background: var(--color-primary-content);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Accent color blobs for depth -->
+    <div
+      class="absolute -top-24 -right-24 w-80 h-80 rounded-full pointer-events-none opacity-20"
+      style="background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);"
+      aria-hidden="true"
+    ></div>
+    <div
+      class="absolute -bottom-16 -left-16 w-64 h-64 rounded-full pointer-events-none opacity-15"
+      style="background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);"
+      aria-hidden="true"
+    ></div>
+
+    <div class="relative w-full px-6 py-12 md:w-4/5 md:mx-auto lg:py-16">
       <div class="flex flex-col lg:flex-row items-center lg:items-end gap-8">
+
         <!-- Avatar -->
         <div class="relative shrink-0">
+          <!-- Ring glow using secondary for contrast against primary bg -->
           <div
-            class="absolute inset-0 rounded-full blur-2xl bg-primary/40 scale-110 -z-10"
+            class="absolute inset-0 rounded-full blur-xl opacity-60 scale-110 -z-10"
+            style="background: var(--color-primary-content);"
           ></div>
-          <div class="w-36 h-36 lg:w-44 lg:h-44 avatar ring ring-primary ring-offset-base-100 ring-offset-4 rounded-full shadow-2xl shadow-primary/30">
+          <div
+            class="w-36 h-36 lg:w-44 lg:h-44 avatar rounded-full shadow-2xl"
+            style="outline: 4px solid var(--color-primary-content); outline-offset: 4px;"
+          >
             <img
               class="avatar-img rounded-full w-full h-full object-cover"
               src="https://avatars.githubusercontent.com/u/24505220?v=4"
@@ -81,32 +119,34 @@
 
         <!-- Bio -->
         <div class="flex-1 text-center lg:text-left">
-          <p class="text-sm font-semibold tracking-widest uppercase text-primary-content/60 mb-1">
+          <p class="text-xs font-bold tracking-[0.25em] uppercase text-primary-content/70 mb-2">
             Portfolio &amp; Digital Garden
           </p>
-          <h1 class="text-4xl lg:text-5xl font-bold text-primary-content mb-3 text-balance">
+          <h1 class="text-4xl lg:text-5xl font-bold text-primary-content mb-3 text-balance drop-shadow-sm">
             Antoine Phan
           </h1>
-          <p class="text-base text-base-content/80 leading-relaxed max-w-xl text-pretty">
-            Linux enthusiast, cats lover, <code class="text-primary-content font-mono bg-primary/20 px-1.5 py-0.5 rounded text-sm">Neovim</code> &amp; split keyboard devotee.
+          <p class="text-base text-primary-content/85 leading-relaxed max-w-xl text-pretty">
+            Linux enthusiast, cats lover,
+            <code class="font-mono bg-primary-content/20 text-primary-content px-1.5 py-0.5 rounded text-sm border border-primary-content/30">Neovim</code>
+            &amp; split keyboard devotee.
             Side-questing through tech &amp; building fun stuff.
             Oh, and I make bread sometimes&nbsp;🍞
           </p>
 
-          <!-- Social links -->
-          <div class="flex gap-3 mt-5 justify-center lg:justify-start" aria-label="Social links">
+          <!-- Social links: inverted (primary-content bg, primary text) for strong contrast on colored hero -->
+          <div class="flex gap-3 mt-6 justify-center lg:justify-start flex-wrap" aria-label="Social links">
             {#each social as link}
               <a
                 href={link.url}
                 target="_blank"
                 rel="noreferrer"
                 aria-label={link.ariaLabel}
-                class="group flex items-center gap-2 px-3 py-2 rounded-lg
-                  border border-primary/30 bg-primary/10
-                  hover:bg-primary/20 hover:border-primary
-                  text-primary-content text-sm font-medium
-                  transition-all duration-200 hover:shadow-md hover:shadow-primary/20
-                  hover:-translate-y-0.5"
+                class="group flex items-center gap-2 px-4 py-2 rounded-lg
+                  bg-primary-content text-primary
+                  hover:bg-primary-content/90
+                  text-sm font-bold
+                  transition-all duration-200 shadow-md
+                  hover:shadow-lg hover:-translate-y-0.5 hover:scale-[1.03]"
               >
                 {#if link.name === "GitHub"}
                   <svg class="size-4 fill-current shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -132,13 +172,13 @@
     </div>
   </div>
 
-  <!-- Content area -->
+  <!-- ─── Content area ──────────────────────────────────────────────────────── -->
   <div class="w-full px-4 py-8 md:w-4/5 md:mx-auto md:px-6 lg:py-10">
     <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-8 lg:gap-10">
 
       <!-- Sidebar nav -->
       <aside class="lg:sticky lg:top-24 lg:self-start">
-        <p class="text-xs font-semibold tracking-widest uppercase text-base-content/40 mb-3 px-1 hidden lg:block">
+        <p class="text-xs font-bold tracking-[0.2em] uppercase text-base-content/40 mb-3 px-1 hidden lg:block">
           Navigate
         </p>
         <nav
@@ -152,13 +192,13 @@
               class="group flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium w-auto lg:w-full text-left
                 transition-all duration-200 cursor-pointer
                 {selected === item.id
-                  ? 'bg-primary text-primary-content shadow-md shadow-primary/30 scale-[1.02]'
-                  : 'text-base-content/70 hover:bg-primary/10 hover:text-primary-content border border-transparent hover:border-primary/20'}"
+                  ? 'bg-primary-content text-primary shadow-md shadow-primary-content/20 scale-[1.02] font-bold'
+                  : 'text-base-content/70 hover:bg-primary/15 hover:text-primary-content border border-transparent hover:border-primary/30'}"
             >
               <span class="text-base leading-none opacity-70 group-hover:opacity-100 transition-opacity" aria-hidden="true">{item.icon}</span>
               <span>{item.label}</span>
               {#if selected === item.id}
-                <span class="ml-auto text-primary-content/60 hidden lg:inline">›</span>
+                <span class="ml-auto opacity-50 hidden lg:inline" aria-hidden="true">›</span>
               {/if}
             </button>
           {/each}
@@ -167,15 +207,17 @@
 
       <!-- Main content panel -->
       <article class="min-w-0">
-        <!-- Section header -->
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-2xl" aria-hidden="true">
+        <!-- Section header: primary color accent bar + icon + title -->
+        <div class="flex items-center gap-3 mb-6 pb-4 border-b-2 border-primary">
+          <span
+            class="flex items-center justify-center w-9 h-9 rounded-lg bg-primary text-primary-content text-lg font-bold shadow-sm"
+            aria-hidden="true"
+          >
             {sections.find((s) => s.id === selected)?.icon ?? ""}
           </span>
           <h2 class="text-2xl font-bold text-primary-content">
             {sections.find((s) => s.id === selected)?.label ?? selected}
           </h2>
-          <div class="flex-1 h-px bg-primary/20 ml-2"></div>
         </div>
 
         <!-- Section content with transition -->
