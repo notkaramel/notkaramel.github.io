@@ -289,6 +289,51 @@ body {
     @apply w-full;
   }
 
+  /* Wrap tables in a scrollable container on small screens */
+  .table-wrapper {
+    @apply w-full overflow-x-auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-base-200);
+  }
+
+  .table-wrapper::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-track {
+    background: var(--color-base-200);
+    border-radius: 2px;
+  }
+
+  .table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 640px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      width: 100%;
+      scrollbar-width: thin;
+      scrollbar-color: var(--color-primary) var(--color-base-200);
+    }
+
+    table::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    table::-webkit-scrollbar-track {
+      background: var(--color-base-200);
+      border-radius: 2px;
+    }
+
+    table::-webkit-scrollbar-thumb {
+      background: var(--color-primary);
+      border-radius: 2px;
+    }
+  }
+
   thead {
     @apply border-b-2 border-primary-content;
   }
