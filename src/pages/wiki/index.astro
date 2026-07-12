@@ -1,0 +1,108 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const pages = await getCollection("wiki", ({ data }) => !data.draft);
+pages.sort(
+  (a, b) =>
+    a.data.category.localeCompare(b.data.category) ||
+    a.data.order - b.data.order ||
+    a.id.localeCompare(b.id),
+);
+
+const groups = new Map<string, typeof pages>();
+for (const p of pages) {
+  const g = groups.get(p.data.category) ?? [];
+  g.push(p);
+  groups.set(p.data.category, g);
+}
+---
+
+<BaseLayout
+  title="Wiki"
+  description="Practical notes: Linux, networking, and learning paths without hype."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Wiki</h1>
+      <p class="lede">
+        Short, repair-focused articles. Start anywhere—each page links sideways to
+        siblings in the same category.
+      </p>
+    </header>
+    <div class="groups">
+      {
+        [...groups.entries()].map(([cat, items]) => (
+          <section class="surface block">
+            <h2>{cat}</h2>
+            <ul>
+              {items.map((item) => (
+                <li>
+                  <a href={`/wiki/${item.id}`}>{item.data.title}</a>
+                  <p class="desc">{item.data.description}</p>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .page-head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .lede {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+
+  .groups {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .block {
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  h2 {
+    margin: 0 0 var(--space-m);
+    font-family: var(--font-display);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  a {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 650;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+  }
+
+  .desc {
+    margin: var(--space-xs) 0 0;
+    color: var(--color-muted);
+  }
+</style>

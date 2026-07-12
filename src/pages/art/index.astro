@@ -1,0 +1,86 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Art"
+  description="Music from MuseScore and a photography gallery—placeholders until your media ships."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Art</h1>
+      <p class="lede">
+        Two rooms: scores you can hear (via embeds) and photographs that load lazily
+        so the rest of the site stays light.
+      </p>
+    </header>
+    <div class="cards">
+      <a class="card surface" href="/art/music">
+        <h2>Music</h2>
+        <p>MuseScore embeds and short liner notes.</p>
+        <span class="cta">Open →</span>
+      </a>
+      <a class="card surface" href="/art/gallery">
+        <h2>Gallery</h2>
+        <p>Portraits, landscapes, and odd experiments—responsive images.</p>
+        <span class="cta">Open →</span>
+      </a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .page-head {
+    margin-bottom: var(--space-xl);
+    max-width: 48rem;
+  }
+
+  .lede {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-m);
+  }
+
+  .card {
+    text-decoration: none;
+    color: inherit;
+    border-radius: calc(var(--radius) + 6px);
+    display: grid;
+    gap: var(--space-s);
+    padding: var(--space-l);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px color-mix(in oklab, var(--color-ink) 10%, transparent);
+  }
+
+  h2 {
+    margin: 0;
+    font-family: var(--font-display);
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .cta {
+    margin-top: var(--space-s);
+    font-weight: 800;
+    color: var(--color-link);
+  }
+</style>

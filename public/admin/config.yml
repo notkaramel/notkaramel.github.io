@@ -1,0 +1,134 @@
+# Decap CMS — keep fields in sync with src/content.config.ts (Zod).
+# GitHub auth needs an OAuth proxy; see README.md and Agents.md.
+#
+# Replace repo / branch / URLs if yours differ. Uncomment base_url after you
+# deploy an OAuth proxy (e.g. https://github.com/sterlingwes/decap-proxy).
+
+backend:
+  name: github
+  repo: notkaramel/notkaramel.github.io
+  branch: main
+  site_url: https://notkaramel.github.io
+  # Required for GitHub Pages (no Netlify): set to your OAuth worker origin.
+  # base_url: https://your-decap-oauth-proxy.example.workers.dev
+
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: post
+    folder: src/content/blog
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Publish date, name: pubDate, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Audio (optional URL), name: audio, widget: string, required: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: wiki
+    label: Wiki
+    label_singular: page
+    folder: src/content/wiki
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: Linux, value: linux }
+          - { label: Networking, value: networking }
+          - { label: Learning, value: learning }
+      - { label: Order, name: order, widget: number, default: 0, value_type: int, min: 0, step: 1 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: projects
+    label: Projects
+    label_singular: project
+    folder: src/content/projects
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: GitHub URL, name: github, widget: string }
+      - { label: Demo URL (optional), name: demoUrl, widget: string, required: false }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Order, name: order, widget: number, default: 0, value_type: int, min: 0, step: 1 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: experience
+    label: Experience
+    label_singular: entry
+    folder: src/content/experience
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Kind
+        name: kind
+        widget: select
+        options:
+          - { label: Work, value: work }
+          - { label: Education, value: education }
+          - { label: Teaching, value: teaching }
+          - { label: Research, value: research }
+          - { label: Publication, value: publication }
+          - { label: Workshop, value: workshop }
+      - { label: Organization, name: org, widget: string }
+      - { label: Location (optional), name: location, widget: string, required: false }
+      - { label: Start date, name: startDate, widget: string, hint: "e.g. 2022-04 or 2019-09" }
+      - { label: End date (optional), name: endDate, widget: string, required: false, hint: "e.g. 2022-03 or present" }
+      - { label: Order, name: order, widget: number, default: 0, value_type: int, min: 0, step: 1 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: art
+    label: Art (gallery)
+    label_singular: piece
+    folder: src/content/art
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    identifier_field: title
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Caption, name: caption, widget: text }
+      - { label: Alt text, name: alt, widget: string }
+      - label: Image path
+        name: image
+        widget: string
+        hint: "Public URL path, e.g. /media/placeholders/foo.svg or /uploads/photo.webp (upload via Media, then paste path)"
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: Portrait, value: portrait }
+          - { label: Landscape, value: landscape }
+          - { label: Other, value: other }
+      - { label: Order, name: order, widget: number, default: 0, value_type: int, min: 0, step: 1 }
+      - { label: Draft, name: draft, widget: boolean, default: false }
+      - { label: Body (optional), name: body, widget: markdown, required: false }

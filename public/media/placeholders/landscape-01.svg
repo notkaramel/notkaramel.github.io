@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img" aria-label="Landscape placeholder">
+  <defs>
+    <linearGradient id="horizon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#bfe8ff"/>
+      <stop offset="0.55" stop-color="#cdeee9"/>
+      <stop offset="1" stop-color="#f6d7c5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#horizon)"/>
+  <path fill="#7ec8c3" opacity="0.55" d="M0 520c220-120 380-40 520 40s280 40 420-20 200-120 260-180v390H0z"/>
+  <path fill="#9ec5fe" opacity="0.55" d="M0 420c180 40 360-20 520-80s360-40 520 20 160 100 160 100v310H0z"/>
+  <circle cx="980" cy="160" r="70" fill="#ffd8bf" opacity="0.9"/>
+</svg>

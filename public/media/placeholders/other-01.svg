@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Still life placeholder">
+  <rect width="900" height="900" fill="#f4f8fb"/>
+  <rect x="120" y="520" width="520" height="220" rx="26" fill="#f3b28c" opacity="0.55" transform="rotate(-6 380 630)"/>
+  <circle cx="520" cy="320" r="150" fill="#9ec5fe" opacity="0.7"/>
+  <rect x="260" y="240" width="220" height="320" rx="24" fill="#7ec8c3" opacity="0.45" transform="rotate(8 370 400)"/>
+  <path d="M140 760h620" stroke="#1f2a33" stroke-opacity="0.12" stroke-width="10" stroke-linecap="round"/>
+</svg>

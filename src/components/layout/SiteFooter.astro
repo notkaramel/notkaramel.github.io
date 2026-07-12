@@ -1,0 +1,56 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="inner">
+    <p class="muted">
+      Built with <a href="https://astro.build">Astro</a>. Content lives in{" "}
+      <code>src/content/</code>
+      · <a class="edit" href="/admin/">Edit content</a>
+    </p>
+    <p class="muted">© {year} notkaramel</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: var(--space-xl);
+    padding: var(--space-l) var(--space-m);
+    border-top: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+    background: linear-gradient(
+      180deg,
+      transparent,
+      color-mix(in oklab, var(--color-primary) 12%, white)
+    );
+  }
+
+  .inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .muted {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  code {
+    font-size: 0.95em;
+  }
+
+  .edit {
+    color: inherit;
+    font-weight: 600;
+  }
+
+  .edit:hover {
+    color: var(--color-link);
+  }
+</style>

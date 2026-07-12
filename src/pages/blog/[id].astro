@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Prose from "@/components/ui/Prose.astro";
+
+export async function getStaticPaths() {
+  const items = await getCollection("blog", ({ data }) => !data.draft);
+  return items.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="wrap">
+    <header class="head">
+      <p class="kicker">Blog</p>
+      <h1>{post.data.title}</h1>
+      <p class="meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {
+            post.data.pubDate.toLocaleDateString(undefined, {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </time>
+        ·
+        <span>{post.data.tags.join(", ")}</span>
+      </p>
+      {
+        post.data.audio && (
+          <figure class="audio surface">
+            <figcaption>Voice note (placeholder URL)</figcaption>
+            <audio controls preload="none" src={post.data.audio}>
+              Your browser does not support the audio element.
+            </audio>
+          </figure>
+        )
+      }
+    </header>
+    <Prose>
+      <Content />
+    </Prose>
+  </article>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .kicker {
+    margin: 0 0 var(--space-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: var(--step--1);
+    color: var(--color-muted);
+  }
+
+  .meta {
+    margin: 0 0 var(--space-l);
+    color: var(--color-muted);
+  }
+
+  .audio {
+    margin: 0 0 var(--space-l);
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  figcaption {
+    margin-bottom: var(--space-s);
+    font-weight: 650;
+  }
+</style>

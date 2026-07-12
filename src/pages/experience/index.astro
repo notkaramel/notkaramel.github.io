@@ -1,0 +1,107 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ExperienceEntry from "@/components/experience/ExperienceEntry.astro";
+
+const items = await getCollection("experience", ({ data }) => !data.draft);
+items.sort((a, b) => a.data.order - b.data.order);
+
+const order = [
+  "work",
+  "education",
+  "teaching",
+  "research",
+  "publication",
+  "workshop",
+] as const;
+
+const labels: Record<(typeof order)[number], string> = {
+  work: "Work",
+  education: "Education",
+  teaching: "Teaching",
+  research: "Research",
+  publication: "Publications",
+  workshop: "Workshops",
+};
+
+const grouped = new Map<string, typeof items>();
+for (const k of order) grouped.set(k, []);
+for (const it of items) {
+  const bucket = grouped.get(it.data.kind) ?? [];
+  bucket.push(it);
+  grouped.set(it.data.kind, bucket);
+}
+---
+
+<BaseLayout
+  title="Experience"
+  description="Work, teaching, research, publications, and workshops—resume-shaped, site-native."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Experience</h1>
+      <p class="lede">
+        Structured data lives in <code>src/content/experience/</code>. Replace
+        placeholders with your real CV material whenever you like.
+      </p>
+    </header>
+
+    <div class="timeline">
+      {
+        order.map((kind) => {
+          const list = grouped.get(kind) ?? [];
+          if (list.length === 0) return null;
+          return (
+            <section class="lane">
+              <h2>{labels[kind]}</h2>
+              <ol class="entries">
+                {list.map((it) => (
+                  <ExperienceEntry entry={it} />
+                ))}
+              </ol>
+            </section>
+          );
+        })
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 56rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .page-head {
+    margin-bottom: var(--space-xl);
+    max-width: 52rem;
+  }
+
+  .lede {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+
+  .timeline {
+    display: grid;
+    gap: var(--space-xl);
+  }
+
+  .lane h2 {
+    margin: 0 0 var(--space-m);
+    font-family: var(--font-display);
+  }
+
+  .entries {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-m);
+    border-left: 3px solid color-mix(in oklab, var(--color-secondary) 55%, white);
+    padding-left: var(--space-m);
+  }
+</style>

@@ -1,0 +1,88 @@
+---
+const path = Astro.url.pathname;
+const links = [
+  { href: "/projects", label: "Projects" },
+  { href: "/art", label: "Art" },
+  { href: "/experience", label: "Experience" },
+  { href: "/blog", label: "Blog" },
+  { href: "/wiki", label: "Wiki" },
+];
+
+function active(href: string) {
+  if (href === "/") return path === "/";
+  return path === href || path.startsWith(`${href}/`);
+}
+---
+
+<header class="header">
+  <div class="inner">
+    <a class="brand" href="/" transition:name="brand">notkaramel</a>
+    <nav class="nav" aria-label="Primary">
+      {
+        links.map((l) => (
+          <a
+            class:list={["nav-link", { "is-active": active(l.href) }]}
+            href={l.href}
+          >
+            {l.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    background: color-mix(in oklab, var(--color-bg) 88%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+  }
+
+  .inner {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-s) var(--space-m);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-m);
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: var(--font-display);
+    font-size: var(--step-1);
+    font-weight: 650;
+    text-decoration: none;
+    color: var(--color-ink);
+    letter-spacing: -0.03em;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+  }
+
+  .nav-link {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--color-muted);
+    padding: 0.25rem 0.35rem;
+    border-radius: 8px;
+  }
+
+  .nav-link:hover {
+    color: var(--color-ink);
+    background: color-mix(in oklab, var(--color-primary) 35%, white);
+  }
+
+  .nav-link.is-active {
+    color: var(--color-ink);
+    background: color-mix(in oklab, var(--color-secondary) 28%, white);
+  }
+</style>

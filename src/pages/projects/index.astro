@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const projects = await getCollection("projects", ({ data }) => !data.draft);
+projects.sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id));
+---
+
+<BaseLayout
+  title="Projects"
+  description="Selected software projects with GitHub links and optional live demos."
+>
+  <div class="wrap">
+    <header class="page-head">
+      <h1>Projects</h1>
+      <p class="lede">
+        Mostly web-shaped experiments. Each card links to a longer write-up; GitHub
+        stays the source of truth for code.
+      </p>
+    </header>
+    <ul class="grid">
+      {
+        projects.map((p) => (
+          <li class="card surface">
+            <a class="card-title" href={`/projects/${p.id}`}>
+              {p.data.title}
+            </a>
+            <p class="desc">{p.data.description}</p>
+            <div class="cluster">
+              {p.data.tags.map((t) => (
+                <span class="tag">{t}</span>
+              ))}
+            </div>
+            <div class="links">
+              <a href={p.data.github}>GitHub</a>
+              {p.data.demoUrl && (
+                <a href={p.data.demoUrl} rel="noreferrer">
+                  Demo
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .page-head {
+    max-width: 52rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .lede {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--space-m);
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-s);
+    align-items: flex-start;
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .card-title:hover {
+    color: var(--color-link-hover);
+  }
+
+  .desc {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .links {
+    display: flex;
+    gap: var(--space-m);
+    margin-top: auto;
+    font-weight: 650;
+  }
+</style>

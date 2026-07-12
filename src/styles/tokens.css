@@ -1,0 +1,26 @@
+:root {
+  --color-bg: #f4f8fb;
+  --color-surface: #ffffff;
+  --color-ink: #1f2a33;
+  --color-muted: #4a5c6a;
+  --color-primary: #9ec5fe;
+  --color-primary-strong: #6aa6f0;
+  --color-secondary: #7ec8c3;
+  --color-accent: #f3b28c;
+  --color-link: #2b6cb0;
+  --color-link-hover: #1e4e82;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --space-xs: 0.35rem;
+  --space-s: 0.6rem;
+  --space-m: 1rem;
+  --space-l: 1.6rem;
+  --space-xl: 2.4rem;
+  --radius: 14px;
+  --step--1: 0.9rem;
+  --step-0: 1.05rem;
+  --step-1: 1.2rem;
+  --step-2: clamp(1.35rem, 1.1rem + 0.8vw, 1.65rem);
+  --step-3: clamp(1.65rem, 1.2rem + 1.6vw, 2.1rem);
+  --step-4: clamp(2rem, 1.2rem + 2.6vw, 2.85rem);
+}

@@ -1,0 +1,26 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Not found" description="That page is missing.">
+  <div class="wrap">
+    <h1>404</h1>
+    <p class="lede">No page here—try the tiles on the home page or the header links.</p>
+    <p>
+      <a href="/">Go home</a>
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .lede {
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+</style>

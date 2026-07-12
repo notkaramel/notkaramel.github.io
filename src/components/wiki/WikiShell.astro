@@ -1,0 +1,145 @@
+---
+interface WikiEntry {
+  id: string;
+  data: {
+    title: string;
+    category: string;
+    order: number;
+  };
+}
+
+interface Props {
+  entries: WikiEntry[];
+  currentId: string;
+}
+
+const { entries, currentId } = Astro.props;
+
+const sorted = [...entries].sort(
+  (a, b) =>
+    a.data.category.localeCompare(b.data.category) ||
+    a.data.order - b.data.order ||
+    a.id.localeCompare(b.id),
+);
+
+const groups = new Map<string, WikiEntry[]>();
+for (const e of sorted) {
+  const g = groups.get(e.data.category) ?? [];
+  g.push(e);
+  groups.set(e.data.category, g);
+}
+---
+
+<div class="shell">
+  <aside class="sidebar surface" aria-label="Wiki articles">
+    <p class="side-title">Wiki</p>
+    <nav class="nav">
+      {
+        [...groups.entries()].map(([cat, items]) => (
+          <div class="group">
+            <p class="cat">{cat}</p>
+            <ul>
+              {items.map((item) => (
+                <li>
+                  <a
+                    class:list={["side-link", { active: item.id === currentId }]}
+                    href={`/wiki/${item.id}`}
+                  >
+                    {item.data.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+  </aside>
+  <div class="main">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .shell {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+    display: grid;
+    grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+    gap: var(--space-l);
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .shell {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 4.5rem;
+    border-radius: calc(var(--radius) + 4px);
+  }
+
+  @media (max-width: 900px) {
+    .sidebar {
+      position: static;
+    }
+  }
+
+  .side-title {
+    margin: 0 0 var(--space-s);
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+  }
+
+  .nav {
+    display: grid;
+    gap: var(--space-m);
+  }
+
+  .group {
+    display: grid;
+    gap: var(--space-xs);
+  }
+
+  .cat {
+    margin: 0;
+    font-size: var(--step--1);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+
+  .side-link {
+    text-decoration: none;
+    color: var(--color-link);
+    font-weight: 650;
+  }
+
+  .side-link:hover {
+    color: var(--color-link-hover);
+  }
+
+  .side-link.active {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .main {
+    min-width: 0;
+  }
+</style>

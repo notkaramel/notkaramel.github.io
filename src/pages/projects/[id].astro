@@ -1,0 +1,186 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Prose from "@/components/ui/Prose.astro";
+
+export async function getStaticPaths() {
+  const items = await getCollection("projects", ({ data }) => !data.draft);
+  return items.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.title} description={post.data.description}>
+  <article class="wrap">
+    <header class="head">
+      <p class="kicker">Project</p>
+      <h1>{post.data.title}</h1>
+      <p class="lede">{post.data.description}</p>
+      <div class="cluster">
+        {post.data.tags.map((t) => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+      <div class="actions">
+        <a class="btn primary" href={post.data.github}>
+          View on GitHub
+        </a>
+        {
+          post.data.demoUrl && (
+            <a class="btn ghost" href={post.data.demoUrl} rel="noreferrer">
+              Open demo
+            </a>
+          )
+        }
+      </div>
+    </header>
+
+    {
+      post.data.demoUrl && (
+        <section class="demo surface" aria-label="Demo embed placeholder">
+          <div class="demo-top">
+            <span class="pill">Live embed (placeholder)</span>
+            <span class="hint">
+              Many sites block <code>iframe</code> embedding. Prefer the demo link
+              above for real traffic.
+            </span>
+          </div>
+          <div class="frame">
+            <div class="chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="iframe-slot">
+              <p>
+                This box stands in for an embedded build. Replace with a trusted
+                embed or a short screen recording when you have one.
+              </p>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <Prose>
+      <Content />
+    </Prose>
+  </article>
+</BaseLayout>
+
+<style>
+  .wrap {
+    max-width: 52rem;
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-m);
+  }
+
+  .head {
+    margin-bottom: var(--space-xl);
+  }
+
+  .kicker {
+    margin: 0 0 var(--space-xs);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: var(--step--1);
+    color: var(--color-muted);
+  }
+
+  .lede {
+    margin: 0 0 var(--space-m);
+    color: var(--color-muted);
+    font-size: var(--step-1);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-top: var(--space-m);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 750;
+    border: 1px solid color-mix(in oklab, var(--color-ink) 16%, transparent);
+  }
+
+  .btn.primary {
+    background: color-mix(in oklab, var(--color-primary) 55%, white);
+    color: var(--color-ink);
+  }
+
+  .btn.ghost {
+    background: transparent;
+    color: var(--color-link);
+  }
+
+  .demo {
+    margin: 0 0 var(--space-xl);
+    border-radius: calc(var(--radius) + 6px);
+  }
+
+  .demo-top {
+    display: grid;
+    gap: var(--space-s);
+    margin-bottom: var(--space-m);
+  }
+
+  .pill {
+    display: inline-block;
+    width: fit-content;
+    font-size: var(--step--1);
+    font-weight: 750;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-secondary) 30%, white);
+  }
+
+  .hint {
+    color: var(--color-muted);
+    font-size: var(--step--1);
+  }
+
+  .frame {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px dashed color-mix(in oklab, var(--color-ink) 22%, transparent);
+    background: color-mix(in oklab, var(--color-bg) 70%, white);
+  }
+
+  .chrome {
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.55rem 0.75rem;
+    background: color-mix(in oklab, var(--color-ink) 6%, white);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent);
+  }
+
+  .chrome span {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-ink) 18%, white);
+  }
+
+  .iframe-slot {
+    min-height: 220px;
+    padding: var(--space-m);
+    color: var(--color-muted);
+  }
+
+  .iframe-slot p {
+    margin: 0;
+    max-width: 52ch;
+  }
+</style>
