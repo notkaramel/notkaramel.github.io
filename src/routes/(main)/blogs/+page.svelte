@@ -1,8 +1,8 @@
 <script lang="ts">
-  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
-  import BlogFilterContainer from "$lib/components/BlogFilterContainer.svelte";
-  import BlogListContainer from "$lib/components/BlogListContainer.svelte";
-  import type { BlogFrontmatter, BlogCategory } from "@schemas";
+  import SearchEngineOp from "#lib/components/SearchEngineOp.svelte";
+  import BlogFilterContainer from "#lib/components/BlogFilterContainer.svelte";
+  import BlogListContainer from "#lib/components/BlogListContainer.svelte";
+  import type { BlogFrontmatter, BlogCategory } from "#schemas";
 
   type PageData = {
     canonicalURL: string;
@@ -12,10 +12,12 @@
     }[];
   };
 
-  const { data } = $props<{ data: PageData }>();
+  const { data }: { data: PageData } = $props();
 
   let searchQuery = $state("");
-  let sortBy = $state<"date-desc" | "date-asc" | "title" | "category">("date-desc");
+  let sortBy = $state<"date-desc" | "date-asc" | "title" | "category">(
+    "date-desc",
+  );
   let selectedCategories = $state<Set<BlogCategory>>(new Set());
 
   function toSortableDate(value?: string): number {
@@ -68,7 +70,10 @@
         case "category": {
           const catA = (fmA.categories ?? [])[0] ?? "";
           const catB = (fmB.categories ?? [])[0] ?? "";
-          return catA.localeCompare(catB) || (fmA.title ?? "").localeCompare(fmB.title ?? "");
+          return (
+            catA.localeCompare(catB) ||
+            (fmA.title ?? "").localeCompare(fmB.title ?? "")
+          );
         }
         default:
           return 0;
@@ -85,12 +90,10 @@
   canonical={data.canonicalURL}
 />
 
-<div class="container lg:max-w-6xl w-full mx-auto px-6 lg:px-12 space-y-6 my-8">
-  <BlogFilterContainer
-    bind:searchQuery
-    bind:sortBy
-    bind:selectedCategories
-  />
-  
-  <BlogListContainer blogs={filteredAndSorted} />
+<div class="w-full px-3 sm:px-6 my-8">
+  <div class="max-w-6xl mx-auto space-y-7">
+    <BlogFilterContainer bind:searchQuery bind:sortBy bind:selectedCategories />
+
+    <BlogListContainer blogs={filteredAndSorted} />
+  </div>
 </div>

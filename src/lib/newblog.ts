@@ -3,8 +3,8 @@
  * Run with: bun run src/lib/newblog.ts
  */
 
-import type { NewBlogAnswers, BlogCategory } from "@schemas";
-import { BLOG_CATEGORIES } from "@schemas";
+import type { NewBlogAnswers, BlogCategory } from "#schemas";
+import { BLOG_CATEGORIES } from "#schemas";
 import { existsSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import * as path from "node:path";

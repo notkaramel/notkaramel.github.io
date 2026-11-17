@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import type { BlogFrontmatter } from "@schemas";
+import type { BlogFrontmatter } from "#schemas";
 
 type BlogEntry = { frontmatter: BlogFrontmatter; content: string };
 

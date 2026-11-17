@@ -56,7 +56,7 @@ Guidance for AI agents working on this codebase.
 
 ## Path Aliases
 
-- `$lib` → `src/lib`
+- `#lib` → `src/lib`
 - `@app.css` → `src/app.css`
 - `@schemas` → `src/lib/schemas.ts`
 
@@ -153,6 +153,6 @@ bun run check        # svelte-check
 2. **Content paths**: Wiki in `wiki/`, blogs in `blogs/<topic>/`, recipes in `cooking/YYYY-MM/name/`.
 3. **SEO**: Add `SearchEngineOp` to new pages with title, description, canonical.
 4. **Styling**: Prefer DaisyUI classes (btn, badge, card, etc.) and semantic color tokens. Use **content colours** (`primary-content`, `secondary-content`, `accent-content`) for text, borders, and rings—they provide proper contrast with base colours and theme consistency across light/dark modes.
-5. **Imports**: Use `$lib`, `@app.css`, `@schemas` aliases.
+5. **Imports**: Use `#lib`, `@app.css`, `@schemas` aliases.
 6. **Formatting**: Run `bun run format` before committing.
 7. **Tailwind v4**: Be aware of `container` vs `@container`; see README.

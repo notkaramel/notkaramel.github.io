@@ -1,6 +1,6 @@
 <script lang="ts">
-  import BlogList from "$lib/components/BlogList.svelte";
-  import type { BlogFrontmatter } from "@schemas";
+  import BlogList from "#lib/components/BlogList.svelte";
+  import type { BlogFrontmatter } from "#schemas";
 
   let {
     blogs = [],
@@ -9,6 +9,6 @@
   } = $props();
 </script>
 
-<div class="container lg:max-w-6xl w-full mx-auto px-6 lg:px-12 overflow-visible">
+<div class="w-full overflow-visible">
   <BlogList {blogs} />
 </div>

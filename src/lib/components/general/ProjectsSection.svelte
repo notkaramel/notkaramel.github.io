@@ -1,101 +1,52 @@
-<script>
-  import projects from "$lib/content/projects.json";
-  import Dropdown from "$lib/components/Dropdown.svelte";
+<script lang="ts">
+  import projects from "#lib/content/projects.json";
+  import ProjectCard from "#lib/components/ProjectCard.svelte";
+  import type { Project } from "#schemas";
+
+  const typedProjects = projects as Project[];
 
   const activeProjects = $derived(
-    projects.filter((p) => p.featured && p.status === "active")
+    typedProjects.filter((p) => p.featured && p.status === "active"),
   );
   const previousProjects = $derived(
-    projects.filter((p) => p.featured && p.status === "previous")
+    typedProjects.filter((p) => p.featured && p.status === "previous"),
   );
 </script>
 
-<div class="space-y-8">
+<div class="space-y-10">
   {#if activeProjects.length > 0}
-    <section>
-      <h3 class="text-lg font-semibold text-primary-content mb-3">
-        Active Projects
-      </h3>
-      <div class="space-y-2">
-        {#each activeProjects as project}
-          <Dropdown
-            title={project.title}
-            subtitle={project.category.join(" · ")}
-          >
-            <p class="text-sm mb-3">{project.shortDesc}</p>
-            <div class="flex flex-wrap gap-2 mb-2">
-              {#each project.techStack as tech}
-                <span class="badge badge-sm badge-secondary text-secondary-content"
-                  >{tech}</span
-                >
-              {/each}
-            </div>
-            <div class="flex gap-3">
-              {#if project.github}
-                <a
-                  href={project.github}
-                  class="link link-primary text-sm text-primary-content"
-                  target="_blank"
-                  rel="noreferrer"
-                  >GitHub</a
-                >
-              {/if}
-              {#if project.link}
-                <a
-                  href={project.link}
-                  class="link link-primary text-sm text-primary-content"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Live</a
-                >
-              {/if}
-            </div>
-          </Dropdown>
+    <section class="space-y-4">
+      <div class="flex items-center gap-2.5">
+        <span class="neo-pill neo-pill-yellow px-3 py-1 text-xs">
+          ✦ Currently Tinkering
+        </span>
+        <span class="text-xs font-artistic text-primary-content/70">
+          {activeProjects.length} active explorations
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {#each activeProjects as project, i (project.title)}
+          <ProjectCard {project} tone={i % 2 === 0 ? "blue" : "yellow"} />
         {/each}
       </div>
     </section>
   {/if}
 
   {#if previousProjects.length > 0}
-    <section>
-      <h3 class="text-lg font-semibold text-primary-content mb-3">
-        Previous Projects
-      </h3>
-      <div class="space-y-2">
-        {#each previousProjects as project}
-          <Dropdown
-            title={project.title}
-            subtitle={project.category.join(" · ")}
-          >
-            <p class="text-sm mb-3">{project.shortDesc}</p>
-            <div class="flex flex-wrap gap-2 mb-2">
-              {#each project.techStack as tech}
-                <span class="badge badge-sm badge-secondary text-secondary-content"
-                  >{tech}</span
-                >
-              {/each}
-            </div>
-            <div class="flex gap-3">
-              {#if project.github}
-                <a
-                  href={project.github}
-                  class="link link-primary text-sm text-primary-content"
-                  target="_blank"
-                  rel="noreferrer"
-                  >GitHub</a
-                >
-              {/if}
-              {#if project.link}
-                <a
-                  href={project.link}
-                  class="link link-primary text-sm text-primary-content"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Live</a
-                >
-              {/if}
-            </div>
-          </Dropdown>
+    <section class="space-y-4">
+      <div class="flex items-center gap-2.5">
+        <span class="neo-pill neo-pill-blue px-3 py-1 text-xs">
+          ♫ Archive &amp; Past Works
+        </span>
+        <span class="text-xs font-artistic text-primary-content/70">
+          {previousProjects.length} completed pieces
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {#each previousProjects as project, i (project.title)}
+          <ProjectCard {project} tone={i % 2 === 0 ? "yellow" : "blue"} />
         {/each}
       </div>
     </section>

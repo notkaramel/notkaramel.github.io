@@ -1,10 +1,12 @@
 <script lang="ts">
-  import type { BlogCategory } from "@schemas";
-  import { BLOG_CATEGORIES } from "@schemas";
+  import type { BlogCategory } from "#schemas";
+  import { BLOG_CATEGORIES } from "#schemas";
 
   let {
     searchQuery = $bindable(""),
-    sortBy = $bindable("date-desc" as "date-desc" | "date-asc" | "title" | "category"),
+    sortBy = $bindable(
+      "date-desc" as "date-desc" | "date-asc" | "title" | "category",
+    ),
     selectedCategories = $bindable(new Set<BlogCategory>()),
   }: {
     searchQuery?: string;
@@ -22,24 +24,42 @@
   }
 </script>
 
-<div
-  class="blog-card sticky top-16 z-10 -mx-6 px-6 lg:-mx-12 lg:px-12 py-6"
+<section
+  class="neo-card p-6 lg:p-8 space-y-5 relative overflow-hidden"
+  style="background: linear-gradient(135deg, var(--neo-blue-soft) 0%, var(--neo-surface) 55%, var(--neo-yellow-soft) 100%);"
 >
-  <p class="text-2xl font-semibold text-center text-primary-content mb-4 tracking-tight">
-    Blog – thoughts, travel, and more
-  </p>
-  <hr class="border-primary-content my-4" />
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+    <div>
+      <span class="neo-pill neo-pill-yellow px-3 py-0.5 text-xs mb-2">
+        ✎ Journal &amp; Essays
+      </span>
+      <h1 class="text-3xl font-extrabold text-primary-content tracking-tight">
+        Blog &amp; Daydreams
+      </h1>
+      <p class="text-sm font-artistic text-primary-content/80 mt-1">
+        Thoughts, travel sketches, Linux notes, and lingering melodies.
+      </p>
+    </div>
+    <span
+      class="text-2xl select-none text-primary-content/50 hidden sm:inline"
+      aria-hidden="true"
+    >
+      ♫
+    </span>
+  </div>
 
-  <div class="flex flex-col gap-4">
+  <div
+    class="border-t-2 border-dashed border-[var(--neo-ink)]/25 pt-4 flex flex-col gap-4"
+  >
     <div class="flex flex-wrap items-center gap-3">
       <label
-        class="input input-primary input-bordered flex items-center gap-2 flex-1 min-w-[200px] focus-within:ring-2 focus-within:ring-primary"
+        class="neo-input flex items-center gap-2.5 px-3.5 py-2.5 flex-1 min-w-[220px]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
           fill="currentColor"
-          class="size-4 text-primary-content opacity-70"
+          class="size-4 text-primary-content opacity-75 shrink-0"
         >
           <path
             fill-rule="evenodd"
@@ -49,13 +69,14 @@
         </svg>
         <input
           type="text"
-          class="grow text-primary-content placeholder-primary-content/60"
-          placeholder="Search by title, description, tags..."
+          class="w-full bg-transparent outline-none text-sm font-medium text-primary-content placeholder:text-primary-content/55"
+          placeholder="Search by title, mood, tags..."
           bind:value={searchQuery}
         />
       </label>
+
       <select
-        class="select select-primary select-bordered w-auto text-primary-content focus-within:ring-2 focus-within:ring-primary min-w-3xs"
+        class="neo-input px-4 py-2.5 text-sm font-bold text-primary-content cursor-pointer min-w-[180px]"
         bind:value={sortBy}
         aria-label="Sort blogs"
       >
@@ -66,14 +87,18 @@
       </select>
     </div>
 
-    <div class="flex flex-wrap gap-2">
-      <span class="text-sm text-primary-content self-center">Topics:</span>
-      {#each BLOG_CATEGORIES as cat}
+    <div class="flex flex-wrap items-center gap-2">
+      <span
+        class="text-xs font-extrabold uppercase tracking-wider text-primary-content/70 mr-1"
+      >
+        Topics:
+      </span>
+      {#each BLOG_CATEGORIES as cat (cat)}
+        {@const active = selectedCategories.has(cat)}
         <button
           type="button"
-          class="badge badge-lg cursor-pointer transition-all text-primary-content {selectedCategories.has(cat)
-            ? 'badge-primary'
-            : 'badge-outline badge-primary'}"
+          class="neo-btn px-3.5 py-1 text-xs
+            {active ? 'neo-btn-yellow' : 'neo-btn-surface'}"
           onclick={() => toggleCategory(cat)}
         >
           {cat}
@@ -82,12 +107,12 @@
       {#if selectedCategories.size > 0}
         <button
           type="button"
-          class="btn btn-primary btn-outline btn-xs text-primary-content"
+          class="neo-btn neo-btn-blue px-3 py-1 text-xs ml-1"
           onclick={() => (selectedCategories = new Set())}
         >
-          Clear filters
+          Clear ✕
         </button>
       {/if}
     </div>
   </div>
-</div>
+</section>

@@ -1,11 +1,8 @@
 <script lang="ts">
   import type { PageProps } from "./$types";
-  import SearchEngineOp from "$lib/components/SearchEngineOp.svelte";
-  import TableOfContents from "$lib/components/TableOfContents.svelte";
-  import {
-    parseMarkdownWithHeadingIds,
-    extractToc,
-  } from "$lib/markdown";
+  import SearchEngineOp from "#lib/components/SearchEngineOp.svelte";
+  import TableOfContents from "#lib/components/TableOfContents.svelte";
+  import { parseMarkdownWithHeadingIds, extractToc } from "#lib/markdown.ts";
 
   let { data }: PageProps = $props();
 
@@ -19,43 +16,59 @@
   canonical={data.canonicalURL}
 />
 
-<!-- Floating ToC handles both desktop sidebar and mobile drawer internally -->
+<!-- Side header navigation card outside centered content -->
 <TableOfContents entries={toc} floating={true} />
 
-<!-- Centered article content -->
-<main class="w-full min-h-screen">
-  <div class="max-w-3xl mx-auto px-6 py-8 space-y-6">
-    <header class="blog-card p-6 lg:p-8 text-center">
-      <h1 class="text-3xl lg:text-4xl font-bold text-primary-content tracking-tight mb-3">
-        {data.title}
-      </h1>
-      {#if data.description}
-        <p class="text-primary-content/90 max-w-2xl mx-auto mb-4">
-          {data.description}
-        </p>
-      {/if}
-      <div class="flex flex-wrap justify-center items-center gap-2 mb-3">
-        {#each data.tags as tag}
-          <span class="badge badge-primary badge-outline text-primary-content text-xs">
-            {tag}
+<main class="w-full min-h-screen px-3 sm:px-6 pb-16">
+  <div class="max-w-6xl mx-auto py-8 space-y-7">
+    <header
+      class="neo-card p-6 sm:p-8 lg:p-10 text-center space-y-4"
+      style="background: linear-gradient(135deg, var(--neo-blue-soft) 0%, var(--neo-surface) 52%, var(--neo-yellow-soft) 100%);"
+    >
+      <div class="flex flex-wrap justify-center items-center gap-2">
+        <span class="neo-pill neo-pill-blue px-3 py-0.5 text-xs">
+          Wiki Guide
+        </span>
+        {#each data.tags as tag (tag)}
+          <span class="neo-pill neo-pill-yellow px-3 py-0.5 text-xs">
+            #{tag}
           </span>
         {/each}
       </div>
-      <p class="text-sm text-primary-content/80">
+
+      <h1
+        class="text-3xl sm:text-4xl font-extrabold text-primary-content tracking-tight leading-tight"
+      >
+        {data.title}
+      </h1>
+
+      {#if data.description}
+        <p
+          class="text-base font-artistic text-primary-content/85 max-w-2xl mx-auto"
+        >
+          {data.description}
+        </p>
+      {/if}
+
+      <div
+        class="pt-3 border-t-2 border-dashed border-[var(--neo-ink)]/25 flex flex-wrap justify-center items-center gap-2 text-xs font-bold text-primary-content/75"
+      >
         <span>Published {data.date}</span>
         {#if data.lastUpdated && data.lastUpdated !== data.date}
-          <span class="mx-2">·</span>
+          <span>·</span>
           <span>Updated {data.lastUpdated}</span>
         {/if}
-      </p>
+      </div>
     </header>
 
-    <article class="blog-card blog-article p-6 lg:p-8">
+    <article class="neo-card blog-article p-6 sm:p-8 lg:p-10">
       <div class="prose max-w-full">
         {@html content}
       </div>
-      <div class="mt-10 pt-6 border-t border-primary-content">
-        <a href="/wiki" class="btn btn-primary btn-outline text-primary-content">
+      <div
+        class="mt-12 pt-6 border-t-2 border-dashed border-[var(--neo-ink)]/25"
+      >
+        <a href="/wiki" class="neo-btn neo-btn-blue px-5 py-2 text-sm">
           ← Back to Wiki
         </a>
       </div>

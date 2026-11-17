@@ -12,27 +12,32 @@
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format": "bun fmt",
+    "format:check": "bun fmt --check"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^6.2.0",
-    "@sveltejs/kit": "^2.49.2",
-    "@sveltejs/vite-plugin-svelte": "^6.2.1",
-    "@types/bun": "^1.3.5",
+    "@sveltejs/adapter-vercel": "^7.0.3",
+    "@sveltejs/kit": "^3.2.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.1",
+    "@types/bun": "^1.4.4",
     "gray-matter": "^4.0.3",
-    "prettier": "3.7.4",
-    "svelte": "^5.46.1",
-    "svelte-check": "^4.3.5",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.0"
+    "svelte": "^5.57.3",
+    "svelte-check": "^4.7.8",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.8"
   },
   "dependencies": {
-    "@fontsource-variable/comfortaa": "^5.2.8",
-    "@tailwindcss/vite": "^4.1.18",
-    "animejs": "^4.2.2",
-    "daisyui": "^5.5.14",
-    "marked": "^17.0.1",
-    "tailwindcss": "^4.1.18"
+    "@fontsource-variable/comfortaa": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.5",
+    "animejs": "^4.5.0",
+    "daisyui": "^5.8.1",
+    "marked": "^17.0.6",
+    "tailwindcss": "^4.3.5"
+  },
+  "imports": {
+    "#lib": "./src/lib/index.ts",
+    "#lib/*": "./src/lib/*",
+    "#schemas": "./src/lib/schemas.ts",
+    "#app.css": "./src/app.css"
   }
 }

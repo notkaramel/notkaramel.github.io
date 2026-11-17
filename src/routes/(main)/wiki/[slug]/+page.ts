@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
-import type { WikiFrontmatter } from "@schemas";
+import type { WikiFrontmatter } from "#schemas";
 
 type WikiEntry = { frontmatter: WikiFrontmatter; content: string };
 

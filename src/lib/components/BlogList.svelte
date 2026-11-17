@@ -1,6 +1,6 @@
 <script lang="ts">
-  import BlogCard from "$lib/components/BlogCard.svelte";
-  import type { BlogFrontmatter } from "@schemas";
+  import BlogCard from "#lib/components/BlogCard.svelte";
+  import type { BlogFrontmatter } from "#schemas";
 
   let {
     blogs = [],
@@ -11,12 +11,12 @@
 
 <div class="space-y-6 min-h-[40vh]">
   {#if blogs.length === 0}
-    <div class="blog-card p-12 text-center">
-      <p class="text-primary-content/90 text-lg mb-2">
-        No blogs match your filters.
+    <div class="neo-card p-12 text-center space-y-2">
+      <p class="text-primary-content text-lg font-bold">
+        No blog notes match your filters ♪
       </p>
-      <p class="text-sm text-primary-content/70">
-        Try adjusting search or topic filters above.
+      <p class="text-sm font-artistic text-primary-content/75">
+        Try adjusting your search or clearing topic pills above.
       </p>
     </div>
   {:else}

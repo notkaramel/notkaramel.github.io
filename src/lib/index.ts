@@ -1,5 +1,5 @@
 /** Resuable content: Routes */
-import type { Route } from "@schemas";
+import type { Route } from "#schemas";
 
 export const routes: Route[] = [
   {

@@ -1,4 +1,4 @@
-import type { Transcript } from "@schemas";
+import type { Transcript } from "#schemas";
 
 export const transcripts: Transcript[] = [
   {
